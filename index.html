@@ -382,6 +382,30 @@
       .nav-links { display: none; }
       h1 { font-size: 2.6rem; }
     }
+
+    /* ADMIN PANEL (hidden — reachable only via #admin) */
+    .admin-panel { position: fixed; inset: 0; z-index: 1000; background: rgba(26,23,20,0.6); display: flex; align-items: flex-start; justify-content: center; padding: 3rem 1.5rem; overflow-y: auto; }
+    .admin-box { position: relative; background: var(--cream); max-width: 720px; width: 100%; padding: 2.5rem; border: 1px solid var(--rule); }
+    .admin-box h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; margin-bottom: 0.3rem; }
+    .admin-box .admin-sub { font-size: 0.82rem; color: var(--warm-mid); margin-bottom: 1.8rem; line-height: 1.6; }
+    .admin-field { margin-bottom: 1.1rem; }
+    .admin-field label { display: block; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm-mid); margin-bottom: 0.4rem; font-weight: 500; }
+    .admin-field input, .admin-field select, .admin-field textarea {
+      width: 100%; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; padding: 0.6rem 0.7rem;
+      border: 1px solid var(--rule); background: #fff; color: var(--ink);
+    }
+    .admin-field textarea { min-height: 80px; resize: vertical; }
+    .admin-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .admin-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin: 1.5rem 0; }
+    .admin-btn { font-size: 0.78rem; letter-spacing: 0.06em; padding: 0.7rem 1.3rem; border: none; cursor: pointer; text-transform: uppercase; font-weight: 500; }
+    .admin-btn-primary { background: var(--ink); color: var(--cream); }
+    .admin-btn-primary:hover { background: var(--accent); }
+    .admin-btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--rule); }
+    .admin-btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .admin-snippet-label { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm-mid); margin-bottom: 0.4rem; font-weight: 500; }
+    .admin-snippet { width: 100%; min-height: 160px; font-family: 'SF Mono', Menlo, monospace; font-size: 0.76rem; padding: 0.8rem; border: 1px solid var(--rule); background: #fff; white-space: pre; }
+    .admin-close { position: absolute; top: 1.2rem; right: 1.4rem; font-size: 1.3rem; background: none; border: none; cursor: pointer; color: var(--warm-mid); }
+    .admin-drafts-note { font-size: 0.76rem; color: var(--warm-mid); margin-top: 0.5rem; line-height: 1.6; }
   </style>
 </head>
 <body>
@@ -1102,6 +1126,9 @@
         </div>
       </div>
 
+      <!-- Dynamically added projects render here (see #admin) -->
+      <div id="projects-dynamic"></div>
+
     </div>
   </section>
 
@@ -1210,6 +1237,83 @@
 
   <footer>&copy; 2026 Elizabeth Enyart-Allen &mdash; All rights reserved</footer>
 
+  <!-- ADMIN PANEL — hidden. Reach it by visiting this page with #admin in the URL. -->
+  <div id="admin-panel" class="admin-panel" style="display:none;">
+    <div class="admin-box">
+      <button type="button" class="admin-close" id="admin-close" aria-label="Close">&times;</button>
+      <h2>Add a Project</h2>
+      <p class="admin-sub">Fill this out to preview a new project card below on the live page (visible only in your browser). When you're happy with it, copy the generated snippet and paste it into the <code>PROJECTS_EXTRA</code> array near the bottom of index.html, then commit &amp; push to publish it for visitors.</p>
+
+      <form id="admin-form">
+        <div class="admin-field">
+          <label for="af-title">Title</label>
+          <input type="text" id="af-title" required placeholder="e.g. Customer Churn Prediction" />
+        </div>
+        <div class="admin-row">
+          <div class="admin-field">
+            <label for="af-badge">Badge / Platform Label</label>
+            <input type="text" id="af-badge" placeholder="e.g. Google Colab · Jupyter Notebook" />
+          </div>
+          <div class="admin-field">
+            <label for="af-theme">Theme</label>
+            <select id="af-theme">
+              <option value="cream">Cream (default)</option>
+              <option value="tan">Tan / Warm</option>
+              <option value="dark">Dark</option>
+              <option value="blue">Blue Accent</option>
+            </select>
+          </div>
+        </div>
+        <div class="admin-field">
+          <label for="af-tags">Tags (comma separated)</label>
+          <input type="text" id="af-tags" placeholder="e.g. Machine Learning, Python, Time Series" />
+        </div>
+        <div class="admin-field">
+          <label for="af-desc">Description</label>
+          <textarea id="af-desc" required placeholder="What the project does and why it matters."></textarea>
+        </div>
+        <div class="admin-field">
+          <label for="af-tech">Tech Stack (comma separated)</label>
+          <input type="text" id="af-tech" placeholder="e.g. Python, Pandas, Scikit-learn" />
+        </div>
+        <div class="admin-row">
+          <div class="admin-field">
+            <label for="af-repo-label">Primary Link Label</label>
+            <input type="text" id="af-repo-label" placeholder="View Repository" />
+          </div>
+          <div class="admin-field">
+            <label for="af-repo-url">Primary Link URL</label>
+            <input type="url" id="af-repo-url" placeholder="https://github.com/..." />
+          </div>
+        </div>
+        <div class="admin-row">
+          <div class="admin-field">
+            <label for="af-demo-label">Secondary Link Label</label>
+            <input type="text" id="af-demo-label" placeholder="View Demo" />
+          </div>
+          <div class="admin-field">
+            <label for="af-demo-url">Secondary Link URL</label>
+            <input type="url" id="af-demo-url" placeholder="https://..." />
+          </div>
+        </div>
+
+        <div class="admin-actions">
+          <button type="submit" class="admin-btn admin-btn-primary">Preview &amp; Add</button>
+          <button type="button" id="admin-clear" class="admin-btn admin-btn-secondary">Clear My Drafts</button>
+        </div>
+      </form>
+
+      <div id="admin-snippet-wrap" style="display:none;">
+        <div class="admin-snippet-label">Copy this into the PROJECTS_EXTRA array in index.html</div>
+        <textarea class="admin-snippet" id="admin-snippet" readonly></textarea>
+        <div class="admin-actions">
+          <button type="button" id="admin-copy" class="admin-btn admin-btn-secondary">Copy Snippet</button>
+        </div>
+        <p class="admin-drafts-note">This draft is also saved in this browser's local storage so it keeps previewing on the live section below until you clear it — it is not visible to other visitors until you paste it into the file and publish.</p>
+      </div>
+    </div>
+  </div>
+
   <script>
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
@@ -1217,6 +1321,148 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
     document.querySelectorAll('.exp-item').forEach(el => observer.observe(el));
+
+    // ---- Projects: published extras ----
+    // Add new projects here by pasting snippets generated by the admin form (visit this page with #admin in the URL).
+    const PROJECTS_EXTRA = [
+      // { title: '...', badge: '...', theme: 'cream', tags: ['...'], description: '...', tech: ['...'], repoLabel: 'View Repository', repoUrl: '...', demoLabel: 'View Demo', demoUrl: '...' },
+    ];
+
+    // ---- Projects: rendering ----
+    const PROJECT_THEMES = {
+      cream: { bg: '#f7f3ee', border: '1px solid #d9cfc6', text: '#1a1714', muted: '#5c4f43', accent: '#b5622a', accentBorder: '#e8c9b0', accentBg: 'rgba(181,98,42,0.06)' },
+      tan:   { bg: '#f0ebe4', border: 'none', text: '#1a1714', muted: '#5c4f43', accent: '#ea4b71', accentBorder: '#f5a7b8', accentBg: 'rgba(234,75,113,0.06)' },
+      dark:  { bg: '#1a1714', border: 'none', text: '#f7f3ee', muted: 'rgba(247,243,238,0.7)', accent: '#e8c9b0', accentBorder: 'rgba(232,201,176,0.3)', accentBg: 'rgba(232,201,176,0.08)' },
+      blue:  { bg: '#f0f4ff', border: '1px solid #c7d4f5', text: '#1a1714', muted: '#5c4f43', accent: '#5865F2', accentBorder: 'rgba(88,101,242,0.3)', accentBg: 'rgba(88,101,242,0.06)' },
+    };
+
+    function escapeHtml(s) {
+      return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+
+    function renderProjectCard(p) {
+      const t = PROJECT_THEMES[p.theme] || PROJECT_THEMES.cream;
+      const tags = (p.tags || []).map(tag => `<span class="project-tag">${escapeHtml(tag)}</span>`).join('');
+      const tech = (p.tech || []).map(item => `<div class="project-tech-item"><span class="tech-dot" style="background:${t.accent};"></span>${escapeHtml(item)}</div>`).join('');
+      const links = [];
+      if (p.repoUrl) links.push(`<a class="project-cta-primary" href="${escapeHtml(p.repoUrl)}" target="_blank" rel="noopener">${escapeHtml(p.repoLabel || 'View Repository')}</a>`);
+      if (p.demoUrl) links.push(`<a class="project-cta-secondary" href="${escapeHtml(p.demoUrl)}" target="_blank" rel="noopener">${escapeHtml(p.demoLabel || 'View Demo')}</a>`);
+      return `<div class="project-secondary" style="margin-top:2px;">
+        <div class="project-featured" style="background:${t.bg};${t.border !== 'none' ? 'border:' + t.border + ';' : ''}color:${t.text};">
+          <div class="project-featured-label">
+            <span class="project-colab-badge" style="color:${t.accent};border-color:${t.accentBorder};background:${t.accentBg};">${escapeHtml(p.badge || '')}</span>
+          </div>
+          <div class="project-featured-grid">
+            <div class="project-featured-main">
+              <div class="project-tag-row">${tags}</div>
+              <h3 class="project-featured-title" style="color:${t.text};">${escapeHtml(p.title)}</h3>
+              <p class="project-featured-desc" style="color:${t.muted};">${escapeHtml(p.description)}</p>
+              <div class="project-cta-row">${links.join('')}</div>
+            </div>
+            <div class="project-featured-sidebar">
+              <div class="project-tech-box" style="background:${t.accentBg};border:1px solid ${t.accentBorder};">
+                <div class="project-tech-label" style="color:${t.accent};">Tech Stack</div>
+                <div class="project-tech-list">${tech}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    }
+
+    const DRAFTS_KEY = 'portfolio_draft_projects';
+    function loadDrafts() {
+      try { return JSON.parse(localStorage.getItem(DRAFTS_KEY)) || []; } catch (e) { return []; }
+    }
+    function saveDrafts(drafts) {
+      localStorage.setItem(DRAFTS_KEY, JSON.stringify(drafts));
+    }
+
+    function renderAllProjects() {
+      const container = document.getElementById('projects-dynamic');
+      if (!container) return;
+      const all = PROJECTS_EXTRA.concat(loadDrafts());
+      container.innerHTML = all.map(renderProjectCard).join('');
+    }
+    renderAllProjects();
+
+    function toSnippet(p) {
+      const field = (v) => JSON.stringify(v);
+      return '  {\n' +
+        `    title: ${field(p.title)},\n` +
+        `    badge: ${field(p.badge)},\n` +
+        `    theme: ${field(p.theme)},\n` +
+        `    tags: ${JSON.stringify(p.tags)},\n` +
+        `    description: ${field(p.description)},\n` +
+        `    tech: ${JSON.stringify(p.tech)},\n` +
+        `    repoLabel: ${field(p.repoLabel)},\n` +
+        `    repoUrl: ${field(p.repoUrl)},\n` +
+        `    demoLabel: ${field(p.demoLabel)},\n` +
+        `    demoUrl: ${field(p.demoUrl)},\n` +
+        '  },';
+    }
+
+    // ---- Admin panel (hidden — reachable via #admin) ----
+    const adminPanel = document.getElementById('admin-panel');
+    function syncAdminVisibility() {
+      if (!adminPanel) return;
+      adminPanel.style.display = (location.hash === '#admin') ? 'flex' : 'none';
+    }
+    syncAdminVisibility();
+    window.addEventListener('hashchange', syncAdminVisibility);
+
+    const adminClose = document.getElementById('admin-close');
+    if (adminClose) adminClose.addEventListener('click', () => { history.replaceState(null, '', location.pathname + location.search); syncAdminVisibility(); });
+
+    const adminForm = document.getElementById('admin-form');
+    if (adminForm) {
+      adminForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const splitList = (v) => v.split(',').map(s => s.trim()).filter(Boolean);
+        const project = {
+          title: document.getElementById('af-title').value.trim(),
+          badge: document.getElementById('af-badge').value.trim(),
+          theme: document.getElementById('af-theme').value,
+          tags: splitList(document.getElementById('af-tags').value),
+          description: document.getElementById('af-desc').value.trim(),
+          tech: splitList(document.getElementById('af-tech').value),
+          repoLabel: document.getElementById('af-repo-label').value.trim(),
+          repoUrl: document.getElementById('af-repo-url').value.trim(),
+          demoLabel: document.getElementById('af-demo-label').value.trim(),
+          demoUrl: document.getElementById('af-demo-url').value.trim(),
+        };
+        const drafts = loadDrafts();
+        drafts.push(project);
+        saveDrafts(drafts);
+        renderAllProjects();
+
+        const wrap = document.getElementById('admin-snippet-wrap');
+        const snippet = document.getElementById('admin-snippet');
+        if (wrap && snippet) {
+          snippet.value = toSnippet(project);
+          wrap.style.display = 'block';
+        }
+      });
+    }
+
+    const adminClear = document.getElementById('admin-clear');
+    if (adminClear) adminClear.addEventListener('click', () => {
+      saveDrafts([]);
+      renderAllProjects();
+      const wrap = document.getElementById('admin-snippet-wrap');
+      if (wrap) wrap.style.display = 'none';
+    });
+
+    const adminCopy = document.getElementById('admin-copy');
+    if (adminCopy) adminCopy.addEventListener('click', () => {
+      const snippet = document.getElementById('admin-snippet');
+      if (!snippet) return;
+      snippet.select();
+      navigator.clipboard.writeText(snippet.value).then(() => {
+        adminCopy.textContent = 'Copied!';
+        setTimeout(() => { adminCopy.textContent = 'Copy Snippet'; }, 1500);
+      }).catch(() => {});
+    });
   </script>
 </body>
 </html>
