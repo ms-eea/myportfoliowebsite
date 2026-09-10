@@ -268,7 +268,28 @@
     .contact-link-value { font-size: 0.88rem; }
 
     /* PROJECTS */
-    #projects { background: var(--cream); }
+    <!-- Project Card: AI Patient Agent Chat -->
+<div class="project-card">
+  <div class="project-content">
+    <span class="project-badge">AI Agent & Workflows</span>
+    <h3>AI Patient Chat Agent (Rx Refill & Rescheduling)</h3>
+    <p>
+      A self-hosted n8n agentic workflow powered by Google Gemini Chat Model that orchestrates conversational patient requests. Integrates dynamic custom tools (Rx Refill Tool and Reschedule Tool) with session memory and API execution to process prescription renewals and appointment changes cleanly into clinical data pipelines.
+    </p>
+    <ul class="project-tech-stack">
+      <li>n8n</li>
+      <li>Google Gemini</li>
+      <li>Docker</li>
+      <li>Python</li>
+      <li>Agentic Workflows</li>
+      <li>LLM Quality Gates</li>
+      <li>EHR Integration</li>
+    </ul>
+    <div class="project-links">
+      <a href="https://github.com/ms-eea" target="_blank" rel="noopener noreferrer" class="btn-primary">View Workflow & Code</a>
+    </div>
+  </div>
+</div>#projects { background: var(--cream); }
     .projects-intro { font-size: 1rem; color: var(--warm-mid); max-width: 680px; margin-bottom: 3rem; line-height: 1.8; }
     .project-featured { border: 1px solid var(--rule); padding: 2.5rem; }
     .project-featured-label { margin-bottom: 1.5rem; }
