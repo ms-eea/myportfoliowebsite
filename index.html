@@ -12,15 +12,15 @@
   
   <style>
     :root {
-      --bg-dark: #090D16;
-      --card-bg: #111827;
+      --bg-dark: #050811;
+      --card-bg: #0F172A;
       --ink: #F8FAFC;
       --muted: #94A3B8;
       --accent: #3B82F6;
-      --accent-glow: rgba(59, 130, 246, 0.4);
       --neon-cyan: #06B6D4;
+      --neon-purple: #A855F7;
       --border: #1E293B;
-      --border-glow: rgba(6, 182, 212, 0.4);
+      --border-glow: rgba(6, 182, 212, 0.5);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,18 +31,18 @@
     .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
     
     /* Header & Nav */
-    header { padding: 24px 0; border-bottom: 1px solid var(--border); background-color: rgba(9, 13, 22, 0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
+    header { padding: 24px 0; border-bottom: 1px solid var(--border); background-color: rgba(5, 8, 17, 0.85); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; }
     nav { display: flex; justify-content: space-between; align-items: center; }
-    .brand { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--neon-cyan); letter-spacing: 0.05em; }
+    .brand { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--neon-cyan); letter-spacing: 0.1em; text-shadow: 0 0 10px rgba(6, 182, 212, 0.4); }
     .nav-links { display: flex; gap: 24px; list-style: none; font-weight: 400; font-size: 0.95rem; }
     .nav-links a:hover { color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan); }
 
-    /* Hero Area with Futuristic Glow */
+    /* Hero Area with Massive Prominent Name & Cyber Glow */
     .hero-container {
       display: flex;
       align-items: center;
       gap: 48px;
-      padding: 80px 0 60px;
+      padding: 90px 0 60px;
       flex-wrap: wrap;
       position: relative;
     }
@@ -50,39 +50,50 @@
     .hero-container::before {
       content: '';
       position: absolute;
-      top: 20%;
-      left: -10%;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, rgba(0,0,0,0) 70%);
+      top: 10%;
+      left: -5%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, rgba(168, 85, 247, 0.05) 40%, rgba(0,0,0,0) 70%);
       z-index: -1;
     }
 
     .hero-content { flex: 1; min-width: 300px; }
     
+    /* MASSIVE PROMINENT NAME */
     .hero-name {
       font-family: 'Outfit', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 600;
+      font-size: 1.5rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--neon-cyan);
-      margin-bottom: 12px;
-      text-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
+      letter-spacing: 0.15em;
+      background: linear-gradient(135deg, #FFF, var(--neon-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+      text-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
     }
 
-    .hero-content h1 { font-size: 3.5rem; margin-bottom: 24px; letter-spacing: -0.02em; color: #FFF; }
+    .hero-content h1 { 
+      font-size: 3.2rem; 
+      margin-bottom: 24px; 
+      letter-spacing: -0.02em; 
+      color: #FFF; 
+      background: linear-gradient(135deg, #FFF 60%, #94A3B8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
     .hero-content p { font-size: 1.15rem; color: var(--muted); margin-bottom: 32px; max-width: 720px; line-height: 1.7; }
 
     .profile-avatar-container {
-      width: 240px;
-      height: 240px;
+      width: 250px;
+      height: 250px;
       border-radius: 50%;
       overflow: hidden;
       border: 3px solid var(--neon-cyan);
-      box-shadow: 0 0 30px rgba(6, 182, 212, 0.3), inset 0 0 20px rgba(59, 130, 246, 0.3);
+      box-shadow: 0 0 35px rgba(6, 182, 212, 0.4), inset 0 0 25px rgba(168, 85, 247, 0.3);
       flex-shrink: 0;
-      position: relative;
     }
 
     .profile-avatar-container img {
@@ -107,7 +118,7 @@
     /* Grid Layout for Cyber Cards */
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
     .card { background: var(--card-bg); border: 1px solid var(--border); padding: 28px; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease; position: relative; }
-    .card:hover { border-color: var(--neon-cyan); box-shadow: 0 10px 30px rgba(6, 182, 212, 0.15); transform: translateY(-3px); }
+    .card:hover { border-color: var(--neon-cyan); box-shadow: 0 10px 35px rgba(6, 182, 212, 0.2); transform: translateY(-3px); }
     
     .card-img-container {
       width: 100%;
@@ -116,7 +127,7 @@
       overflow: hidden;
       margin-bottom: 16px;
       border: 1px solid var(--border);
-      background-color: #0F172A;
+      background-color: #090D16;
     }
     
     .card-img-container img { width: 100%; height: 100%; object-fit: cover; }
@@ -128,13 +139,13 @@
       border-radius: 8px;
       border: 1px solid var(--border-glow) !important;
       margin-bottom: 16px;
-      box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.25);
     }
 
     .card h3 { font-size: 1.4rem; margin-bottom: 8px; color: #FFF; }
     .card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 16px; }
     .tags { margin-bottom: 12px; }
-    .tag { display: inline-block; background: rgba(59, 130, 246, 0.15); color: var(--neon-cyan); font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 20px; margin-right: 6px; margin-bottom: 6px; border: 1px solid rgba(6, 182, 212, 0.3); }
+    .tag { display: inline-block; background: rgba(6, 182, 212, 0.1); color: var(--neon-cyan); font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 20px; margin-right: 6px; margin-bottom: 6px; border: 1px solid rgba(6, 182, 212, 0.3); }
 
     .credential-details {
       margin-top: 12px;
@@ -145,7 +156,7 @@
     }
     .credential-details span { display: block; margin-bottom: 2px; }
 
-    footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; color: var(--muted); font-size: 0.875rem; background: #05070B; }
+    footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; color: var(--muted); font-size: 0.875rem; background: #020408; }
 
     /* FUTURISTIC HOLOGRAPHIC CHAT WIDGET */
     #ai-bot-tooltip {
@@ -186,7 +197,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 30px rgba(6, 182, 212, 0.4);
+      box-shadow: 0 0 35px rgba(6, 182, 212, 0.5);
       z-index: 1000;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       overflow: visible;
@@ -194,7 +205,7 @@
 
     #ai-bot-trigger:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 40px rgba(6, 182, 212, 0.7);
+      box-shadow: 0 0 45px rgba(6, 182, 212, 0.8);
     }
 
     .trigger-avatar {
@@ -329,7 +340,7 @@
     }
 
     .prompt-btn {
-      background: rgba(59, 130, 246, 0.1);
+      background: rgba(6, 182, 212, 0.1);
       border: 1px solid rgba(6, 182, 212, 0.3);
       color: var(--neon-cyan);
       font-size: 0.75rem;
@@ -355,7 +366,7 @@
 
     #ai-bot-input {
       flex: 1;
-      background: #090D16;
+      background: #050811;
       border: 1px solid var(--border);
       color: #FFF;
       padding: 10px 12px;
@@ -364,7 +375,7 @@
       font-size: 0.9rem;
     }
 
-    #ai-bot-input:focus { border-color: var(--neon-cyan); box-shadow: 0 0 10px rgba(6, 182, 212, 0.2); }
+    #ai-bot-input:focus { border-color: var(--neon-cyan); box-shadow: 0 0 10px rgba(6, 182, 212, 0.3); }
 
     .send-btn {
       background: linear-gradient(135deg, var(--accent), var(--neon-cyan));
@@ -396,7 +407,7 @@
 
   <main class="container">
     
-    <!-- Hero Section with Prominent Name & Elevator Pitch -->
+    <!-- Hero Section with Massive Prominent Name & Elevator Pitch -->
     <section id="about" class="hero-container">
       <div class="hero-content">
         <div class="hero-name">Elizabeth Enyart-Allen</div>
@@ -475,7 +486,7 @@
       <h2 class="section-title">Leadership & Credentials</h2>
       <div class="grid">
         
-        <!-- MN Women in AI Card with New Graphic -->
+        <!-- MN Women in AI North Star Badge -->
         <div class="card">
           <img src="ms.enyart_north star (2).png" alt="MN Women in AI North Star Founding Member Badge" class="badge-card-img" onerror="this.onerror=null; this.src='badge.png';">
           <div>
