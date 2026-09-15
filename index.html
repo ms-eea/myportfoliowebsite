@@ -33,7 +33,7 @@
     /* Header & Nav */
     header { padding: 24px 0; border-bottom: 1px solid var(--border); background-color: rgba(5, 8, 17, 0.85); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; }
     nav { display: flex; justify-content: space-between; align-items: center; }
-    .brand { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--neon-cyan); letter-spacing: 0.1em; text-shadow: 0 0 10px rgba(6, 182, 212, 0.4); }
+    .brand { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 700; color: var(--neon-cyan); letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(6, 182, 212, 0.4); }
     .nav-links { display: flex; gap: 24px; list-style: none; font-weight: 400; font-size: 0.95rem; }
     .nav-links a:hover { color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan); }
 
@@ -394,7 +394,7 @@
   <!-- Header Navigation -->
   <header>
     <div class="container nav">
-      <div class="brand">ELIZABETH.AI</div>
+      <div class="brand">Elizabeth Enyart-Allen</div>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Portfolios</a></li>
@@ -406,12 +406,12 @@
 
   <main class="container">
     
-    <!-- Hero Section with Clinical-to-Tech Elevator Pitch -->
+    <!-- Hero Section with Clinical-to-Tech Narrative -->
     <section id="about" class="hero-container">
       <div class="hero-content">
         <div class="hero-name">Elizabeth Enyart-Allen</div>
         <h1>Enterprise Product Leader & AI Strategist</h1>
-        <p>Grounded in a foundation of direct clinical care as a Medical Laboratory Scientist and managing global bone marrow transplant registries at NMDP/CIBMTR, I bring a deeply patient-centric, domain-expert perspective to modern tech leadership. As an Executive Product Leader and AI Strategist with 15+ years of experience across Optum, Target, and the State of Minnesota, I bridge complex clinical and technical architectures with high-impact business outcomes. Whether scaling agentic AI workflows, establishing Responsible AI governance, or delivering $2M+ in cloud cost optimizations, I turn complex technical potential into measurable results.</p>
+        <p>Grounded in a foundation of direct clinical care as a Medical Laboratory Scientist and managing global bone marrow transplant registries at NMDP/CIBMTR, I bring a deeply patient-centric, domain-expert perspective to modern tech leadership. As an Executive Product Leader and AI Strategist with 15+ years of experience across NovuHealth, Target, Optum, and GPN Technologies, I bridge complex clinical and technical architectures with high-impact business outcomes. Whether scaling agentic AI workflows, establishing Responsible AI governance, or delivering $2M+ in cloud cost optimizations, I turn complex technical potential into measurable results.</p>
         <div class="btn-group">
           <a href="#projects" class="btn btn-primary">Explore Portfolios</a>
           <a href="#contact" class="btn btn-secondary">Get in Touch</a>
@@ -506,7 +506,7 @@
               <span class="tag">AI Transformation</span>
             </div>
             <h3>Certified Artificial Intelligence Transformation Leader™ (CAITL™)</h3>
-            <p>Issued by the United States Artificial Intelligence Institute (USAII®), validating executive expertise in AI transformation strategy, governance, and deployment models.</p>
+            <p>Executive-level certification validating mastery in driving enterprise-wide AI transformation strategies, governance frameworks, and machine learning deployment models.</p>
           </div>
           <div class="credential-details">
             <span><strong>Credential ID:</strong> 8718400406</span>
@@ -523,7 +523,7 @@
               <span class="tag">Microsoft Azure</span>
             </div>
             <h3>AI & Cloud Certifications</h3>
-            <p>Advanced industry credentials focused on generative AI leadership, cloud governance, and technical platform foundations.</p>
+            <p>Advanced industry credentials focused on generative AI leadership, cloud governance, and multi-cloud platform foundations.</p>
           </div>
           <div class="credential-details">
             <span><strong>Generative AI Leader:</strong> Google Cloud (2026–2029)</span>
@@ -566,7 +566,7 @@
   <div id="ai-bot-window" class="hidden">
     <div class="bot-header">
       <div class="bot-title-area">
-        <img src="Portfolio Headshot.avif" alt="Elizabeth Enyart-Allen Avatar" class="bot-header-avatar" onerror="this.src='profile.avif';">
+        <img src="Portfolio Headshot.avif" alt="Elizabeth-Enyart Allen Avatar" class="bot-header-avatar" onerror="this.src='profile.avif';">
         <div class="bot-header-info">
           <h4>Ask Elizabeth's AI</h4>
           <span>● Neural Link Active</span>
@@ -577,14 +577,14 @@
     
     <div id="ai-bot-messages">
       <div class="message bot">
-        Hello! I'm Elizabeth's custom-built Portfolio Assistant. 🧠✨ She created me to help you navigate her work. Ask me about her clinical roots, executive product leadership, AI credentials, or the technical projects she builds!
+        Hello! I'm Elizabeth's custom-built Portfolio Assistant. 🧠✨ She created me to help you navigate her work. Ask me about her clinical roots, healthcare product leadership, AI credentials, or key results!
       </div>
     </div>
 
     <!-- Quick Prompt Suggestions -->
     <div class="quick-prompts">
       <button class="prompt-btn" onclick="sendQuickPrompt('Tell me about Elizabeth')">About Her</button>
-      <button class="prompt-btn" onclick="sendQuickPrompt('What is her clinical background?')">Clinical Roots</button>
+      <button class="prompt-btn" onclick="sendQuickPrompt('What is her clinical focus?')">Clinical Focus</button>
       <button class="prompt-btn" onclick="sendQuickPrompt('Who built you?')">Who Built You?</button>
       <button class="prompt-btn" onclick="sendQuickPrompt('What are her AI certifications?')">AI Credentials</button>
       <button class="prompt-btn" onclick="sendQuickPrompt('What measurable results has she delivered?')">Key Results</button>
@@ -597,7 +597,7 @@
   </div>
 
   <script>
-    // Expanded Knowledge Base including Clinical Origins & Company Definitions
+    // Comprehensive Knowledge Base with Clinical Progression, Expanded Results, & Credential Breakdowns
     const KNOWLEDGE_BASE = [
       {
         keywords: ['who built', 'who made', 'created you', 'how do you work', 'are you ai', 'bot', 'built you'],
@@ -608,64 +608,44 @@
         response: "You should absolutely connect with her! As the AI bot she built to live on this page, I have first-hand experience with her technical strategy and execution. 😉 She bridges complex AI architectures with high-impact business outcomes. You can reach her directly at ms.enyart@gmail.com!"
       },
       {
-        keywords: ['clinical', 'medical', 'lab', 'bone marrow', 'nmdp', 'healthcare background', 'cibmtr', 'science', 'patient'],
-        response: "Elizabeth’s career journey is exceptionally unique because it is deeply rooted in patient care and clinical science! She started as a Medical Laboratory Scientist (holding a B.S. in Medical Technology from the U of M), then spent over a decade at NMDP / CIBMTR coordinating life-saving bone marrow transplants and managing global clinical data operations across 320+ international medical centers with 100% regulatory compliance[cite: 1]. That hands-on clinical foundation is why she is such a powerful Product Leader in health tech—she bridges the gap between complex medical data systems and cutting-edge AI strategy!"
+        keywords: ['clinical focus', 'healthcare background', 'healthcare career', 'medical background', 'health tech'],
+        response: "Elizabeth's career is anchored by an extensive, healthcare-centric journey that spans clinical science, data operations, and enterprise health-tech product leadership:\n1. Clinical Foundations & Lab Work: She began her career as a Medical Laboratory Scientist with direct patient care services, holding a B.S. in Medical Technology from the University of Minnesota.\n2. NMDP / CIBMTR: She spent over a decade coordinating life-saving bone marrow transplants and managing global clinical data operations across 320+ international medical centers with 100% regulatory compliance.\n3. NovuHealth: She transitioned into healthcare SaaS product management, leading member engagement solutions for health plans under a $5M budget and streamlining delivery via Value Stream Mapping.\n4. Optum (UnitedHealth Group): As Associate Director, she scaled complex healthcare technology transformations and designed enterprise FinOps strategies.\n5. GPN Technologies: As Director of Product, she led multi-year product strategy for AI-driven healthcare solutions and practice automation."
       },
       {
         keywords: ['nmdp', 'cibmtr', 'be the match'],
-        response: "NMDP (National Marrow Donor Program) manages the world's largest registry of hematopoietic cell donors and cord blood units. CIBMTR (Center for International Blood and Marrow Transplant Research) is a research collaboration supporting stem cell transplantation. Elizabeth served as Clinical Data Team Leader here for 11+ years, managing global operations across 320+ centers[cite: 1]."
+        response: "NMDP (National Marrow Donor Program) manages the world's largest registry of hematopoietic cell donors and cord blood units. CIBMTR (Center for International Blood and Marrow Transplant Research) is a research collaboration supporting stem cell transplantation. Elizabeth served as Clinical Data Team Leader here for 11+ years, managing global operations across 320+ centers."
       },
       {
         keywords: ['gpn', 'gpn technologies'],
-        response: "GPN Technologies is a healthcare software company specializing in practice management, analytics, and workflow automation solutions for eye care practices. As Director of Product[cite: 1], Elizabeth led multi-year AI product strategy and automation that reduced customer service response times by 40%[cite: 1]."
+        response: "GPN Technologies is a healthcare software company specializing in practice management, analytics, and workflow automation solutions for eye care practices. As Director of Product, Elizabeth led multi-year AI product strategy and automation that reduced customer service response times by 40%."
       },
       {
         keywords: ['novuhealth', 'icario'],
-        response: "NovuHealth (now Icario) is a healthcare member engagement and SaaS technology company that partners with health plans to drive preventative care and clinical program participation. As Product Manager[cite: 1], Elizabeth managed SaaS healthcare solutions under a $5M budget and applied Value Stream Mapping (VSM) to increase feature delivery speed by 20%[cite: 1]."
+        response: "NovuHealth (now Icario) is a healthcare member engagement and SaaS technology company that partners with health plans to drive preventative care and clinical program participation. As Product Manager, Elizabeth managed SaaS healthcare solutions under a $5M budget and applied Value Stream Mapping (VSM) to increase feature delivery speed by 20%."
       },
       {
         keywords: ['about', 'who is', 'background', 'summary', 'bio', 'overview', 'profile', 'her', 'elizabeth'],
-        response: "Elizabeth Enyart-Allen, MBA is an Executive Product Leader with 15+ years of experience scaling AI/ML models, clinical data architectures, and enterprise SaaS platforms. Grounded in her early career as a Medical Laboratory Scientist and clinical data leader at NMDP/CIBMTR, she specializes in unifying fragmented product roadmaps, establishing Responsible AI governance, and delivering $2M+ in cost optimizations."
+        response: "Elizabeth Enyart-Allen, MBA is an Executive Product Leader with 15+ years of experience scaling AI/ML models, clinical data architectures, and enterprise SaaS platforms. Grounded in her early career as a Medical Laboratory Scientist and clinical data leader at NMDP/CIBMTR, she specializes in unifying fragmented product roadmaps, establishing Responsible AI governance, and delivering high-impact business outcomes."
       },
       {
         keywords: ['result', 'metric', 'impact', 'savings', 'achievement', 'accomplish', 'roi'],
-        response: "Key Measurable Achievements:\n• $2M+ in cost optimizations delivered across business units through FinOps strategy at Optum.\n• 40% reduction in customer service response times via AI-powered automation at GPN Technologies[cite: 1].\n• 60% faster delivery cycles by establishing clear decision-rights frameworks[cite: 1].\n• 50% reduction in competitive research cycles using agentic AI/RAG workflows.\n• 100% regulatory compliance managing global clinical data operations across 320+ international centers at NMDP[cite: 1]."
+        response: "Key Measurable Achievements & Business Impact:\n• Enterprise Financial Optimization ($2M+ in Savings): Designed and executed a comprehensive FinOps cloud strategy at Optum that delivered over $2M in direct cost optimizations across complex business units.\n• Operational Velocity & Acceleration (60% Faster Delivery): Overhauled product delivery workflows by establishing clear decision-rights frameworks, slashing product delivery time by 60%.\n• AI-Driven Customer Experience Transformation (40% Efficiency Gain): Spearheaded AI-powered automation at GPN Technologies, resulting in a 40% reduction in customer service response times.\n• Accelerated R&D and Research Cycles (50% Time Reduction): Architected advanced agentic AI and RAG workflows to automate product discovery, cutting research cycles in half.\n• Global Regulatory & Data Compliance (100% Audit Success): Directed complex international clinical data operations across 320+ global medical centers at NMDP with flawless 100% regulatory compliance."
       },
       {
         keywords: ['experience', 'work', 'history', 'career', 'roles', 'jobs', 'worked', 'company'],
-        response: "Career History Overview:\n• Principal Product Consultant | Enyart-Allen L.L.C. (Oct 2025–Present)[cite: 1]\n• Director of Product | GPN Technologies (Oct 2024–Sep 2025)[cite: 1]\n• CEO Contract | State of Minnesota (Apr 2023–Oct 2024)[cite: 1]\n• Associate Director | Optum, UnitedHealth Group (Oct 2018–May 2023)[cite: 1]\n• Product Manager | NovuHealth (May 2017–Oct 2018)[cite: 1]\n• Agile Coach | Target (Feb 2016–May 2017)[cite: 1]\n• Product Manager Consultant | Best Buy (Mar 2015–Feb 2016)[cite: 1]\n• Clinical Data Team Leader | NMDP (Nov 2003–Mar 2015)[cite: 1]"
-      },
-      {
-        keywords: ['consultant', 'enyart-allen l.l.c', 'enyart allen llc', 'llc', 'present'],
-        response: "As Principal Product Consultant at Enyart-Allen L.L.C. (Oct 2025–Present)[cite: 1]:\n• Directed cross-functional delivery teams for enterprise platform modernizations and cloud governance[cite: 1].\n• Architected agentic AI/ML workflows (RAG, LLM orchestration) to automate product discovery, cutting research cycles by 50%[cite: 1].\n• Engineered 4 localized data environments using Docker and SQL to prototype dynamic revenue pricing models[cite: 1]."
-      },
-      {
-        keywords: ['state of minnesota', 'public sector', 'government', 'minnesota', 'statewide'],
-        response: "State of Minnesota (CEO Contract, Apr 2023–Oct 2024)[cite: 1]: Championed enterprise product transformation across 5 statewide departments, introducing a scalable product mindset playbook, Voice of Customer (VoC) programs, and statewide OKRs[cite: 1]."
-      },
-      {
-        keywords: ['optum', 'unitedhealth', 'finops'],
-        response: "At Optum, UnitedHealth Group (Associate Director, Oct 2018–May 2023)[cite: 1]: Designed a FinOps strategy identifying $2M+ in cost savings, reduced delivery time by 60% with clear decision rights, and boosted customer satisfaction scores by 10 points[cite: 1]."
-      },
-      {
-        keywords: ['target', 'agile coach', 'supply chain'],
-        response: "At Target (Agile Coach, Feb 2016–May 2017)[cite: 1]: Led enterprise Agile transformation across 1,000+ engineers[cite: 1] and directed technology initiatives supporting a $7B supply chain strategy[cite: 1]."
+        response: "Career History Overview:\n• Principal Product Consultant | Enyart-Allen L.L.C. (Oct 2025–Present)\n• Director of Product | GPN Technologies (Oct 2024–Oct 2025)\n• CEO & Principal Consultant | State of Minnesota Contract (Apr 2023–Dec 2024)\n• Associate Director | Optum, UnitedHealth Group (Oct 2018–May 2023)\n• Manager | NovuHealth (May 2017–Oct 2018)\n• Agile Coach | Target (Feb 2016–May 2017)\n• Consultant | Best Buy Contract (Mar 2015–Feb 2016)\n• Team Leader | NMDP / CIBMTR (Nov 2003–Mar 2015)"
       },
       {
         keywords: ['caitl', 'credential', 'certif', 'usaii', 'google', 'azure', 'education', 'degree', 'emba', 'mba', 'carlson', 'school', 'university'],
-        response: "AI Certifications & Education:\n• Certified AI Transformation Leader™ (CAITL™) - USAII® / Bravura (Credential ID: 8718400406)[cite: 1]\n• Generative AI Leader Certification - Google Cloud (2026–2029)\n• Azure Fundamentals Certified - Microsoft\n• Certified Agile Coach (CAC) - Chicago State University\n• Executive MBA (EMBA) - Carlson School of Management, University of Minnesota\n• B.S. in Medical Technology - University of Minnesota"
+        response: "Professional Certifications & Education:\n• Certified AI Transformation Leader™ (CAITL™) - USAII® / Bravura (Credential ID: 8718400406): Executive certification validating mastery in enterprise AI transformation strategy, governance, and deployment models.\n• Generative AI Leader Certification - Google Cloud (2026–2029): Advanced proficiency in cloud-native generative AI technologies, model orchestration, and LLM capabilities.\n• Azure Fundamentals Certified - Microsoft: Foundational knowledge of cloud core services, security, privacy, and compliance in Microsoft Azure.\n• Certified Agile Coach (CAC) - Chicago State University\n• Executive MBA (EMBA) - Carlson School of Management, University of Minnesota\n• B.S. in Medical Technology - University of Minnesota"
       },
       {
         keywords: ['skill', 'tech', 'stack', 'tool', 'ai', 'rag', 'llm', 'governance', 'responsible ai', 'docker', 'sql'],
-        response: "Technical & Leadership Stack:\n• AI & Data: Responsible AI Governance, Agentic AI/LLM Workflows, RAG Architecture, Predictive Analytics, Data Lineage & Auditability[cite: 1].\n• Product Strategy: Enterprise Portfolio Prioritization, Product Lifecycle Management (PLM), Multi-Year Roadmapping, OKRs & Scorecards, Go-To-Market (GTM)[cite: 1].\n• Healthcare & Cloud: Clinical Data Systems, EHR/EMR Integration, Health Tech SaaS, Azure, FinOps, Docker, SQL, Observability[cite: 1]."
+        response: "Technical & Leadership Stack:\n• AI & Data: Responsible AI Governance, Agentic AI/LLM Workflows, RAG Architecture, Predictive Analytics, Data Lineage & Auditability.\n• Product Strategy: Enterprise Portfolio Prioritization, Product Lifecycle Management (PLM), Multi-Year Roadmapping, OKRs & Scorecards, Go-To-Market (GTM).\n• Healthcare & Cloud: Clinical Data Systems, EHR/EMR Integration, Health Tech SaaS, Azure, FinOps, Docker, SQL, Observability."
       },
       {
         keywords: ['mn women in ai', 'women in ai', 'founding', 'community', 'north star'],
         response: "Elizabeth is a Founding Member and North Star Member of MN Women in AI, actively shaping the ecosystem for women leading innovation in artificial intelligence, machine learning, and strategic tech leadership."
-      },
-      {
-        keywords: ['project', 'n8n', 'chat', 'patient', 'agent', 'automation'],
-        response: "Featured Portfolios:\n1. AI Patient Chat Agent: Interactive n8n agent using Gemini APIs for scheduling & prescription refills.\n2. Enterprise AI Automation Engine: Self-hosted n8n pipelines in Docker Desktop integrating SerpApi, Telegram, and Google Sheets.\n3. Cloud Telemetry & FinOps: Multi-cloud observability platform delivering $2M+ in cost savings."
       },
       {
         keywords: ['contact', 'email', 'phone', 'reach', 'connect', 'linkedin', 'location', 'st. paul'],
