@@ -29,13 +29,15 @@
     a { color: inherit; text-decoration: none; }
 
     .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-    header { padding: 32px 0; border-bottom: 1px solid var(--border); }
+    
+    /* Header & Nav */
+    header { padding: 32px 0; border-bottom: 1px solid var(--border); background-color: var(--cream); sticky: top; }
     nav { display: flex; justify-content: space-between; align-items: center; }
     .brand { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; }
     .nav-links { display: flex; gap: 24px; list-style: none; font-weight: 500; }
     .nav-links a:hover { color: var(--accent); }
 
-    /* Hero Area with Profile Image */
+    /* Hero Area with Profile Picture */
     .hero-container {
       display: flex;
       align-items: center;
@@ -45,8 +47,8 @@
     }
 
     .hero-content { flex: 1; min-width: 300px; }
-    .hero-content h1 { font-size: 3.5rem; margin-bottom: 24px; }
-    .hero-content p { font-size: 1.25rem; color: var(--muted); margin-bottom: 32px; }
+    .hero-content h1 { font-size: 3.5rem; margin-bottom: 24px; letter-spacing: -0.02em; }
+    .hero-content p { font-size: 1.25rem; color: var(--muted); margin-bottom: 32px; max-width: 720px; }
 
     .profile-avatar-container {
       width: 220px;
@@ -71,13 +73,31 @@
     .btn-secondary { border: 1px solid var(--border); background-color: var(--card-bg); }
     .btn-secondary:hover { background-color: #F3F4F6; }
 
-    .section { padding: 48px 0; }
+    /* General Sections */
+    .section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+    .section:last-of-type { border-bottom: none; }
     .section-title { font-size: 2.25rem; margin-bottom: 32px; }
     
+    /* Grid Layout for Cards & Portfolios */
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
-    .card { background: var(--card-bg); border: 1px solid var(--border); padding: 24px; border-radius: 8px; overflow: hidden; }
-    .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 6px; margin-bottom: 16px; border: 1px solid var(--border); }
+    .card { background: var(--card-bg); border: 1px solid var(--border); padding: 24px; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; }
     
+    .card-img-container {
+      width: 100%;
+      height: 200px;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+      background-color: #F3F4F6;
+    }
+    
+    .card-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .badge-card-img {
       height: 120px !important;
       object-fit: contain !important;
@@ -87,8 +107,18 @@
     }
 
     .card h3 { font-size: 1.4rem; margin-bottom: 8px; }
-    .card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 12px; }
-    .tag { display: inline-block; background: #E0E7FF; color: #3730A3; font-size: 0.75rem; font-weight: 600; padding: 4px 8px; border-radius: 4px; margin-right: 6px; }
+    .card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 16px; }
+    .tags { margin-bottom: 12px; }
+    .tag { display: inline-block; background: #E0E7FF; color: #3730A3; font-size: 0.75rem; font-weight: 600; padding: 4px 8px; border-radius: 4px; margin-right: 6px; margin-bottom: 4px; }
+
+    .credential-details {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .credential-details span { display: block; margin-bottom: 2px; }
 
     footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; color: var(--muted); font-size: 0.875rem; }
 
@@ -114,13 +144,13 @@
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Header Navigation -->
   <header>
     <div class="container nav">
       <div class="brand">Elizabeth Enyart-Allen</div>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
+        <li><a href="#projects">Projects & Portfolios</a></li>
         <li><a href="#leadership">Leadership</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -128,87 +158,125 @@
   </header>
 
   <main class="container">
+    
     <!-- Hero Section with Profile Picture -->
     <section id="about" class="hero-container">
       <div class="hero-content">
         <h1>Enterprise Product Leader & AI Strategist</h1>
-        <p>Directing enterprise AI product strategies, architecting agentic workflows, and delivering SaaS platform transformation across complex technical domains.</p>
+        <p>Directing enterprise AI product strategies, architecting agentic automation workflows, and transforming complex cloud platforms into user-centric experiences.</p>
         <div class="btn-group">
-          <a href="#contact" class="btn btn-primary">Get in Touch</a>
-          <a href="#projects" class="btn btn-secondary">View Projects</a>
+          <a href="#projects" class="btn btn-primary">Explore Portfolios</a>
+          <a href="#contact" class="btn btn-secondary">Get in Touch</a>
         </div>
       </div>
       
       <!-- Profile Picture -->
       <div class="profile-avatar-container">
-        <!-- Update profile.jpg to match your image file name in GitHub -->
         <img src="profile.jpg" alt="Elizabeth Enyart-Allen" onerror="this.onerror=null; this.src='headshot.jpg';">
       </div>
     </section>
 
-    <!-- Featured Projects Section -->
+    <!-- Featured Projects & Portfolio Section -->
     <section id="projects" class="section">
-      <h2 class="section-title">Featured Projects</h2>
+      <h2 class="section-title">Projects & Portfolio Showcase</h2>
       <div class="grid">
         
         <!-- Project 1: AI Patient Chat Agent -->
         <div class="card">
-          <img src="AI Patient Agent Chat.jpg" alt="AI Patient Agent Chat Project" onerror="this.style.display='none'">
-          <div>
-            <span class="tag">AI & Healthcare</span>
-            <span class="tag">n8n Workflow</span>
+          <div class="card-img-container">
+            <img src="AI Patient Agent Chat.jpg" alt="AI Patient Agent Chat Interface" onerror="this.parentElement.style.display='none'">
           </div>
-          <h3>AI Patient Chat Agent</h3>
-          <p>An interactive, n8n-powered conversational agent integrated with Gemini models to streamline patient interactions, scheduling, and prescription refill workflows.</p>
+          <div>
+            <div class="tags">
+              <span class="tag">AI & Healthcare</span>
+              <span class="tag">n8n Workflow</span>
+              <span class="tag">Gemini API</span>
+            </div>
+            <h3>AI Patient Chat Agent</h3>
+            <p>An interactive, n8n-powered conversational agent integrated with Gemini models to streamline patient interactions, prescription refills, and scheduling workflows.</p>
+          </div>
         </div>
 
-        <!-- Project 2: Agentic Workflow Automation -->
+        <!-- Project 2: Agentic Automation Engine -->
         <div class="card">
-          <span class="tag">n8n</span>
-          <span class="tag">Docker</span>
-          <span class="tag">Automation</span>
-          <h3>Enterprise AI Automation Engine</h3>
-          <p>Custom-built automation pipeline integrating SerpApi, Telegram endpoints, Google Sheets, and Gemini LLMs for live operational tracking.</p>
+          <div class="card-img-container">
+            <img src="automation-architecture.png" alt="Automation Pipeline Architecture" onerror="this.parentElement.style.display='none'">
+          </div>
+          <div>
+            <div class="tags">
+              <span class="tag">n8n</span>
+              <span class="tag">Docker</span>
+              <span class="tag">APIs & Automation</span>
+            </div>
+            <h3>Enterprise AI Automation Engine</h3>
+            <p>Self-hosted automation pipeline leveraging Docker Desktop, SerpApi, Telegram endpoints, Google Sheets, and custom AI agents for live operational tracking.</p>
+          </div>
         </div>
 
-        <!-- Project 3: Platform FinOps & Observability -->
+        <!-- Project 3: FinOps & Cloud Observability -->
         <div class="card">
-          <span class="tag">SaaS Platform</span>
-          <span class="tag">FinOps</span>
-          <h3>Cloud Telemetry & Observability</h3>
-          <p>Multi-cloud ecosystem optimization, consolidated platform roadmaps, and telemetry-based dependency tracking delivering significant cost reduction.</p>
+          <div class="card-img-container">
+            <img src="cloud-telemetry.png" alt="Cloud Telemetry Dashboard" onerror="this.parentElement.style.display='none'">
+          </div>
+          <div>
+            <div class="tags">
+              <span class="tag">SaaS Platform</span>
+              <span class="tag">FinOps</span>
+              <span class="tag">Observability</span>
+            </div>
+            <h3>Cloud Telemetry & Observability</h3>
+            <p>Multi-cloud ecosystem optimization, consolidated platform roadmaps, and telemetry-based dependency tracking delivering significant cost reduction.</p>
+          </div>
         </div>
 
       </div>
     </section>
 
-    <!-- Leadership Section with Badge -->
+    <!-- Leadership & Credentials Section -->
     <section id="leadership" class="section">
       <h2 class="section-title">Leadership & Credentials</h2>
       <div class="grid">
         
         <!-- MN Women in AI Card with Badge -->
         <div class="card" style="text-align: center;">
-          <!-- Update mn-women-in-ai-badge.png to match your badge file name in GitHub -->
           <img src="mn-women-in-ai-badge.png" alt="MN Women in AI Founding Member Badge" class="badge-card-img" onerror="this.onerror=null; this.src='badge.png';">
-          <h3>MN Women in AI</h3>
-          <p>Founding Member actively shaping the ecosystem for women leading in artificial intelligence and tech innovation.</p>
+          <div>
+            <div class="tags" style="justify-content: center;">
+              <span class="tag">Founding Member</span>
+            </div>
+            <h3>MN Women in AI</h3>
+            <p>Actively shaping the ecosystem for women leading innovation in artificial intelligence, machine learning, and strategic tech leadership.</p>
+          </div>
         </div>
 
         <!-- CAITL Certification Card -->
         <div class="card">
-          <h3>Certified AI Transformation Leader (CAITL™)</h3>
-          <p>Credentialed in enterprise AI transformation, strategic change management, and executive AI deployment models.</p>
+          <div>
+            <div class="tags">
+              <span class="tag">USAII® Credential</span>
+              <span class="tag">AI Transformation</span>
+            </div>
+            <h3>Certified Artificial Intelligence Transformation Leader™ (CAITL™)</h3>
+            <p>Issued by the United States Artificial Intelligence Institute (USAII®), validating executive expertise in AI transformation strategy, governance, and deployment models.</p>
+          </div>
+          <div class="credential-details">
+            <span><strong>Credential ID:</strong> 8718400406</span>
+            <span><strong>Issued:</strong> September 12, 2026</span>
+            <span><strong>Expires:</strong> September 11, 2029</span>
+          </div>
         </div>
 
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- Contact Section -->
     <section id="contact" class="section">
       <h2 class="section-title">Connect</h2>
-      <p style="color: var(--muted);">Reach out to discuss executive product leadership, AI platform strategy, or technical collaboration.</p>
+      <p style="color: var(--muted); max-width: 600px;">
+        Interested in discussing executive product leadership, AI platform strategy, or technical collaboration? Feel free to reach out directly or test out the interactive AI Assistant in the bottom corner.
+      </p>
     </section>
+
   </main>
 
   <footer>
@@ -222,38 +290,40 @@
     <div class="core-pulse"></div>
   </button>
 
-  <!-- AI Chat Window -->
+  <!-- AI Chat Window Widget -->
   <div id="ai-bot-window" class="hidden">
     <div class="bot-header">
       <div class="bot-title-area">
         <div class="bot-status-indicator"></div>
         <h4>Portfolio AI Assistant</h4>
       </div>
-      <button class="close-btn" id="ai-bot-close">&times;</button>
+      <button class="close-btn" id="ai-bot-close" aria-label="Close Assistant">&times;</button>
     </div>
     
     <div id="ai-bot-messages">
       <div class="message bot">
-        Hello! I'm Elizabeth's AI assistant. Ask me anything about her product leadership, AI projects, or technical experience!
+        Hello! I'm Elizabeth's AI assistant. Ask me anything about her product leadership background, AI projects, or technical experience!
       </div>
     </div>
 
     <form id="ai-bot-form">
-      <input type="text" id="ai-bot-input" placeholder="Type a message..." required />
+      <input type="text" id="ai-bot-input" placeholder="Type a message..." required autocomplete="off" />
       <button type="submit" class="send-btn">Send</button>
     </form>
   </div>
 
   <script>
-    // Config: Update with your n8n webhook URL
-    const N8N_WEBHOOK_URL = 'const N8N_WEBHOOK_URL = ' https://open-frogs-wish.loca.lt"
+    // Configuration - Replace with your active public n8n Webhook URL (e.g. via ngrok or localtunnel)
+    const N8N_WEBHOOK_URL = 'https://your-n8n-instance.com/webhook/portfolio-bot'; 
 
+    // Session Management
     let sessionId = localStorage.getItem('portfolio_bot_session');
     if (!sessionId) {
       sessionId = 'sess_' + Math.random().toString(36).substring(2, 11);
       localStorage.setItem('portfolio_bot_session', sessionId);
     }
 
+    // DOM Elements
     const trigger = document.getElementById('ai-bot-trigger');
     const windowEl = document.getElementById('ai-bot-window');
     const closeBtn = document.getElementById('ai-bot-close');
@@ -261,9 +331,17 @@
     const input = document.getElementById('ai-bot-input');
     const messagesContainer = document.getElementById('ai-bot-messages');
 
+    // Controls
     trigger.addEventListener('click', () => { windowEl.classList.remove('hidden'); input.focus(); });
     closeBtn.addEventListener('click', () => { windowEl.classList.add('hidden'); });
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !windowEl.classList.contains('hidden')) {
+        windowEl.classList.add('hidden');
+      }
+    });
 
+    // Append Messages Safely
     function appendMessage(text, className) {
       const msg = document.createElement('div');
       msg.className = `message ${className}`;
@@ -273,6 +351,7 @@
       return msg;
     }
 
+    // Handle Form Submit
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const userMessage = input.value.trim();
@@ -288,12 +367,18 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: userMessage, sessionId: sessionId })
         });
+        
+        if (!response.ok) {
+          throw new Error('Network response failed');
+        }
+
         const data = await response.json();
         thinkingMsg.remove();
         appendMessage(data.reply || data.output || "Message received!", 'bot');
       } catch (error) {
+        console.error('Bot Error:', error);
         thinkingMsg.remove();
-        appendMessage('Unable to reach the server right now.', 'bot');
+        appendMessage('Unable to reach the server right now. Please ensure your n8n webhook tunnel is online.', 'bot');
       }
     });
   </script>
