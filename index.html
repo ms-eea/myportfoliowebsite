@@ -18,6 +18,326 @@
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+    <!-- Portfolio AI Bot Widget -->
+<div id="ai-bot-widget" class="ai-bot-container">
+  
+  <!-- Chat Window -->
+  <div id="ai-bot-window" class="ai-bot-window hidden">
+    <div class="ai-bot-header">
+      <div class="ai-bot-avatar-container">
+        <div id="ai-avatar" class="ai-avatar state-idle">
+          <span class="avatar-eye left"></span>
+          <span class="avatar-eye right"></span>
+          <span class="status-indicator"></span>
+        </div>
+      </div>
+      <div class="ai-bot-info">
+        <h3>Portfolio Assistant</h3>
+        <span id="ai-bot-status-text" class="status-text">Online • Powered by n8n & Gemini</span>
+      </div>
+      <button id="ai-bot-close" class="ai-bot-close-btn">&times;</button>
+    </div>
+
+    <div id="ai-bot-messages" class="ai-bot-messages">
+      <div class="message bot-message">
+        Hi! I'm Elizabeth's AI assistant. Ask me anything about her product leadership, enterprise AI background, or recent projects!
+      </div>
+    </div>
+
+    <form id="ai-bot-form" class="ai-bot-input-area">
+      <input type="text" id="ai-bot-input" placeholder="Type a question..." required autocomplete="off" />
+      <button type="submit" id="ai-bot-send">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </form>
+  </div>
+
+  <!-- Floating Trigger Badge -->
+  <button id="ai-bot-trigger" class="ai-bot-trigger" aria-label="Open AI Assistant">
+    <div class="trigger-avatar">
+      <span class="core-pulse"></span>
+    </div>
+    <span class="trigger-label">Ask AI</span>
+  </button>
+</div>
+
+<style>
+/* Styling & Positioning */
+.ai-bot-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.ai-bot-trigger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #0f172a;
+  color: #ffffff;
+  border: 1px solid #334155;
+  padding: 10px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+.ai-bot-trigger:hover {
+  transform: translateY(-2px);
+  border-color: #6366f1;
+}
+.trigger-avatar {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #6366f1;
+  position: relative;
+}
+.core-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #818cf8;
+  animation: pulse-ring 2s infinite;
+}
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+.ai-bot-window {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  width: 350px;
+  height: 480px;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  overflow: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.ai-bot-window.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px) scale(0.95);
+}
+
+.ai-bot-header {
+  padding: 16px;
+  background: #1e293b;
+  border-bottom: 1px solid #334155;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ai-bot-avatar-container {
+  width: 36px;
+  height: 36px;
+}
+.ai-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #312e81;
+  border: 2px solid #6366f1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.avatar-eye {
+  width: 5px;
+  height: 5px;
+  background: #a5b4fc;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.ai-avatar.state-idle .avatar-eye {
+  animation: blink 4s infinite;
+}
+.ai-avatar.state-thinking {
+  border-color: #f59e0b;
+  animation: spin-pulse 1.2s infinite ease-in-out;
+}
+.ai-avatar.state-thinking .avatar-eye {
+  background: #fbbf24;
+}
+
+@keyframes blink {
+  0%, 96%, 100% { transform: scaleY(1); }
+  98% { transform: scaleY(0.1); }
+}
+@keyframes spin-pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+  50% { transform: scale(1.08); box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+}
+
+.ai-bot-info h3 {
+  margin: 0;
+  font-size: 14px;
+  color: #f8fafc;
+}
+.status-text {
+  font-size: 11px;
+  color: #94a3b8;
+}
+.ai-bot-close-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.ai-bot-messages {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.message {
+  max-width: 82%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+.bot-message {
+  background: #1e293b;
+  color: #e2e8f0;
+  align-self: flex-start;
+  border-bottom-left-radius: 2px;
+}
+.user-message {
+  background: #4f46e5;
+  color: #ffffff;
+  align-self: flex-end;
+  border-bottom-right-radius: 2px;
+}
+
+.ai-bot-input-area {
+  padding: 12px;
+  background: #1e293b;
+  border-top: 1px solid #334155;
+  display: flex;
+  gap: 8px;
+}
+.ai-bot-input-area input {
+  flex: 1;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #fff;
+  font-size: 13px;
+  outline: none;
+}
+.ai-bot-input-area input:focus {
+  border-color: #6366f1;
+}
+.ai-bot-input-area button {
+  background: #4f46e5;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+</style>
+
+<script>
+// UPDATE THIS VALUE with your secure production HTTPS tunnel/webhook URL
+const N8N_WEBHOOK_URL = 'YOUR_ACTIVE_HTTPS_WEBHOOK_URL_HERE';
+
+const trigger = document.getElementById('ai-bot-trigger');
+const windowEl = document.getElementById('ai-bot-window');
+const closeBtn = document.getElementById('ai-bot-close');
+const form = document.getElementById('ai-bot-form');
+const input = document.getElementById('ai-bot-input');
+const messagesContainer = document.getElementById('ai-bot-messages');
+const avatar = document.getElementById('ai-avatar');
+const statusText = document.getElementById('ai-bot-status-text');
+
+// Toggle UI state
+trigger.addEventListener('click', () => windowEl.classList.remove('hidden'));
+closeBtn.addEventListener('click', () => windowEl.classList.add('hidden'));
+
+// Form Submit Handler
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const query = input.value.trim();
+  if (!query) return;
+
+  appendMessage(query, 'user-message');
+  input.value = '';
+
+  setBotState('thinking', 'Thinking...');
+
+  try {
+    const response = await fetch(N8N_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json' 
+      },
+      body: JSON.stringify({ 
+        message: query, 
+        sessionId: getSessionId() 
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP Error Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const botReply = data.reply || "Sorry, I couldn't process that request.";
+    
+    appendMessage(botReply, 'bot-message');
+  } catch (err) {
+    console.error('Chat bot request error:', err);
+    appendMessage("I'm having trouble connecting to my brain right now. Please verify your n8n workflow connection!", 'bot-message');
+  } finally {
+    setBotState('idle', 'Online • Powered by n8n & Gemini');
+  }
+});
+
+function appendMessage(text, className) {
+  const msg = document.createElement('div');
+  msg.className = `message ${className}`;
+  msg.textContent = text;
+  messagesContainer.appendChild(msg);
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+function setBotState(state, text) {
+  avatar.className = `ai-avatar state-${state}`;
+  statusText.textContent = text;
+}
+
+function getSessionId() {
+  let sid = localStorage.getItem('portfolio_bot_session_id');
+  if (!sid) {
+    sid = 'sess_' + Math.random().toString(36).substring(2, 9);
+    localStorage.setItem('portfolio_bot_session_id', sid);
+  }
+  return sid;
+}
+</script>
     body {
       background: var(--cream);
       color: var(--ink);
