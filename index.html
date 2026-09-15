@@ -176,9 +176,9 @@
         </div>
       </div>
       
-      <!-- Profile Picture -->
+      <!-- Profile Avatar loading 'Portfolio Headshot.avif' -->
       <div class="profile-avatar-container">
-        <img src="profile.png" alt="Elizabeth Enyart-Allen" onerror="this.onerror=null; this.src='profile.jpg';">
+        <img src="Portfolio Headshot.avif" alt="Elizabeth Enyart-Allen" onerror="this.onerror=null; this.src='profile.avif';">
       </div>
     </section>
 
@@ -326,7 +326,7 @@
   </div>
 
   <script>
-    // Embedded Knowledge Base (No Server Required!)
+    // Embedded Knowledge Base
     const KNOWLEDGE_BASE = [
       {
         keywords: ['about', 'who is', 'background', 'summary', 'experience', 'bio', 'her'],
@@ -393,7 +393,6 @@
       if (!text) return;
       appendMessage(text, 'user');
 
-      // Instant local response without external server calls
       setTimeout(() => {
         const reply = generateResponse(text);
         appendMessage(reply, 'bot');
