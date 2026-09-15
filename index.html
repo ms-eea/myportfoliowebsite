@@ -123,29 +123,239 @@
 
     footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; color: var(--muted); font-size: 0.875rem; }
 
-    /* AI Widget Styling */
-    #ai-bot-trigger { position: fixed; bottom: 24px; right: 24px; width: 60px; height: 60px; border-radius: 50%; background-color: var(--bot-dark); color: #FFF; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 1000; }
-    .core-pulse { width: 12px; height: 12px; background-color: #60A5FA; border-radius: 50%; box-shadow: 0 0 12px #60A5FA; animation: pulse 2s infinite; }
-    @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(96,165,250,0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(96,165,250,0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(96,165,250,0); } }
-    #ai-bot-window { position: fixed; bottom: 96px; right: 24px; width: 380px; max-width: calc(100vw - 48px); height: 500px; background-color: var(--bot-dark); color: #F8FAFC; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); display: flex; flex-direction: column; z-index: 1000; overflow: hidden; border: 1px solid var(--bot-card); }
-    #ai-bot-window.hidden { display: none; }
-    .bot-header { padding: 16px; background-color: var(--bot-card); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .bot-title-area { display: flex; align-items: center; gap: 10px; }
-    .bot-status-indicator { width: 8px; height: 8px; border-radius: 50%; background-color: #34D399; }
-    .close-btn { background: none; border: none; color: #94A3B8; font-size: 1.25rem; cursor: pointer; }
-    #ai-bot-messages { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
-    .message { max-width: 85%; padding: 10px 14px; border-radius: 8px; font-size: 0.9rem; line-height: 1.4; }
-    .message.bot { background-color: var(--bot-card); align-self: flex-start; }
-    .message.user { background-color: var(--accent); color: #FFF; align-self: flex-end; }
-    .message.thinking { color: #94A3B8; font-style: italic; }
+    /* HIGH-VISIBILITY AI CHAT WIDGET STYLING */
     
-    .quick-prompts { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 8px; background-color: var(--bot-card); }
-    .prompt-btn { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); color: #94A3B8; font-size: 0.75rem; padding: 4px 10px; border-radius: 12px; cursor: pointer; transition: all 0.2s ease; }
-    .prompt-btn:hover { background: var(--accent); color: #FFF; border-color: var(--accent); }
+    /* Floating Tooltip Bubble Above Trigger */
+    #ai-bot-tooltip {
+      position: fixed;
+      bottom: 100px;
+      right: 24px;
+      background-color: var(--bot-dark);
+      color: #FFF;
+      padding: 10px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      z-index: 999;
+      cursor: pointer;
+      animation: floatBounce 3s infinite ease-in-out;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-    #ai-bot-form { padding: 12px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; gap: 8px; background-color: var(--bot-card); }
-    #ai-bot-input { flex: 1; background: var(--bot-dark); border: 1px solid rgba(255,255,255,0.1); color: #FFF; padding: 10px; border-radius: 6px; outline: none; }
-    .send-btn { background-color: var(--accent); color: #FFF; border: none; padding: 0 16px; border-radius: 6px; cursor: pointer; }
+    @keyframes floatBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    /* Floating Avatar Trigger Button */
+    #ai-bot-trigger {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background-color: var(--bot-dark);
+      border: 3px solid var(--accent);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      overflow: visible;
+    }
+
+    #ai-bot-trigger:hover {
+      transform: scale(1.08);
+      box-shadow: 0 16px 36px rgba(37, 99, 235, 0.4);
+    }
+
+    .trigger-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .trigger-online-badge {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 16px;
+      height: 16px;
+      background-color: #10B981;
+      border: 2px solid var(--bot-dark);
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10B981;
+    }
+
+    /* Chat Window */
+    #ai-bot-window {
+      position: fixed;
+      bottom: 100px;
+      right: 24px;
+      width: 380px;
+      max-width: calc(100vw - 48px);
+      height: 520px;
+      background-color: var(--bot-dark);
+      color: #F8FAFC;
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
+      z-index: 1001;
+      overflow: hidden;
+      border: 1px solid var(--bot-card);
+    }
+
+    #ai-bot-window.hidden { display: none; }
+
+    /* Header with Headshot Avatar */
+    .bot-header {
+      padding: 16px;
+      background-color: var(--bot-card);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .bot-title-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .bot-header-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 2px solid var(--accent);
+    }
+
+    .bot-header-info h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #FFF;
+      line-height: 1.2;
+    }
+
+    .bot-header-info span {
+      font-size: 0.75rem;
+      color: #34D399;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: #94A3B8;
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .close-btn:hover { color: #FFF; }
+
+    #ai-bot-messages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .message {
+      max-width: 85%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      white-space: pre-wrap;
+    }
+
+    .message.bot {
+      background-color: var(--bot-card);
+      align-self: flex-start;
+      border-bottom-left-radius: 2px;
+    }
+
+    .message.user {
+      background-color: var(--accent);
+      color: #FFF;
+      align-self: flex-end;
+      border-bottom-right-radius: 2px;
+    }
+
+    .quick-prompts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 0 16px 12px;
+      background-color: var(--bot-card);
+    }
+
+    .prompt-btn {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #CBD5E1;
+      font-size: 0.75rem;
+      padding: 6px 12px;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .prompt-btn:hover {
+      background: var(--accent);
+      color: #FFF;
+      border-color: var(--accent);
+    }
+
+    #ai-bot-form {
+      padding: 12px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      gap: 8px;
+      background-color: var(--bot-card);
+    }
+
+    #ai-bot-input {
+      flex: 1;
+      background: var(--bot-dark);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #FFF;
+      padding: 10px 12px;
+      border-radius: 8px;
+      outline: none;
+      font-size: 0.9rem;
+    }
+
+    #ai-bot-input:focus { border-color: var(--accent); }
+
+    .send-btn {
+      background-color: var(--accent);
+      color: #FFF;
+      border: none;
+      padding: 0 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .send-btn:hover { background-color: var(--accent-hover); }
   </style>
 </head>
 <body>
@@ -169,14 +379,14 @@
     <section id="about" class="hero-container">
       <div class="hero-content">
         <h1>Enterprise Product Leader & AI Strategist</h1>
-        <p>Directing enterprise AI product strategies, architecting agentic automation workflows, and transforming complex cloud platforms into user-centric experiences.</p>
+        <p>15+ years of experience scaling AI/ML models, clinical data architectures, and enterprise SaaS platforms. Proven track record establishing Responsible AI governance and delivering $2M+ in cost optimizations.</p>
         <div class="btn-group">
           <a href="#projects" class="btn btn-primary">Explore Portfolios</a>
           <a href="#contact" class="btn btn-secondary">Get in Touch</a>
         </div>
       </div>
       
-      <!-- Profile Avatar loading 'Portfolio Headshot.avif' -->
+      <!-- Profile Avatar -->
       <div class="profile-avatar-container">
         <img src="Portfolio Headshot.avif" alt="Elizabeth Enyart-Allen" onerror="this.onerror=null; this.src='profile.avif';">
       </div>
@@ -231,7 +441,7 @@
               <span class="tag">Observability</span>
             </div>
             <h3>Cloud Telemetry & Observability</h3>
-            <p>Multi-cloud ecosystem optimization, consolidated platform roadmaps, and telemetry-based dependency tracking delivering significant cost reduction.</p>
+            <p>Multi-cloud ecosystem optimization, consolidated platform roadmaps, and telemetry-based dependency tracking delivering $2M+ in cost optimizations.</p>
           </div>
         </div>
 
@@ -279,7 +489,7 @@
     <section id="contact" class="section">
       <h2 class="section-title">Connect</h2>
       <p style="color: var(--muted); max-width: 600px;">
-        Interested in discussing executive product leadership, AI platform strategy, or technical collaboration? Feel free to reach out directly or test out the interactive AI Assistant in the bottom corner.
+        Interested in discussing executive product leadership, AI platform strategy, or technical collaboration? Feel free to reach out directly at <a href="mailto:ms.enyart@gmail.com" style="color: var(--accent); text-decoration: underline;">ms.enyart@gmail.com</a> or ask questions via the Portfolio Assistant.
       </p>
     </section>
 
@@ -291,32 +501,42 @@
     </div>
   </footer>
 
-  <!-- Floating AI Assistant Button -->
-  <button id="ai-bot-trigger" aria-label="Open AI Assistant">
-    <div class="core-pulse"></div>
+  <!-- Floating Callout Tooltip Banner -->
+  <div id="ai-bot-tooltip" onclick="openChat()">
+    <span>💬 Ask me about Elizabeth's experience!</span>
+  </div>
+
+  <!-- Floating Avatar Chat Button with Headshot -->
+  <button id="ai-bot-trigger" aria-label="Open Elizabeth's AI Assistant" onclick="openChat()">
+    <img src="Portfolio Headshot.avif" alt="Elizabeth's AI Avatar" class="trigger-avatar" onerror="this.src='profile.avif';">
+    <div class="trigger-online-badge"></div>
   </button>
 
-  <!-- Self-Contained Knowledge Bot Widget -->
+  <!-- Interactive AI Assistant Window -->
   <div id="ai-bot-window" class="hidden">
     <div class="bot-header">
       <div class="bot-title-area">
-        <div class="bot-status-indicator"></div>
-        <h4>Portfolio AI Assistant</h4>
+        <img src="Portfolio Headshot.avif" alt="Elizabeth Enyart-Allen Avatar" class="bot-header-avatar" onerror="this.src='profile.avif';">
+        <div class="bot-header-info">
+          <h4>Ask Elizabeth's AI</h4>
+          <span>● Active Portfolio Assistant</span>
+        </div>
       </div>
       <button class="close-btn" id="ai-bot-close" aria-label="Close Assistant">&times;</button>
     </div>
     
     <div id="ai-bot-messages">
       <div class="message bot">
-        Hello! I'm Elizabeth's Portfolio Assistant. Ask me about her experience, AI credentials, or technical projects!
+        Hello! I'm Elizabeth's Portfolio Assistant. Ask me anything about her executive product leadership, AI credentials, career history, or technical projects!
       </div>
     </div>
 
     <!-- Quick Prompt Suggestions -->
     <div class="quick-prompts">
       <button class="prompt-btn" onclick="sendQuickPrompt('Tell me about Elizabeth')">About Her</button>
-      <button class="prompt-btn" onclick="sendQuickPrompt('What are her AI credentials?')">AI Credentials</button>
-      <button class="prompt-btn" onclick="sendQuickPrompt('What projects has she built?')">Projects</button>
+      <button class="prompt-btn" onclick="sendQuickPrompt('Where has she worked?')">Career History</button>
+      <button class="prompt-btn" onclick="sendQuickPrompt('What are her AI certifications?')">AI Credentials</button>
+      <button class="prompt-btn" onclick="sendQuickPrompt('What skills does she have?')">Technical Skills</button>
     </div>
 
     <form id="ai-bot-form">
@@ -326,42 +546,72 @@
   </div>
 
   <script>
-    // Embedded Knowledge Base
+    // Knowledge Base from Resume & Professional History
     const KNOWLEDGE_BASE = [
       {
-        keywords: ['about', 'who is', 'background', 'summary', 'experience', 'bio', 'her'],
-        response: "Elizabeth Enyart-Allen is an Enterprise Product Leader and AI Strategist with extensive experience in artificial intelligence product strategy, enterprise SaaS platforms, and digital transformation. She specializes in architecting agentic workflows, multi-cloud platform optimization, and agile team execution."
+        keywords: ['about', 'who is', 'background', 'summary', 'bio', 'overview', 'profile', 'her'],
+        response: "Elizabeth Enyart-Allen, MBA is an Executive Product Leader with 15+ years of experience scaling AI/ML models, clinical data architectures, and enterprise SaaS platforms. She has a proven track record unifying fragmented product roadmaps, establishing Responsible AI governance, and delivering $2M+ in cost optimizations."
       },
       {
-        keywords: ['caitl', 'credential', 'certif', 'usaii', 'education', 'degree'],
-        response: "Elizabeth is a Certified Artificial Intelligence Transformation Leader™ (CAITL™), issued by the United States Artificial Intelligence Institute (USAII®) in September 2026 (Credential ID: 8718400406). She also holds an Executive MBA from the Carlson School of Management and a B.S. in Medical Technology."
+        keywords: ['experience', 'work', 'history', 'career', 'roles', 'jobs', 'worked'],
+        response: "Elizabeth's leadership background includes:\n• Principal Product Consultant | Enyart-Allen L.L.C. (Present)\n• Director of Product | GPN Technologies (2024–2025)\n• CEO Contract | State of Minnesota (2023–2024)\n• Associate Director | Optum, UnitedHealth Group (2018–2023)\n• Product Manager | NovuHealth (2017–2018)\n• Agile Coach | Target (2016–2017)\n• Product Manager Consultant | Best Buy (2015–2016)\n• Clinical Data Team Leader | NMDP (2003–2015)"
       },
       {
-        keywords: ['mn women in ai', 'women in ai', 'community', 'leadership', 'founding'],
-        response: "Elizabeth is a Founding Member of MN Women in AI, actively shaping the ecosystem for women leading in artificial intelligence, machine learning, and tech innovation."
+        keywords: ['gpn', 'gpn technologies'],
+        response: "At GPN Technologies (Director of Product), Elizabeth led product strategy for AI-driven solutions leveraging machine learning and predictive analytics. She directed AI-powered automation capabilities that streamlined manual customer service workflows, contributing to a 40% reduction in response times."
+      },
+      {
+        keywords: ['optum', 'unitedhealth', 'finops', 'savings', 'cost'],
+        response: "At Optum (Associate Director), Elizabeth designed a FinOps cost-reduction strategy that identified $2M+ in savings across business units, reduced delivery time by 60% through clear decision-rights frameworks, and consolidated 9 streams into an integrated roadmap accelerating delivery by 25%."
+      },
+      {
+        keywords: ['state of minnesota', 'public sector', 'government', 'statewide'],
+        response: "For the State of Minnesota, Elizabeth championed enterprise product transformation across 5 statewide departments as CEO Contract. She introduced a product mindset playbook, established Voice of Customer (VoC) programs, and defined statewide product scorecards and OKRs."
+      },
+      {
+        keywords: ['target', 'agile', 'supply chain'],
+        response: "At Target, Elizabeth served as Agile Coach leading an enterprise transformation across 1,000+ engineers. She directed product and technology initiatives supporting a $7B supply chain strategy and cloud-based inventory capabilities."
+      },
+      {
+        keywords: ['caitl', 'credential', 'certif', 'usaii', 'google', 'azure', 'education', 'degree', 'emba', 'mba', 'carlson', 'school'],
+        response: "Credentials & Education:\n• Certified Artificial Intelligence Transformation Leader™ (CAITL™) - USAII® (ID: 8718400406)\n• Generative AI Leader Certification - Google Cloud (2026–2029)\n• Azure Fundamentals Certified - Microsoft\n• Certified Agile Coach (CAC) - Chicago State University\n• Executive MBA (EMBA) - Carlson School of Management, University of Minnesota\n• B.S. in Medical Technology - University of Minnesota"
+      },
+      {
+        keywords: ['skills', 'technical', 'tools', 'tech', 'stack', 'capabilities'],
+        response: "Core Technical & Leadership Skills:\n• AI & Data: Responsible AI Governance, Agentic AI/LLM Workflows, RAG Architecture, Predictive Analytics\n• Product Strategy: Enterprise Portfolio Prioritization, Product Lifecycle Management (PLM), OKRs, Go-To-Market (GTM)\n• Domain & Cloud: Healthcare Data Systems, EHR/EMR Integration, FinOps, Azure, Docker, SQL, Observability"
+      },
+      {
+        keywords: ['mn women in ai', 'women in ai', 'founding', 'community'],
+        response: "Elizabeth is a Founding Member of MN Women in AI, actively shaping the ecosystem for women leading innovation in artificial intelligence, machine learning, and strategic tech leadership."
       },
       {
         keywords: ['project', 'n8n', 'chat', 'patient', 'agent', 'automation', 'docker', 'build'],
-        response: "Key projects include:\n1. AI Patient Chat Agent: An n8n-powered agent integrated with Gemini models to streamline patient scheduling and prescription refills.\n2. Enterprise AI Automation Engine: Self-hosted n8n pipelines in Docker Desktop integrating SerpApi, Telegram, and Google Sheets.\n3. Cloud Telemetry & FinOps: Multi-cloud platform observability delivering significant cost savings."
+        response: "Featured Technical Projects:\n1. AI Patient Chat Agent: n8n conversational agent integrated with Gemini models for scheduling & prescription refills.\n2. Enterprise AI Automation Engine: Self-hosted n8n pipelines in Docker Desktop integrating SerpApi, Telegram, and Google Sheets.\n3. Cloud Telemetry & FinOps: Multi-cloud observability platform delivering $2M+ in cost savings."
       },
       {
-        keywords: ['contact', 'email', 'reach', 'connect', 'hire', 'talk'],
-        response: "You can connect with Elizabeth directly via the Contact section below or view her strategic portfolios on GitHub."
+        keywords: ['contact', 'email', 'phone', 'reach', 'connect', 'linkedin', 'location'],
+        response: "Contact Information:\n• Location: St. Paul, MN\n• Email: ms.enyart@gmail.com\n• LinkedIn: www.linkedin.com/in/elizabeth-enyart-allen\n• Portfolio: ms-eea.github.io/myportfoliowebsite/"
       }
     ];
 
     // DOM Elements
-    const trigger = document.getElementById('ai-bot-trigger');
     const windowEl = document.getElementById('ai-bot-window');
+    const tooltipEl = document.getElementById('ai-bot-tooltip');
     const closeBtn = document.getElementById('ai-bot-close');
     const form = document.getElementById('ai-bot-form');
     const input = document.getElementById('ai-bot-input');
     const messagesContainer = document.getElementById('ai-bot-messages');
 
-    // Controls
-    trigger.addEventListener('click', () => { windowEl.classList.remove('hidden'); input.focus(); });
-    closeBtn.addEventListener('click', () => { windowEl.classList.add('hidden'); });
-    
+    function openChat() {
+      windowEl.classList.remove('hidden');
+      if (tooltipEl) tooltipEl.style.display = 'none';
+      input.focus();
+    }
+
+    closeBtn.addEventListener('click', () => {
+      windowEl.classList.add('hidden');
+    });
+
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && !windowEl.classList.contains('hidden')) {
         windowEl.classList.add('hidden');
@@ -386,7 +636,7 @@
         }
       }
       
-      return "Elizabeth is a Product Director & AI Strategist specializing in enterprise AI platforms, agentic n8n workflows, and SaaS product transformation. Feel free to ask about her AI credentials (CAITL™), MN Women in AI leadership, or technical projects!";
+      return "Elizabeth is an Executive Product Leader & AI Strategist with 15+ years of experience across Optum, GPN Technologies, State of Minnesota, and Target. Feel free to ask about her career history, CAITL™ / Google AI credentials, technical skills, or past projects!";
     }
 
     function handleSubmission(text) {
@@ -396,7 +646,7 @@
       setTimeout(() => {
         const reply = generateResponse(text);
         appendMessage(reply, 'bot');
-      }, 300);
+      }, 250);
     }
 
     form.addEventListener('submit', (e) => {
