@@ -37,7 +37,7 @@
     .nav-links { display: flex; gap: 24px; list-style: none; font-weight: 500; }
     .nav-links a:hover { color: var(--accent); }
 
-    /* Hero Area with Profile Picture */
+    /* Hero Area with Headshot */
     .hero-container {
       display: flex;
       align-items: center;
@@ -51,12 +51,12 @@
     .hero-content p { font-size: 1.25rem; color: var(--muted); margin-bottom: 32px; max-width: 720px; }
 
     .profile-avatar-container {
-      width: 220px;
-      height: 220px;
+      width: 240px;
+      height: 240px;
       border-radius: 50%;
       overflow: hidden;
       border: 4px solid var(--card-bg);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
       flex-shrink: 0;
     }
 
@@ -64,6 +64,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center top;
     }
 
     .btn-group { display: flex; gap: 16px; }
@@ -78,7 +79,7 @@
     .section:last-of-type { border-bottom: none; }
     .section-title { font-size: 2.25rem; margin-bottom: 32px; }
     
-    /* Grid Layout for Cards & Portfolios */
+    /* Grid Layout for Cards */
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
     .card { background: var(--card-bg); border: 1px solid var(--border); padding: 24px; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; }
     
@@ -137,6 +138,11 @@
     .message.bot { background-color: var(--bot-card); align-self: flex-start; }
     .message.user { background-color: var(--accent); color: #FFF; align-self: flex-end; }
     .message.thinking { color: #94A3B8; font-style: italic; }
+    
+    .quick-prompts { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 8px; background-color: var(--bot-card); }
+    .prompt-btn { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); color: #94A3B8; font-size: 0.75rem; padding: 4px 10px; border-radius: 12px; cursor: pointer; transition: all 0.2s ease; }
+    .prompt-btn:hover { background: var(--accent); color: #FFF; border-color: var(--accent); }
+
     #ai-bot-form { padding: 12px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; gap: 8px; background-color: var(--bot-card); }
     #ai-bot-input { flex: 1; background: var(--bot-dark); border: 1px solid rgba(255,255,255,0.1); color: #FFF; padding: 10px; border-radius: 6px; outline: none; }
     .send-btn { background-color: var(--accent); color: #FFF; border: none; padding: 0 16px; border-radius: 6px; cursor: pointer; }
@@ -159,7 +165,7 @@
 
   <main class="container">
     
-    <!-- Hero Section with Profile Picture -->
+    <!-- Hero Section with Headshot -->
     <section id="about" class="hero-container">
       <div class="hero-content">
         <h1>Enterprise Product Leader & AI Strategist</h1>
@@ -172,7 +178,7 @@
       
       <!-- Profile Picture -->
       <div class="profile-avatar-container">
-        <img src="profile.jpg" alt="Elizabeth Enyart-Allen" onerror="this.onerror=null; this.src='headshot.jpg';">
+        <img src="profile.png" alt="Elizabeth Enyart-Allen" onerror="this.onerror=null; this.src='profile.jpg';">
       </div>
     </section>
 
@@ -290,7 +296,7 @@
     <div class="core-pulse"></div>
   </button>
 
-  <!-- AI Chat Window Widget -->
+  <!-- Self-Contained Knowledge Bot Widget -->
   <div id="ai-bot-window" class="hidden">
     <div class="bot-header">
       <div class="bot-title-area">
@@ -302,26 +308,47 @@
     
     <div id="ai-bot-messages">
       <div class="message bot">
-        Hello! I'm Elizabeth's AI assistant. Ask me anything about her product leadership background, AI projects, or technical experience!
+        Hello! I'm Elizabeth's Portfolio Assistant. Ask me about her experience, AI credentials, or technical projects!
       </div>
     </div>
 
+    <!-- Quick Prompt Suggestions -->
+    <div class="quick-prompts">
+      <button class="prompt-btn" onclick="sendQuickPrompt('Tell me about Elizabeth')">About Her</button>
+      <button class="prompt-btn" onclick="sendQuickPrompt('What are her AI credentials?')">AI Credentials</button>
+      <button class="prompt-btn" onclick="sendQuickPrompt('What projects has she built?')">Projects</button>
+    </div>
+
     <form id="ai-bot-form">
-      <input type="text" id="ai-bot-input" placeholder="Type a message..." required autocomplete="off" />
+      <input type="text" id="ai-bot-input" placeholder="Ask a question..." required autocomplete="off" />
       <button type="submit" class="send-btn">Send</button>
     </form>
   </div>
 
   <script>
-    // Configuration - Updated to active localtunnel URL
-    const N8N_WEBHOOK_URL = 'https://easy-ducks-thank.loca.lt/webhook/portfolio-bot'; 
-
-    // Session Management
-    let sessionId = localStorage.getItem('portfolio_bot_session');
-    if (!sessionId) {
-      sessionId = 'sess_' + Math.random().toString(36).substring(2, 11);
-      localStorage.setItem('portfolio_bot_session', sessionId);
-    }
+    // Embedded Knowledge Base (No Server Required!)
+    const KNOWLEDGE_BASE = [
+      {
+        keywords: ['about', 'who is', 'background', 'summary', 'experience', 'bio', 'her'],
+        response: "Elizabeth Enyart-Allen is an Enterprise Product Leader and AI Strategist with extensive experience in artificial intelligence product strategy, enterprise SaaS platforms, and digital transformation. She specializes in architecting agentic workflows, multi-cloud platform optimization, and agile team execution."
+      },
+      {
+        keywords: ['caitl', 'credential', 'certif', 'usaii', 'education', 'degree'],
+        response: "Elizabeth is a Certified Artificial Intelligence Transformation Leader™ (CAITL™), issued by the United States Artificial Intelligence Institute (USAII®) in September 2026 (Credential ID: 8718400406). She also holds an Executive MBA from the Carlson School of Management and a B.S. in Medical Technology."
+      },
+      {
+        keywords: ['mn women in ai', 'women in ai', 'community', 'leadership', 'founding'],
+        response: "Elizabeth is a Founding Member of MN Women in AI, actively shaping the ecosystem for women leading in artificial intelligence, machine learning, and tech innovation."
+      },
+      {
+        keywords: ['project', 'n8n', 'chat', 'patient', 'agent', 'automation', 'docker', 'build'],
+        response: "Key projects include:\n1. AI Patient Chat Agent: An n8n-powered agent integrated with Gemini models to streamline patient scheduling and prescription refills.\n2. Enterprise AI Automation Engine: Self-hosted n8n pipelines in Docker Desktop integrating SerpApi, Telegram, and Google Sheets.\n3. Cloud Telemetry & FinOps: Multi-cloud platform observability delivering significant cost savings."
+      },
+      {
+        keywords: ['contact', 'email', 'reach', 'connect', 'hire', 'talk'],
+        response: "You can connect with Elizabeth directly via the Contact section below or view her strategic portfolios on GitHub."
+      }
+    ];
 
     // DOM Elements
     const trigger = document.getElementById('ai-bot-trigger');
@@ -341,49 +368,48 @@
       }
     });
 
-    // Append Messages Safely
     function appendMessage(text, className) {
       const msg = document.createElement('div');
       msg.className = `message ${className}`;
-      msg.textContent = text;
+      msg.innerText = text;
       messagesContainer.appendChild(msg);
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
       return msg;
     }
 
-    // Handle Form Submit
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const userMessage = input.value.trim();
-      if (!userMessage) return;
-
-      appendMessage(userMessage, 'user');
-      input.value = '';
-      const thinkingMsg = appendMessage('Thinking...', 'bot thinking');
-
-      try {
-        const response = await fetch(N8N_WEBHOOK_URL, {
-  method: 'POST',
-  headers: { 
-    'Content-Type': 'application/json',
-    'Bypass-Tunnel-Reminder': 'true'
-  },
-  body: JSON.stringify({ message: userMessage, sessionId: sessionId })
-});
-        
-        if (!response.ok) {
-          throw new Error('Network response failed');
+    function generateResponse(query) {
+      const lowerQuery = query.toLowerCase();
+      
+      for (const item of KNOWLEDGE_BASE) {
+        if (item.keywords.some(kw => lowerQuery.includes(kw))) {
+          return item.response;
         }
-
-        const data = await response.json();
-        thinkingMsg.remove();
-        appendMessage(data.reply || data.output || "Message received!", 'bot');
-      } catch (error) {
-        console.error('Bot Error:', error);
-        thinkingMsg.remove();
-        appendMessage('Unable to reach the server right now. Please ensure your n8n webhook tunnel is online.', 'bot');
       }
+      
+      return "Elizabeth is a Product Director & AI Strategist specializing in enterprise AI platforms, agentic n8n workflows, and SaaS product transformation. Feel free to ask about her AI credentials (CAITL™), MN Women in AI leadership, or technical projects!";
+    }
+
+    function handleSubmission(text) {
+      if (!text) return;
+      appendMessage(text, 'user');
+
+      // Instant local response without external server calls
+      setTimeout(() => {
+        const reply = generateResponse(text);
+        appendMessage(reply, 'bot');
+      }, 300);
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const val = input.value.trim();
+      input.value = '';
+      handleSubmission(val);
     });
+
+    function sendQuickPrompt(promptText) {
+      handleSubmission(promptText);
+    }
   </script>
 </body>
 </html>
