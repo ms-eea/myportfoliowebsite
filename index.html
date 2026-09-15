@@ -37,7 +37,7 @@
     .nav-links { display: flex; gap: 24px; list-style: none; font-weight: 500; }
     .nav-links a:hover { color: var(--accent); }
 
-    /* Hero Area with Headshot */
+    /* Hero Area with Headshot & Elevator Pitch */
     .hero-container {
       display: flex;
       align-items: center;
@@ -48,7 +48,7 @@
 
     .hero-content { flex: 1; min-width: 300px; }
     .hero-content h1 { font-size: 3.5rem; margin-bottom: 24px; letter-spacing: -0.02em; }
-    .hero-content p { font-size: 1.25rem; color: var(--muted); margin-bottom: 32px; max-width: 720px; }
+    .hero-content p { font-size: 1.15rem; color: var(--muted); margin-bottom: 32px; max-width: 720px; line-height: 1.7; }
 
     .profile-avatar-container {
       width: 240px;
@@ -124,8 +124,6 @@
     footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; color: var(--muted); font-size: 0.875rem; }
 
     /* HIGH-VISIBILITY AI CHAT WIDGET STYLING */
-    
-    /* Floating Tooltip Bubble Above Trigger */
     #ai-bot-tooltip {
       position: fixed;
       bottom: 100px;
@@ -151,7 +149,6 @@
       50% { transform: translateY(-6px); }
     }
 
-    /* Floating Avatar Trigger Button */
     #ai-bot-trigger {
       position: fixed;
       bottom: 24px;
@@ -196,14 +193,13 @@
       box-shadow: 0 0 8px #10B981;
     }
 
-    /* Chat Window */
     #ai-bot-window {
       position: fixed;
       bottom: 100px;
       right: 24px;
-      width: 380px;
+      width: 400px;
       max-width: calc(100vw - 48px);
-      height: 520px;
+      height: 540px;
       background-color: var(--bot-dark);
       color: #F8FAFC;
       border-radius: 16px;
@@ -217,7 +213,6 @@
 
     #ai-bot-window.hidden { display: none; }
 
-    /* Header with Headshot Avatar */
     .bot-header {
       padding: 16px;
       background-color: var(--bot-card);
@@ -278,11 +273,11 @@
     }
 
     .message {
-      max-width: 85%;
+      max-width: 88%;
       padding: 10px 14px;
       border-radius: 10px;
-      font-size: 0.9rem;
-      line-height: 1.4;
+      font-size: 0.88rem;
+      line-height: 1.45;
       white-space: pre-wrap;
     }
 
@@ -312,7 +307,7 @@
       border: 1px solid rgba(255,255,255,0.12);
       color: #CBD5E1;
       font-size: 0.75rem;
-      padding: 6px 12px;
+      padding: 5px 10px;
       border-radius: 14px;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -375,11 +370,11 @@
 
   <main class="container">
     
-    <!-- Hero Section with Headshot -->
+    <!-- Hero Section with Headshot and Elevator Pitch -->
     <section id="about" class="hero-container">
       <div class="hero-content">
         <h1>Enterprise Product Leader & AI Strategist</h1>
-        <p>15+ years of experience scaling AI/ML models, clinical data architectures, and enterprise SaaS platforms. Proven track record establishing Responsible AI governance and delivering $2M+ in cost optimizations.</p>
+        <p>As an Executive Product Leader and AI Strategist, I bridge the gap between complex technical architectures and high-impact business outcomes. With over 15 years of experience leading enterprise product transformations at organizations like Optum, Target, and the State of Minnesota, I specialize in scaling agentic AI workflows, establishing Responsible AI governance, and optimizing cloud platforms. My focus is on turning fragmented roadmaps into data-driven solutions that drive measurable results, including $2M+ in cost savings and significant operational efficiencies.</p>
         <div class="btn-group">
           <a href="#projects" class="btn btn-primary">Explore Portfolios</a>
           <a href="#contact" class="btn btn-secondary">Get in Touch</a>
@@ -527,72 +522,104 @@
     
     <div id="ai-bot-messages">
       <div class="message bot">
-        Hello! I'm Elizabeth's Portfolio Assistant. Ask me anything about her executive product leadership, AI credentials, career history, or technical projects!
+        Hello! I'm Elizabeth's custom-built Portfolio Assistant. 🧠✨ She created me to help you navigate her work. Ask me about her executive product leadership, AI credentials, or the technical projects she builds!
       </div>
     </div>
 
     <!-- Quick Prompt Suggestions -->
     <div class="quick-prompts">
       <button class="prompt-btn" onclick="sendQuickPrompt('Tell me about Elizabeth')">About Her</button>
-      <button class="prompt-btn" onclick="sendQuickPrompt('Where has she worked?')">Career History</button>
+      <button class="prompt-btn" onclick="sendQuickPrompt('Who built you?')">Who Built You?</button>
+      <button class="prompt-btn" onclick="sendQuickPrompt('Why should I hire her?')">Hire Her</button>
       <button class="prompt-btn" onclick="sendQuickPrompt('What are her AI certifications?')">AI Credentials</button>
-      <button class="prompt-btn" onclick="sendQuickPrompt('What skills does she have?')">Technical Skills</button>
+      <button class="prompt-btn" onclick="sendQuickPrompt('What measurable results has she delivered?')">Key Results</button>
     </div>
 
     <form id="ai-bot-form">
-      <input type="text" id="ai-bot-input" placeholder="Ask a question..." required autocomplete="off" />
+      <input type="text" id="ai-bot-input" maxlength="250" placeholder="Ask a question..." required autocomplete="off" />
       <button type="submit" class="send-btn">Send</button>
     </form>
   </div>
 
   <script>
-    // Knowledge Base from Resume & Professional History
+    // Deep Professional Knowledge Base + Self-Aware Personality Blocks
     const KNOWLEDGE_BASE = [
       {
-        keywords: ['about', 'who is', 'background', 'summary', 'bio', 'overview', 'profile', 'her'],
-        response: "Elizabeth Enyart-Allen, MBA is an Executive Product Leader with 15+ years of experience scaling AI/ML models, clinical data architectures, and enterprise SaaS platforms. She has a proven track record unifying fragmented product roadmaps, establishing Responsible AI governance, and delivering $2M+ in cost optimizations."
+        keywords: ['who built', 'who made', 'created you', 'how do you work', 'are you ai', 'bot', 'built you'],
+        response: "Elizabeth built me! 🙋🏻‍♀️ She hand-coded this entire portfolio and programmed my knowledge base so I could help answer your questions. I'm a lightweight JavaScript assistant, but she builds my advanced AI siblings using enterprise tools like Docker, n8n, and Gemini APIs. I might be slightly biased, but I think she's a fantastic AI Strategist! 🤖✨"
       },
       {
-        keywords: ['experience', 'work', 'history', 'career', 'roles', 'jobs', 'worked'],
-        response: "Elizabeth's leadership background includes:\n• Principal Product Consultant | Enyart-Allen L.L.C. (Present)\n• Director of Product | GPN Technologies (2024–2025)\n• CEO Contract | State of Minnesota (2023–2024)\n• Associate Director | Optum, UnitedHealth Group (2018–2023)\n• Product Manager | NovuHealth (2017–2018)\n• Agile Coach | Target (2016–2017)\n• Product Manager Consultant | Best Buy (2015–2016)\n• Clinical Data Team Leader | NMDP (2003–2015)"
+        keywords: ['hire', 'recommend', 'why should', 'good fit', 'connect'],
+        response: "You should absolutely connect with her! As the AI bot she built to live on this page, I have first-hand experience with her technical strategy and execution. 😉 She bridges complex AI architectures with high-impact business outcomes. You can reach her directly at ms.enyart@gmail.com!"
+      },
+      {
+        keywords: ['about', 'who is', 'background', 'summary', 'bio', 'overview', 'profile', 'her', 'elizabeth'],
+        response: "Elizabeth Enyart-Allen, MBA is an Executive Product Leader with 15+ years of experience scaling AI/ML models, clinical data architectures, and enterprise SaaS platforms. She specializes in unifying fragmented product roadmaps, establishing Responsible AI governance, and delivering high-impact business outcomes including $2M+ in cost optimizations."
+      },
+      {
+        keywords: ['result', 'metric', 'impact', 'savings', 'achievement', 'accomplish', 'roi'],
+        response: "Key Measurable Achievements:\n• $2M+ in cost optimizations delivered across business units through FinOps strategy at Optum.\n• 40% reduction in customer service response times via AI-powered automation at GPN Technologies.\n• 60% faster delivery cycles by establishing clear decision-rights frameworks.\n• 50% reduction in competitive research cycles using agentic AI/RAG workflows.\n• 100% regulatory compliance managing global clinical data operations across 320+ international centers at NMDP."
+      },
+      {
+        keywords: ['experience', 'work', 'history', 'career', 'roles', 'jobs', 'worked', 'company'],
+        response: "Career History Overview:\n• Principal Product Consultant | Enyart-Allen L.L.C. (Oct 2025–Present)\n• Director of Product | GPN Technologies (Oct 2024–Sep 2025)\n• CEO Contract | State of Minnesota (Apr 2023–Oct 2024)\n• Associate Director | Optum, UnitedHealth Group (Oct 2018–May 2023)\n• Product Manager | NovuHealth (May 2017–Oct 2018)\n• Agile Coach | Target (Feb 2016–May 2017)\n• Product Manager Consultant | Best Buy (Mar 2015–Feb 2016)\n• Clinical Data Team Leader | NMDP (Nov 2003–Mar 2015)"
+      },
+      {
+        keywords: ['consultant', 'enyart-allen l.l.c', 'enyart allen llc', 'llc', 'present'],
+        response: "As Principal Product Consultant at Enyart-Allen L.L.C. (Oct 2025–Present):\n• Directed cross-functional delivery teams for enterprise platform modernizations and cloud governance.\n• Architected agentic AI/ML workflows (RAG, LLM orchestration) to automate product discovery, cutting research cycles by 50%.\n• Engineered 4 localized data environments using Docker and SQL to prototype dynamic revenue pricing models.\n• Advised startups on product operations frameworks aligning engineering capacity with business strategy."
       },
       {
         keywords: ['gpn', 'gpn technologies'],
-        response: "At GPN Technologies (Director of Product), Elizabeth led product strategy for AI-driven solutions leveraging machine learning and predictive analytics. She directed AI-powered automation capabilities that streamlined manual customer service workflows, contributing to a 40% reduction in response times."
+        response: "At GPN Technologies (Director of Product, Oct 2024–Sep 2025):\n• Led multi-year product strategy for AI-driven solutions using machine learning and predictive analytics.\n• Executed AI-powered automation capabilities that cut customer service response times by 40%.\n• Partnered with engineering and technical leadership to evaluate feasibility, system architecture, and scalability.\n• Served as executive liaison presenting AI product roadmaps and investment recommendations."
       },
       {
-        keywords: ['optum', 'unitedhealth', 'finops', 'savings', 'cost'],
-        response: "At Optum (Associate Director), Elizabeth designed a FinOps cost-reduction strategy that identified $2M+ in savings across business units, reduced delivery time by 60% through clear decision-rights frameworks, and consolidated 9 streams into an integrated roadmap accelerating delivery by 25%."
+        keywords: ['state of minnesota', 'public sector', 'government', 'minnesota', 'statewide'],
+        response: "State of Minnesota (CEO Contract, Apr 2023–Oct 2024):\n• Championed enterprise product transformation across 5 statewide departments.\n• Developed a standardized product mindset playbook for discovery, prioritization, and delivery.\n• Established Voice of Customer (VoC) programs that increased user adoption across digital government services.\n• Defined statewide digital transformation product scorecards and OKRs."
       },
       {
-        keywords: ['state of minnesota', 'public sector', 'government', 'statewide'],
-        response: "For the State of Minnesota, Elizabeth championed enterprise product transformation across 5 statewide departments as CEO Contract. She introduced a product mindset playbook, established Voice of Customer (VoC) programs, and defined statewide product scorecards and OKRs."
+        keywords: ['optum', 'unitedhealth', 'finops'],
+        response: "At Optum, UnitedHealth Group (Associate Director, Oct 2018–May 2023):\n• Designed a FinOps strategy identifying $2M+ in cost savings across multiple business units.\n• Reduced product delivery time by 60% with clear decision rights and governance.\n• Consolidated 9 fragmented streams into an integrated roadmap, accelerating delivery by 25%.\n• Boosted customer adoption and CSAT scores by 10 points through design thinking research."
       },
       {
-        keywords: ['target', 'agile', 'supply chain'],
-        response: "At Target, Elizabeth served as Agile Coach leading an enterprise transformation across 1,000+ engineers. She directed product and technology initiatives supporting a $7B supply chain strategy and cloud-based inventory capabilities."
+        keywords: ['target', 'agile coach', 'supply chain'],
+        response: "At Target (Agile Coach, Feb 2016–May 2017):\n• Led enterprise Agile transformation across 1,000+ engineers.\n• Directed product and technology initiatives supporting a $7B supply chain strategy.\n• Coached product owners and engineering leadership on backlog readiness, capacity planning, and roadmap alignment."
       },
       {
-        keywords: ['caitl', 'credential', 'certif', 'usaii', 'google', 'azure', 'education', 'degree', 'emba', 'mba', 'carlson', 'school'],
-        response: "Credentials & Education:\n• Certified Artificial Intelligence Transformation Leader™ (CAITL™) - USAII® (ID: 8718400406)\n• Generative AI Leader Certification - Google Cloud (2026–2029)\n• Azure Fundamentals Certified - Microsoft\n• Certified Agile Coach (CAC) - Chicago State University\n• Executive MBA (EMBA) - Carlson School of Management, University of Minnesota\n• B.S. in Medical Technology - University of Minnesota"
+        keywords: ['novuhealth', 'vsm', 'value stream'],
+        response: "At NovuHealth (Product Manager, May 2017–Oct 2018):\n• Managed end-to-end SaaS healthcare products supporting health plan providers under a $5M budget.\n• Applied Value Stream Mapping (VSM) to streamline workflows and increase feature delivery speed by 20%."
       },
       {
-        keywords: ['skills', 'technical', 'tools', 'tech', 'stack', 'capabilities'],
-        response: "Core Technical & Leadership Skills:\n• AI & Data: Responsible AI Governance, Agentic AI/LLM Workflows, RAG Architecture, Predictive Analytics\n• Product Strategy: Enterprise Portfolio Prioritization, Product Lifecycle Management (PLM), OKRs, Go-To-Market (GTM)\n• Domain & Cloud: Healthcare Data Systems, EHR/EMR Integration, FinOps, Azure, Docker, SQL, Observability"
+        keywords: ['nmdp', 'clinical', 'health data', 'fda'],
+        response: "At NMDP (Clinical Data Team Leader, Nov 2003–Mar 2015):\n• Directed global clinical data network operations across 320+ international medical centers.\n• Maintained 100% regulatory compliance with strict FDA and health data standards.\n• Partnered with technical teams to migrate registry data into scalable cloud platforms."
+      },
+      {
+        keywords: ['caitl', 'credential', 'certif', 'usaii', 'google', 'azure', 'education', 'degree', 'emba', 'mba', 'carlson', 'school', 'university'],
+        response: "Education & Certifications:\n• Executive MBA (EMBA) - Carlson School of Management, University of Minnesota\n• B.S. in Medical Technology - University of Minnesota\n• Certified AI Transformation Leader™ (CAITL™) - USAII® / Bravura (Credential ID: 8718400406)\n• Generative AI Leader Certification - Google Cloud (May 2026 – May 2029)\n• Azure Fundamentals Certified - Microsoft\n• Certified Agile Coach (CAC) - Chicago State University"
+      },
+      {
+        keywords: ['skill', 'tech', 'stack', 'tool', 'ai', 'rag', 'llm', 'governance', 'responsible ai', 'docker', 'sql'],
+        response: "Technical & Leadership Stack:\n• AI & Data: Responsible AI Governance, Agentic AI/LLM Workflows, RAG Architecture, Predictive Analytics, Data Lineage & Auditability.\n• Product Strategy: Enterprise Portfolio Prioritization, Product Lifecycle Management (PLM), Multi-Year Roadmapping, OKRs & Scorecards, Go-To-Market (GTM).\n• Healthcare & Cloud: Clinical Data Systems, EHR/EMR Integration, Health Tech SaaS, Azure, FinOps, Docker, SQL, Observability, Agile Coaching."
+      },
+      {
+        keywords: ['responsible ai', 'ethics', 'governance', 'auditability'],
+        response: "Elizabeth establishes Responsible AI governance frameworks focusing on data lineage, model auditability, ethical AI standards, and human-in-the-loop workflows to safely scale intelligent applications in enterprise environments."
       },
       {
         keywords: ['mn women in ai', 'women in ai', 'founding', 'community'],
         response: "Elizabeth is a Founding Member of MN Women in AI, actively shaping the ecosystem for women leading innovation in artificial intelligence, machine learning, and strategic tech leadership."
       },
       {
-        keywords: ['project', 'n8n', 'chat', 'patient', 'agent', 'automation', 'docker', 'build'],
-        response: "Featured Technical Projects:\n1. AI Patient Chat Agent: n8n conversational agent integrated with Gemini models for scheduling & prescription refills.\n2. Enterprise AI Automation Engine: Self-hosted n8n pipelines in Docker Desktop integrating SerpApi, Telegram, and Google Sheets.\n3. Cloud Telemetry & FinOps: Multi-cloud observability platform delivering $2M+ in cost savings."
+        keywords: ['project', 'n8n', 'chat', 'patient', 'agent', 'automation'],
+        response: "Featured Portfolios:\n1. AI Patient Chat Agent: Interactive n8n agent using Gemini APIs for scheduling & prescription refills.\n2. Enterprise AI Automation Engine: Self-hosted n8n pipelines in Docker Desktop integrating SerpApi, Telegram, and Google Sheets.\n3. Cloud Telemetry & FinOps: Multi-cloud observability platform delivering $2M+ in cost savings."
       },
       {
-        keywords: ['contact', 'email', 'phone', 'reach', 'connect', 'linkedin', 'location'],
-        response: "Contact Information:\n• Location: St. Paul, MN\n• Email: ms.enyart@gmail.com\n• LinkedIn: www.linkedin.com/in/elizabeth-enyart-allen\n• Portfolio: ms-eea.github.io/myportfoliowebsite/"
+        keywords: ['contact', 'email', 'phone', 'reach', 'connect', 'linkedin', 'location', 'st. paul'],
+        response: "Contact Information:\n• Location: St. Paul, MN\n• Phone: (651) 895-3425\n• Email: ms.enyart@gmail.com\n• LinkedIn: linkedin.com/in/elizabeth-enyart-allen\n• Portfolio: ms-eea.github.io/myportfoliowebsite/"
       }
     ];
+
+    // Fallback if query is unknown
+    const FALLBACK_RESPONSE = "Elizabeth didn't program me with the answer to that one yet! 😅 I'm just her custom portfolio bot. But I can tell you all about her 15+ years of product leadership, her CAITL™ / Google AI credentials, or the $2M+ FinOps savings she delivered. What would you like to know?";
 
     // DOM Elements
     const windowEl = document.getElementById('ai-bot-window');
@@ -636,7 +663,7 @@
         }
       }
       
-      return "Elizabeth is an Executive Product Leader & AI Strategist with 15+ years of experience across Optum, GPN Technologies, State of Minnesota, and Target. Feel free to ask about her career history, CAITL™ / Google AI credentials, technical skills, or past projects!";
+      return FALLBACK_RESPONSE;
     }
 
     function handleSubmission(text) {
