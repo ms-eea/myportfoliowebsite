@@ -261,82 +261,93 @@
 </style>
 
 <script>
-// UPDATE THIS VALUE with your secure production HTTPS tunnel/webhook URL
-const N8N_WEBHOOK_URL = 'https://random-words-here.trycloudflare.com/webhook/portfolio-bot';
+document.addEventListener('DOMContentLoaded', () => {
+  // UPDATE THIS VALUE with your active HTTPS Cloudflare/ngrok tunnel URL
+  const N8N_WEBHOOK_URL = 'https://random-words-here.trycloudflare.com/webhook/portfolio-bot';
 
-const trigger = document.getElementById('ai-bot-trigger');
-const windowEl = document.getElementById('ai-bot-window');
-const closeBtn = document.getElementById('ai-bot-close');
-const form = document.getElementById('ai-bot-form');
-const input = document.getElementById('ai-bot-input');
-const messagesContainer = document.getElementById('ai-bot-messages');
-const avatar = document.getElementById('ai-avatar');
-const statusText = document.getElementById('ai-bot-status-text');
+  const trigger = document.getElementById('ai-bot-trigger');
+  const windowEl = document.getElementById('ai-bot-window');
+  const closeBtn = document.getElementById('ai-bot-close');
+  const form = document.getElementById('ai-bot-form');
+  const input = document.getElementById('ai-bot-input');
+  const messagesContainer = document.getElementById('ai-bot-messages');
+  const avatar = document.getElementById('ai-avatar');
+  const statusText = document.getElementById('ai-bot-status-text');
 
-// Toggle UI state
-trigger.addEventListener('click', () => windowEl.classList.remove('hidden'));
-closeBtn.addEventListener('click', () => windowEl.classList.add('hidden'));
+  // Guard clause to prevent script execution if elements are missing from the DOM
+  if (!trigger || !windowEl || !form) {
+    console.warn('AI Bot elements not found in the DOM.');
+    return;
+  }
 
-// Form Submit Handler
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const query = input.value.trim();
-  if (!query) return;
+  // Toggle UI state
+  trigger.addEventListener('click', () => windowEl.classList.remove('hidden'));
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => windowEl.classList.add('hidden'));
+  }
 
-  appendMessage(query, 'user-message');
-  input.value = '';
+  // Form Submit Handler
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const query = input.value.trim();
+    if (!query) return;
 
-  setBotState('thinking', 'Thinking...');
+    appendMessage(query, 'user-message');
+    input.value = '';
 
-  try {
-    const response = await fetch(N8N_WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 
-        'Content-Type': 'application/json' 
-      },
-      body: JSON.stringify({ 
-        message: query, 
-        sessionId: getSessionId() 
-      })
-    });
+    setBotState('thinking', 'Thinking...');
 
-    if (!response.ok) {
-      throw new Error(`HTTP Error Status: ${response.status}`);
+    try {
+      const response = await fetch(N8N_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json' 
+        },
+        body: JSON.stringify({ 
+          message: query, 
+          sessionId: getSessionId() 
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP Error Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const botReply = data.reply || "Sorry, I couldn't process that request.";
+      
+      appendMessage(botReply, 'bot-message');
+    } catch (err) {
+      console.error('Chat bot request error:', err);
+      appendMessage("I'm having trouble connecting right now. Please verify your n8n workflow connection!", 'bot-message');
+    } finally {
+      setBotState('idle', 'Online • Powered by n8n & Gemini');
     }
+  });
 
-    const data = await response.json();
-    const botReply = data.reply || "Sorry, I couldn't process that request.";
-    
-    appendMessage(botReply, 'bot-message');
-  } catch (err) {
-    console.error('Chat bot request error:', err);
-    appendMessage("I'm having trouble connecting to my brain right now. Please verify your n8n workflow connection!", 'bot-message');
-  } finally {
-    setBotState('idle', 'Online • Powered by n8n & Gemini');
+  function appendMessage(text, className) {
+    if (!messagesContainer) return;
+    const msg = document.createElement('div');
+    msg.className = `message ${className}`;
+    msg.textContent = text;
+    messagesContainer.appendChild(msg);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  function setBotState(state, text) {
+    if (avatar) avatar.className = `ai-avatar state-${state}`;
+    if (statusText) statusText.textContent = text;
+  }
+
+  function getSessionId() {
+    let sid = localStorage.getItem('portfolio_bot_session_id');
+    if (!sid) {
+      sid = 'sess_' + Math.random().toString(36).substring(2, 9);
+      localStorage.setItem('portfolio_bot_session_id', sid);
+    }
+    return sid;
   }
 });
-
-function appendMessage(text, className) {
-  const msg = document.createElement('div');
-  msg.className = `message ${className}`;
-  msg.textContent = text;
-  messagesContainer.appendChild(msg);
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
-}
-
-function setBotState(state, text) {
-  avatar.className = `ai-avatar state-${state}`;
-  statusText.textContent = text;
-}
-
-function getSessionId() {
-  let sid = localStorage.getItem('portfolio_bot_session_id');
-  if (!sid) {
-    sid = 'sess_' + Math.random().toString(36).substring(2, 9);
-    localStorage.setItem('portfolio_bot_session_id', sid);
-  }
-  return sid;
-}
 </script>
     body {
       background: var(--cream);
