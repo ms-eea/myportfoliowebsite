@@ -11,7 +11,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   
   <style>
-    /* CSS Variables & Global Styles */
     :root {
       --cream: #F9F7F5;
       --card-bg: #FFFFFF;
@@ -24,329 +23,52 @@
       --bot-card: #1E293B;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background-color: var(--cream); color: var(--ink); line-height: 1.6; }
+    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 700; line-height: 1.2; }
+    a { color: inherit; text-decoration: none; }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background-color: var(--cream);
-      color: var(--ink);
-      line-height: 1.6;
-    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    header { padding: 32px 0; border-bottom: 1px solid var(--border); }
+    nav { display: flex; justify-content: space-between; align-items: center; }
+    .brand { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; }
+    .nav-links { display: flex; gap: 24px; list-style: none; font-weight: 500; }
+    .nav-links a:hover { color: var(--accent); }
 
-    h1, h2, h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 700;
-      line-height: 1.2;
-    }
+    .hero { padding: 80px 0 48px; }
+    .hero h1 { font-size: 3.5rem; margin-bottom: 24px; }
+    .hero p { font-size: 1.25rem; color: var(--muted); max-width: 750px; margin-bottom: 32px; }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    .section { padding: 48px 0; }
+    .section-title { font-size: 2.25rem; margin-bottom: 32px; }
+    
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .card { background: var(--card-bg); border: 1px solid var(--border); padding: 24px; border-radius: 8px; overflow: hidden; }
+    .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 6px; margin-bottom: 16px; border: 1px solid var(--border); }
+    .card h3 { font-size: 1.4rem; margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 12px; }
+    .tag { display: inline-block; background: #E0E7FF; color: #3730A3; font-size: 0.75rem; font-weight: 600; padding: 4px 8px; border-radius: 4px; margin-right: 6px; }
 
-    /* Container & Navigation */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; color: var(--muted); font-size: 0.875rem; }
 
-    header {
-      padding: 32px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      list-style: none;
-      font-weight: 500;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent);
-    }
-
-    /* Hero Section */
-    .hero {
-      padding: 96px 0 64px;
-    }
-
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 24px;
-      letter-spacing: -0.02em;
-    }
-
-    .hero p {
-      font-size: 1.25rem;
-      color: var(--muted);
-      max-width: 750px;
-      margin-bottom: 32px;
-    }
-
-    .btn-group {
-      display: flex;
-      gap: 16px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 24px;
-      border-radius: 6px;
-      font-weight: 500;
-      transition: background-color 0.2s ease;
-    }
-
-    .btn-primary {
-      background-color: var(--ink);
-      color: #FFF;
-    }
-
-    .btn-primary:hover {
-      background-color: #374151;
-    }
-
-    .btn-secondary {
-      border: 1px solid var(--border);
-      background-color: var(--card-bg);
-    }
-
-    .btn-secondary:hover {
-      background-color: #F3F4F6;
-    }
-
-    /* Sections & Grid */
-    .section {
-      padding: 64px 0;
-    }
-
-    .section-title {
-      font-size: 2.25rem;
-      margin-bottom: 40px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      padding: 32px;
-      border-radius: 8px;
-    }
-
-    .card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 12px;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 1rem;
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 48px 0;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.875rem;
-    }
-
-    /* Floating AI Bot Widget */
-    #ai-bot-trigger {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background-color: var(--bot-dark);
-      color: #FFF;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      z-index: 1000;
-      transition: transform 0.2s ease;
-    }
-
-    #ai-bot-trigger:hover {
-      transform: scale(1.05);
-    }
-
-    .core-pulse {
-      width: 12px;
-      height: 12px;
-      background-color: #60A5FA;
-      border-radius: 50%;
-      box-shadow: 0 0 12px #60A5FA;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.7); }
-      70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(96, 165, 250, 0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(96, 165, 250, 0); }
-    }
-
-    #ai-bot-window {
-      position: fixed;
-      bottom: 96px;
-      right: 24px;
-      width: 380px;
-      max-width: calc(100vw - 48px);
-      height: 520px;
-      background-color: var(--bot-dark);
-      color: #F8FAFC;
-      border-radius: 12px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-      display: flex;
-      flex-direction: column;
-      z-index: 1000;
-      overflow: hidden;
-      border: 1px solid var(--bot-card);
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    #ai-bot-window.hidden {
-      display: none;
-    }
-
-    .bot-header {
-      padding: 16px;
-      background-color: var(--bot-card);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .bot-title-area {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .bot-status-indicator {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: #34D399;
-    }
-
-    .bot-header h4 {
-      font-size: 1rem;
-      font-weight: 600;
-    }
-
-    .close-btn {
-      background: none;
-      border: none;
-      color: #94A3B8;
-      font-size: 1.25rem;
-      cursor: pointer;
-    }
-
-    .close-btn:hover {
-      color: #FFF;
-    }
-
-    #ai-bot-messages {
-      flex: 1;
-      padding: 16px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .message {
-      max-width: 85%;
-      padding: 10px 14px;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      line-height: 1.4;
-    }
-
-    .message.bot {
-      background-color: var(--bot-card);
-      align-self: flex-start;
-      border-bottom-left-radius: 2px;
-    }
-
-    .message.user {
-      background-color: var(--accent);
-      color: #FFF;
-      align-self: flex-end;
-      border-bottom-right-radius: 2px;
-    }
-
-    .message.thinking {
-      color: #94A3B8;
-      font-style: italic;
-    }
-
-    #ai-bot-form {
-      padding: 12px;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      display: flex;
-      gap: 8px;
-      background-color: var(--bot-card);
-    }
-
-    #ai-bot-input {
-      flex: 1;
-      background: var(--bot-dark);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: #FFF;
-      padding: 10px 12px;
-      border-radius: 6px;
-      outline: none;
-      font-size: 0.9rem;
-    }
-
-    #ai-bot-input:focus {
-      border-color: var(--accent);
-    }
-
-    .send-btn {
-      background-color: var(--accent);
-      color: #FFF;
-      border: none;
-      padding: 0 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 500;
-    }
-
-    .send-btn:hover {
-      background-color: var(--accent-hover);
-    }
+    /* AI Widget Styling */
+    #ai-bot-trigger { position: fixed; bottom: 24px; right: 24px; width: 60px; height: 60px; border-radius: 50%; background-color: var(--bot-dark); color: #FFF; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 1000; }
+    .core-pulse { width: 12px; height: 12px; background-color: #60A5FA; border-radius: 50%; box-shadow: 0 0 12px #60A5FA; animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(96,165,250,0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(96,165,250,0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(96,165,250,0); } }
+    #ai-bot-window { position: fixed; bottom: 96px; right: 24px; width: 380px; max-width: calc(100vw - 48px); height: 500px; background-color: var(--bot-dark); color: #F8FAFC; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); display: flex; flex-direction: column; z-index: 1000; overflow: hidden; border: 1px solid var(--bot-card); }
+    #ai-bot-window.hidden { display: none; }
+    .bot-header { padding: 16px; background-color: var(--bot-card); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .bot-title-area { display: flex; align-items: center; gap: 10px; }
+    .bot-status-indicator { width: 8px; height: 8px; border-radius: 50%; background-color: #34D399; }
+    .close-btn { background: none; border: none; color: #94A3B8; font-size: 1.25rem; cursor: pointer; }
+    #ai-bot-messages { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+    .message { max-width: 85%; padding: 10px 14px; border-radius: 8px; font-size: 0.9rem; line-height: 1.4; }
+    .message.bot { background-color: var(--bot-card); align-self: flex-start; }
+    .message.user { background-color: var(--accent); color: #FFF; align-self: flex-end; }
+    .message.thinking { color: #94A3B8; font-style: italic; }
+    #ai-bot-form { padding: 12px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; gap: 8px; background-color: var(--bot-card); }
+    #ai-bot-input { flex: 1; background: var(--bot-dark); border: 1px solid rgba(255,255,255,0.1); color: #FFF; padding: 10px; border-radius: 6px; outline: none; }
+    .send-btn { background-color: var(--accent); color: #FFF; border: none; padding: 0 16px; border-radius: 6px; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -357,114 +79,122 @@
       <div class="brand">Elizabeth Enyart-Allen</div>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#expertise">Expertise</a></li>
-        <li><a href="#leadership">Leadership</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </header>
 
-  <!-- Hero Section -->
   <main class="container">
+    <!-- Hero Section -->
     <section id="about" class="hero">
       <h1>Enterprise Product Leader & AI Strategist</h1>
-      <p>Directing enterprise AI product strategies, architecting modern SaaS platforms, and driving operational transformation across complex technical domains.</p>
-      <div class="btn-group">
-        <a href="#contact" class="btn btn-primary">Get in Touch</a>
-        <a href="#expertise" class="btn btn-secondary">Explore Areas of Focus</a>
-      </div>
+      <p>Directing enterprise AI product strategies, architecting agentic workflows, and delivering SaaS platform transformation across complex technical domains.</p>
     </section>
 
-    <!-- Expertise Section -->
-    <section id="expertise" class="section">
-      <h2 class="section-title">Core Expertise</h2>
+    <!-- Featured Projects & Pictures Section -->
+    <section id="projects" class="section">
+      <h2 class="section-title">Featured Projects</h2>
       <div class="grid">
+        
+        <!-- Project 1: AI Patient Chat Agent -->
         <div class="card">
-          <h3>AI Strategy & Agentic Systems</h3>
-          <p>Architecting enterprise AI roadmaps, agentic workflows, RAG solutions, and governance frameworks for scalable product integration.</p>
+          <!-- Update src if your image file is in a folder or has a different extension -->
+          <img src="AI Patient Agent Chat.jpg" alt="AI Patient Agent Chat Project" onerror="this.style.display='none'">
+          <div>
+            <span class="tag">AI & Healthcare</span>
+            <span class="tag">n8n Workflow</span>
+          </div>
+          <h3>AI Patient Chat Agent</h3>
+          <p>An interactive, n8n-powered conversational agent integrated with Gemini models to streamline patient interactions, scheduling, and prescription refill workflows.</p>
         </div>
+
+        <!-- Project 2: Agentic Workflow Automation -->
         <div class="card">
-          <h3>SaaS & Enterprise Platforms</h3>
-          <p>Leading multi-cloud ecosystem strategies, Observability platforms, FinOps optimizations, and cross-functional SaaS product management.</p>
+          <span class="tag">n8n</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Automation</span>
+          <h3>Enterprise AI Automation Engine</h3>
+          <p>Custom-built automation pipeline integrating SerpApi, Telegram endpoints, Google Sheets, and Gemini LLMs for live operational tracking.</p>
         </div>
+
+        <!-- Project 3: Platform FinOps & Observability -->
         <div class="card">
-          <h3>Agile Execution & Mentorship</h3>
-          <p>Empowering high-performing cross-functional teams, driving backlog readiness, and aligning complex roadmaps with organizational goals.</p>
+          <span class="tag">SaaS Platform</span>
+          <span class="tag">FinOps</span>
+          <h3>Cloud Telemetry & Observability</h3>
+          <p>Multi-cloud ecosystem optimization, consolidated platform roadmaps, and telemetry-based dependency tracking delivering significant cost reduction.</p>
         </div>
+
       </div>
     </section>
 
-    <!-- Leadership Section -->
-    <section id="leadership" class="section">
-      <h2 class="section-title">Leadership & Credentials</h2>
+    <!-- Core Expertise -->
+    <section id="expertise" class="section">
+      <h2 class="section-title">Leadership & Focus</h2>
       <div class="grid">
         <div class="card">
           <h3>MN Women in AI</h3>
-          <p>Founding Member actively shaping the ecosystem for women leading in artificial intelligence and tech innovation.</p>
+          <p>Founding Member driving leadership, innovation, and community engagement in artificial intelligence.</p>
         </div>
         <div class="card">
           <h3>Certified AI Transformation Leader (CAITL™)</h3>
-          <p>Credentialed in enterprise AI transformation, strategic change management, and executive AI deployment models.</p>
+          <p>Credentialed in enterprise AI transformation strategies, strategic execution, and governance models.</p>
         </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section id="contact" class="section">
       <h2 class="section-title">Connect</h2>
-      <p style="color: var(--muted); font-size: 1.1rem; max-width: 600px;">
-        Interested in collaborating, discussing AI product strategy, or connecting on executive product leadership? Feel free to reach out directly or use the interactive AI assistant in the bottom right corner.
-      </p>
+      <p style="color: var(--muted);">Reach out to discuss executive product leadership, AI platform strategy, or technical collaboration.</p>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="container">
       <p>&copy; 2026 Elizabeth Enyart-Allen. Hosted on GitHub Pages.</p>
     </div>
   </footer>
 
-  <!-- Floating AI Bot Trigger -->
+  <!-- Floating AI Assistant Button -->
   <button id="ai-bot-trigger" aria-label="Open AI Assistant">
     <div class="core-pulse"></div>
   </button>
 
-  <!-- AI Bot Window -->
-  <div id="ai-bot-window" class="hidden" role="dialog" aria-labelledby="bot-title">
+  <!-- AI Chat Window -->
+  <div id="ai-bot-window" class="hidden">
     <div class="bot-header">
       <div class="bot-title-area">
         <div class="bot-status-indicator"></div>
-        <h4 id="bot-title">Portfolio AI Assistant</h4>
+        <h4>Portfolio AI Assistant</h4>
       </div>
-      <button class="close-btn" id="ai-bot-close" aria-label="Close Assistant">&times;</button>
+      <button class="close-btn" id="ai-bot-close">&times;</button>
     </div>
     
     <div id="ai-bot-messages">
       <div class="message bot">
-        Hello! I'm Elizabeth's AI assistant. Ask me anything about her product leadership background, AI initiatives, or technical projects.
+        Hello! I'm Elizabeth's AI assistant. Ask me anything about her product leadership, AI projects, or technical experience!
       </div>
     </div>
 
     <form id="ai-bot-form">
-      <input type="text" id="ai-bot-input" placeholder="Type your question..." autocomplete="off" required />
+      <input type="text" id="ai-bot-input" placeholder="Type a message..." required />
       <button type="submit" class="send-btn">Send</button>
     </form>
   </div>
 
-  <!-- JavaScript Logic -->
   <script>
-    // Configuration - Replace with your n8n Webhook URL
+    // Config: Update with your n8n webhook URL
     const N8N_WEBHOOK_URL = 'https://your-n8n-instance.com/webhook/portfolio-bot'; 
 
-    // Session Management
     let sessionId = localStorage.getItem('portfolio_bot_session');
     if (!sessionId) {
       sessionId = 'sess_' + Math.random().toString(36).substring(2, 11);
       localStorage.setItem('portfolio_bot_session', sessionId);
     }
 
-    // DOM Elements
     const trigger = document.getElementById('ai-bot-trigger');
     const windowEl = document.getElementById('ai-bot-window');
     const closeBtn = document.getElementById('ai-bot-close');
@@ -472,23 +202,9 @@
     const input = document.getElementById('ai-bot-input');
     const messagesContainer = document.getElementById('ai-bot-messages');
 
-    // Chat Window Controls
-    trigger.addEventListener('click', () => {
-      windowEl.classList.remove('hidden');
-      input.focus();
-    });
+    trigger.addEventListener('click', () => { windowEl.classList.remove('hidden'); input.focus(); });
+    closeBtn.addEventListener('click', () => { windowEl.classList.add('hidden'); });
 
-    closeBtn.addEventListener('click', () => {
-      windowEl.classList.add('hidden');
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !windowEl.classList.contains('hidden')) {
-        windowEl.classList.add('hidden');
-      }
-    });
-
-    // Message Renderer
     function appendMessage(text, className) {
       const msg = document.createElement('div');
       msg.className = `message ${className}`;
@@ -498,7 +214,6 @@
       return msg;
     }
 
-    // Submit Handler
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const userMessage = input.value.trim();
@@ -506,35 +221,20 @@
 
       appendMessage(userMessage, 'user');
       input.value = '';
-
       const thinkingMsg = appendMessage('Thinking...', 'bot thinking');
 
       try {
         const response = await fetch(N8N_WEBHOOK_URL, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            message: userMessage,
-            sessionId: sessionId
-          })
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: userMessage, sessionId: sessionId })
         });
-
-        if (!response.ok) {
-          throw new Error('Network response failed');
-        }
-
         const data = await response.json();
         thinkingMsg.remove();
-        
-        const replyText = data.reply || data.output || "Thank you for reaching out! I've logged your request.";
-        appendMessage(replyText, 'bot');
-
+        appendMessage(data.reply || data.output || "Message received!", 'bot');
       } catch (error) {
-        console.error('Bot Error:', error);
         thinkingMsg.remove();
-        appendMessage('Unable to reach the server right now. Please try again shortly.', 'bot');
+        appendMessage('Unable to reach the server right now.', 'bot');
       }
     });
   </script>
