@@ -8,46 +8,70 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --cream: #F9F7F5;
-      --card-bg: #FFFFFF;
-      --ink: #111827;
-      --muted: #4B5563;
-      --accent: #2563EB;
-      --accent-hover: #1D4ED8;
-      --border: #E5E7EB;
-      --bot-dark: #0F172A;
-      --bot-card: #1E293B;
+      --bg-dark: #090D16;
+      --card-bg: #111827;
+      --ink: #F8FAFC;
+      --muted: #94A3B8;
+      --accent: #3B82F6;
+      --accent-glow: rgba(59, 130, 246, 0.4);
+      --neon-cyan: #06B6D4;
+      --border: #1E293B;
+      --border-glow: rgba(6, 182, 212, 0.4);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'DM Sans', sans-serif; background-color: var(--cream); color: var(--ink); line-height: 1.6; }
+    body { font-family: 'Outfit', sans-serif; background-color: var(--bg-dark); color: var(--ink); line-height: 1.6; overflow-x: hidden; }
     h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 700; line-height: 1.2; }
     a { color: inherit; text-decoration: none; }
 
     .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
     
     /* Header & Nav */
-    header { padding: 32px 0; border-bottom: 1px solid var(--border); background-color: var(--cream); }
+    header { padding: 24px 0; border-bottom: 1px solid var(--border); background-color: rgba(9, 13, 22, 0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
     nav { display: flex; justify-content: space-between; align-items: center; }
-    .brand { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; }
-    .nav-links { display: flex; gap: 24px; list-style: none; font-weight: 500; }
-    .nav-links a:hover { color: var(--accent); }
+    .brand { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--neon-cyan); letter-spacing: 0.05em; }
+    .nav-links { display: flex; gap: 24px; list-style: none; font-weight: 400; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan); }
 
-    /* Hero Area with Headshot & Elevator Pitch */
+    /* Hero Area with Futuristic Glow */
     .hero-container {
       display: flex;
       align-items: center;
       gap: 48px;
-      padding: 64px 0 48px;
+      padding: 80px 0 60px;
       flex-wrap: wrap;
+      position: relative;
+    }
+
+    .hero-container::before {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, rgba(0,0,0,0) 70%);
+      z-index: -1;
     }
 
     .hero-content { flex: 1; min-width: 300px; }
-    .hero-content h1 { font-size: 3.5rem; margin-bottom: 24px; letter-spacing: -0.02em; }
+    
+    .hero-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--neon-cyan);
+      margin-bottom: 12px;
+      text-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
+    }
+
+    .hero-content h1 { font-size: 3.5rem; margin-bottom: 24px; letter-spacing: -0.02em; color: #FFF; }
     .hero-content p { font-size: 1.15rem; color: var(--muted); margin-bottom: 32px; max-width: 720px; line-height: 1.7; }
 
     .profile-avatar-container {
@@ -55,9 +79,10 @@
       height: 240px;
       border-radius: 50%;
       overflow: hidden;
-      border: 4px solid var(--card-bg);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+      border: 3px solid var(--neon-cyan);
+      box-shadow: 0 0 30px rgba(6, 182, 212, 0.3), inset 0 0 20px rgba(59, 130, 246, 0.3);
       flex-shrink: 0;
+      position: relative;
     }
 
     .profile-avatar-container img {
@@ -68,49 +93,48 @@
     }
 
     .btn-group { display: flex; gap: 16px; }
-    .btn { display: inline-block; padding: 12px 24px; border-radius: 6px; font-weight: 500; transition: background-color 0.2s ease; }
-    .btn-primary { background-color: var(--ink); color: #FFF; }
-    .btn-primary:hover { background-color: #374151; }
-    .btn-secondary { border: 1px solid var(--border); background-color: var(--card-bg); }
-    .btn-secondary:hover { background-color: #F3F4F6; }
+    .btn { display: inline-block; padding: 12px 24px; border-radius: 8px; font-weight: 500; transition: all 0.3s ease; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent), var(--neon-cyan)); color: #FFF; box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(6, 182, 212, 0.5); }
+    .btn-secondary { border: 1px solid var(--border); background-color: var(--card-bg); color: var(--ink); }
+    .btn-secondary:hover { border-color: var(--neon-cyan); color: var(--neon-cyan); }
 
     /* General Sections */
-    .section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+    .section { padding: 64px 0; border-bottom: 1px solid var(--border); }
     .section:last-of-type { border-bottom: none; }
-    .section-title { font-size: 2.25rem; margin-bottom: 32px; }
+    .section-title { font-size: 2.25rem; margin-bottom: 32px; color: #FFF; }
     
-    /* Grid Layout for Cards */
+    /* Grid Layout for Cyber Cards */
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
-    .card { background: var(--card-bg); border: 1px solid var(--border); padding: 24px; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; }
+    .card { background: var(--card-bg); border: 1px solid var(--border); padding: 28px; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease; position: relative; }
+    .card:hover { border-color: var(--neon-cyan); box-shadow: 0 10px 30px rgba(6, 182, 212, 0.15); transform: translateY(-3px); }
     
     .card-img-container {
       width: 100%;
       height: 200px;
-      border-radius: 6px;
+      border-radius: 8px;
       overflow: hidden;
       margin-bottom: 16px;
       border: 1px solid var(--border);
-      background-color: #F3F4F6;
+      background-color: #0F172A;
     }
     
-    .card-img-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .card-img-container img { width: 100%; height: 100%; object-fit: cover; }
 
     .badge-card-img {
-      height: 120px !important;
-      object-fit: contain !important;
-      border: none !important;
+      width: 100%;
+      height: 220px !important;
+      object-fit: cover !important;
+      border-radius: 8px;
+      border: 1px solid var(--border-glow) !important;
       margin-bottom: 16px;
-      background: transparent;
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
     }
 
-    .card h3 { font-size: 1.4rem; margin-bottom: 8px; }
+    .card h3 { font-size: 1.4rem; margin-bottom: 8px; color: #FFF; }
     .card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 16px; }
     .tags { margin-bottom: 12px; }
-    .tag { display: inline-block; background: #E0E7FF; color: #3730A3; font-size: 0.75rem; font-weight: 600; padding: 4px 8px; border-radius: 4px; margin-right: 6px; margin-bottom: 4px; }
+    .tag { display: inline-block; background: rgba(59, 130, 246, 0.15); color: var(--neon-cyan); font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 20px; margin-right: 6px; margin-bottom: 6px; border: 1px solid rgba(6, 182, 212, 0.3); }
 
     .credential-details {
       margin-top: 12px;
@@ -121,21 +145,21 @@
     }
     .credential-details span { display: block; margin-bottom: 2px; }
 
-    footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; color: var(--muted); font-size: 0.875rem; }
+    footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; color: var(--muted); font-size: 0.875rem; background: #05070B; }
 
-    /* HIGH-VISIBILITY AI CHAT WIDGET STYLING */
+    /* FUTURISTIC HOLOGRAPHIC CHAT WIDGET */
     #ai-bot-tooltip {
       position: fixed;
-      bottom: 100px;
+      bottom: 104px;
       right: 24px;
-      background-color: var(--bot-dark);
+      background: linear-gradient(135deg, #1E293B, #0F172A);
       color: #FFF;
       padding: 10px 16px;
       border-radius: 20px;
       font-size: 0.85rem;
       font-weight: 500;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--neon-cyan);
       z-index: 999;
       cursor: pointer;
       animation: floatBounce 3s infinite ease-in-out;
@@ -153,24 +177,24 @@
       position: fixed;
       bottom: 24px;
       right: 24px;
-      width: 68px;
-      height: 68px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
-      background-color: var(--bot-dark);
-      border: 3px solid var(--accent);
+      background: #0F172A;
+      border: 3px solid var(--neon-cyan);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 0 30px rgba(6, 182, 212, 0.4);
       z-index: 1000;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       overflow: visible;
     }
 
     #ai-bot-trigger:hover {
-      transform: scale(1.08);
-      box-shadow: 0 16px 36px rgba(37, 99, 235, 0.4);
+      transform: scale(1.1);
+      box-shadow: 0 0 40px rgba(6, 182, 212, 0.7);
     }
 
     .trigger-avatar {
@@ -185,41 +209,41 @@
       position: absolute;
       bottom: 2px;
       right: 2px;
-      width: 16px;
-      height: 16px;
-      background-color: #10B981;
-      border: 2px solid var(--bot-dark);
+      width: 18px;
+      height: 18px;
+      background-color: var(--neon-cyan);
+      border: 3px solid var(--bg-dark);
       border-radius: 50%;
-      box-shadow: 0 0 8px #10B981;
+      box-shadow: 0 0 10px var(--neon-cyan);
     }
 
     #ai-bot-window {
       position: fixed;
-      bottom: 100px;
+      bottom: 108px;
       right: 24px;
       width: 400px;
       max-width: calc(100vw - 48px);
       height: 540px;
-      background-color: var(--bot-dark);
+      background-color: #0F172A;
       color: #F8FAFC;
       border-radius: 16px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
       display: flex;
       flex-direction: column;
       z-index: 1001;
       overflow: hidden;
-      border: 1px solid var(--bot-card);
+      border: 1px solid var(--neon-cyan);
     }
 
     #ai-bot-window.hidden { display: none; }
 
     .bot-header {
       padding: 16px;
-      background-color: var(--bot-card);
+      background: linear-gradient(135deg, #1E293B, #0F172A);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid var(--border);
     }
 
     .bot-title-area {
@@ -234,7 +258,8 @@
       border-radius: 50%;
       object-fit: cover;
       object-position: center top;
-      border: 2px solid var(--accent);
+      border: 2px solid var(--neon-cyan);
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
     }
 
     .bot-header-info h4 {
@@ -246,7 +271,7 @@
 
     .bot-header-info span {
       font-size: 0.75rem;
-      color: #34D399;
+      color: var(--neon-cyan);
       display: flex;
       align-items: center;
       gap: 4px;
@@ -255,7 +280,7 @@
     .close-btn {
       background: none;
       border: none;
-      color: #94A3B8;
+      color: var(--muted);
       font-size: 1.5rem;
       cursor: pointer;
       line-height: 1;
@@ -282,13 +307,14 @@
     }
 
     .message.bot {
-      background-color: var(--bot-card);
+      background-color: #1E293B;
       align-self: flex-start;
       border-bottom-left-radius: 2px;
+      border: 1px solid rgba(255,255,255,0.05);
     }
 
     .message.user {
-      background-color: var(--accent);
+      background: linear-gradient(135deg, var(--accent), var(--neon-cyan));
       color: #FFF;
       align-self: flex-end;
       border-bottom-right-radius: 2px;
@@ -299,13 +325,13 @@
       flex-wrap: wrap;
       gap: 6px;
       padding: 0 16px 12px;
-      background-color: var(--bot-card);
+      background-color: #0F172A;
     }
 
     .prompt-btn {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: #CBD5E1;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      color: var(--neon-cyan);
       font-size: 0.75rem;
       padding: 5px 10px;
       border-radius: 14px;
@@ -314,23 +340,23 @@
     }
 
     .prompt-btn:hover {
-      background: var(--accent);
-      color: #FFF;
-      border-color: var(--accent);
+      background: var(--neon-cyan);
+      color: #000;
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
     }
 
     #ai-bot-form {
       padding: 12px;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid var(--border);
       display: flex;
       gap: 8px;
-      background-color: var(--bot-card);
+      background-color: #0F172A;
     }
 
     #ai-bot-input {
       flex: 1;
-      background: var(--bot-dark);
-      border: 1px solid rgba(255,255,255,0.15);
+      background: #090D16;
+      border: 1px solid var(--border);
       color: #FFF;
       padding: 10px 12px;
       border-radius: 8px;
@@ -338,10 +364,10 @@
       font-size: 0.9rem;
     }
 
-    #ai-bot-input:focus { border-color: var(--accent); }
+    #ai-bot-input:focus { border-color: var(--neon-cyan); box-shadow: 0 0 10px rgba(6, 182, 212, 0.2); }
 
     .send-btn {
-      background-color: var(--accent);
+      background: linear-gradient(135deg, var(--accent), var(--neon-cyan));
       color: #FFF;
       border: none;
       padding: 0 16px;
@@ -350,7 +376,7 @@
       font-weight: 500;
     }
 
-    .send-btn:hover { background-color: var(--accent-hover); }
+    .send-btn:hover { box-shadow: 0 0 15px rgba(6, 182, 212, 0.5); }
   </style>
 </head>
 <body>
@@ -358,10 +384,10 @@
   <!-- Header Navigation -->
   <header>
     <div class="container nav">
-      <div class="brand">Elizabeth Enyart-Allen</div>
+      <div class="brand">ELIZABETH.AI</div>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects & Portfolios</a></li>
+        <li><a href="#projects">Portfolios</a></li>
         <li><a href="#leadership">Leadership</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -370,9 +396,10 @@
 
   <main class="container">
     
-    <!-- Hero Section with Headshot and Elevator Pitch -->
+    <!-- Hero Section with Prominent Name & Elevator Pitch -->
     <section id="about" class="hero-container">
       <div class="hero-content">
+        <div class="hero-name">Elizabeth Enyart-Allen</div>
         <h1>Enterprise Product Leader & AI Strategist</h1>
         <p>As an Executive Product Leader and AI Strategist, I bridge the gap between complex technical architectures and high-impact business outcomes. With over 15 years of experience leading enterprise product transformations at organizations like Optum, Target, and the State of Minnesota, I specialize in scaling agentic AI workflows, establishing Responsible AI governance, and optimizing cloud platforms. My focus is on turning fragmented roadmaps into data-driven solutions that drive measurable results, including $2M+ in cost savings and significant operational efficiencies.</p>
         <div class="btn-group">
@@ -448,12 +475,13 @@
       <h2 class="section-title">Leadership & Credentials</h2>
       <div class="grid">
         
-        <!-- MN Women in AI Card with Badge -->
-        <div class="card" style="text-align: center;">
-          <img src="mn-women-in-ai-badge.png" alt="MN Women in AI Founding Member Badge" class="badge-card-img" onerror="this.onerror=null; this.src='badge.png';">
+        <!-- MN Women in AI Card with New Graphic -->
+        <div class="card">
+          <img src="ms.enyart_north star (2).png" alt="MN Women in AI North Star Founding Member Badge" class="badge-card-img" onerror="this.onerror=null; this.src='badge.png';">
           <div>
-            <div class="tags" style="justify-content: center;">
+            <div class="tags">
               <span class="tag">Founding Member</span>
+              <span class="tag">North Star</span>
             </div>
             <h3>MN Women in AI</h3>
             <p>Actively shaping the ecosystem for women leading innovation in artificial intelligence, machine learning, and strategic tech leadership.</p>
@@ -477,6 +505,23 @@
           </div>
         </div>
 
+        <!-- Additional AI & Cloud Certifications Card -->
+        <div class="card">
+          <div>
+            <div class="tags">
+              <span class="tag">Google Cloud</span>
+              <span class="tag">Microsoft Azure</span>
+            </div>
+            <h3>AI & Cloud Certifications</h3>
+            <p>Advanced industry credentials focused on generative AI leadership, cloud governance, and technical platform foundations.</p>
+          </div>
+          <div class="credential-details">
+            <span><strong>Generative AI Leader:</strong> Google Cloud (2026–2029)</span>
+            <span><strong>Azure Fundamentals:</strong> Microsoft Certified</span>
+            <span><strong>Certified Agile Coach:</strong> Chicago State University</span>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -484,7 +529,7 @@
     <section id="contact" class="section">
       <h2 class="section-title">Connect</h2>
       <p style="color: var(--muted); max-width: 600px;">
-        Interested in discussing executive product leadership, AI platform strategy, or technical collaboration? Feel free to reach out directly at <a href="mailto:ms.enyart@gmail.com" style="color: var(--accent); text-decoration: underline;">ms.enyart@gmail.com</a> or ask questions via the Portfolio Assistant.
+        Interested in discussing executive product leadership, AI platform strategy, or technical collaboration? Feel free to reach out directly at <a href="mailto:ms.enyart@gmail.com" style="color: var(--neon-cyan); text-decoration: underline;">ms.enyart@gmail.com</a> or ask questions via the Portfolio Assistant.
       </p>
     </section>
 
@@ -492,13 +537,13 @@
 
   <footer>
     <div class="container">
-      <p>&copy; 2026 Elizabeth Enyart-Allen. Hosted on GitHub Pages.</p>
+      <p>&copy; 2026 Elizabeth Enyart-Allen. Hosted on GitHub Pages. Powered by Neural Interface & JavaScript.</p>
     </div>
   </footer>
 
   <!-- Floating Callout Tooltip Banner -->
   <div id="ai-bot-tooltip" onclick="openChat()">
-    <span>💬 Ask me about Elizabeth's experience!</span>
+    <span>💬 Ask my custom AI assistant!</span>
   </div>
 
   <!-- Floating Avatar Chat Button with Headshot -->
@@ -514,7 +559,7 @@
         <img src="Portfolio Headshot.avif" alt="Elizabeth Enyart-Allen Avatar" class="bot-header-avatar" onerror="this.src='profile.avif';">
         <div class="bot-header-info">
           <h4>Ask Elizabeth's AI</h4>
-          <span>● Active Portfolio Assistant</span>
+          <span>● Neural Link Active</span>
         </div>
       </div>
       <button class="close-btn" id="ai-bot-close" aria-label="Close Assistant">&times;</button>
@@ -594,7 +639,7 @@
       },
       {
         keywords: ['caitl', 'credential', 'certif', 'usaii', 'google', 'azure', 'education', 'degree', 'emba', 'mba', 'carlson', 'school', 'university'],
-        response: "Education & Certifications:\n• Executive MBA (EMBA) - Carlson School of Management, University of Minnesota\n• B.S. in Medical Technology - University of Minnesota\n• Certified AI Transformation Leader™ (CAITL™) - USAII® / Bravura (Credential ID: 8718400406)\n• Generative AI Leader Certification - Google Cloud (May 2026 – May 2029)\n• Azure Fundamentals Certified - Microsoft\n• Certified Agile Coach (CAC) - Chicago State University"
+        response: "AI Certifications & Education:\n• Certified AI Transformation Leader™ (CAITL™) - USAII® / Bravura (Credential ID: 8718400406)\n• Generative AI Leader Certification - Google Cloud (May 2026 – May 2029)\n• Azure Fundamentals Certified - Microsoft\n• Certified Agile Coach (CAC) - Chicago State University\n• Executive MBA (EMBA) - Carlson School of Management, University of Minnesota\n• B.S. in Medical Technology - University of Minnesota"
       },
       {
         keywords: ['skill', 'tech', 'stack', 'tool', 'ai', 'rag', 'llm', 'governance', 'responsible ai', 'docker', 'sql'],
@@ -605,8 +650,8 @@
         response: "Elizabeth establishes Responsible AI governance frameworks focusing on data lineage, model auditability, ethical AI standards, and human-in-the-loop workflows to safely scale intelligent applications in enterprise environments."
       },
       {
-        keywords: ['mn women in ai', 'women in ai', 'founding', 'community'],
-        response: "Elizabeth is a Founding Member of MN Women in AI, actively shaping the ecosystem for women leading innovation in artificial intelligence, machine learning, and strategic tech leadership."
+        keywords: ['mn women in ai', 'women in ai', 'founding', 'community', 'north star'],
+        response: "Elizabeth is a Founding Member and North Star Member of MN Women in AI, actively shaping the ecosystem for women leading innovation in artificial intelligence, machine learning, and strategic tech leadership."
       },
       {
         keywords: ['project', 'n8n', 'chat', 'patient', 'agent', 'automation'],
