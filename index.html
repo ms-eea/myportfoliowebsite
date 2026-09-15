@@ -363,10 +363,13 @@
 
       try {
         const response = await fetch(N8N_WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: userMessage, sessionId: sessionId })
-        });
+  method: 'POST',
+  headers: { 
+    'Content-Type': 'application/json',
+    'Bypass-Tunnel-Reminder': 'true'
+  },
+  body: JSON.stringify({ message: userMessage, sessionId: sessionId })
+});
         
         if (!response.ok) {
           throw new Error('Network response failed');
