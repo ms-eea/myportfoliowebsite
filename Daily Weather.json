@@ -1,0 +1,181 @@
+{
+  "name": "^^^^^^  Daily Weather",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://api.tomorrow.io/v4/weather/forecast",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpMultipleHeadersAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "location",
+              "value": "HIDDEN"
+            },
+            {
+              "name": "timelines",
+              "value": "1d,1m"
+            },
+            {
+              "name": "units",
+              "value": "imperial"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        224,
+        -160
+      ],
+      "id": "HIDDEN,
+      "name": "HTTP Request",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "notesInFlow": true,
+      "credentials": {
+        "httpMultipleHeadersAuth": {
+          "id": "MY_API_KEY,
+          "name": "Multiple Headers Auth account"
+        }
+      },
+      "onError": "continueRegularOutput",
+      "notes": "On Error Continue enabled: Passes default fallback data downstream if parsing fails."
+    },
+    {
+      "parameters": {
+        "chatId": "-5278363457",
+        "text": "= {{ $json.content.parts[0].text }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        800,
+        -160
+      ],
+      "id": "f132de55-0d88-43e4-8e66-23ae86b26c4e",
+      "name": "Send a text message",
+      "webhookId": "c408048b-fb3a-40dd-af84-7841a9b23f20",
+      "credentials": {
+        "telegramApi": {
+          "id": "DsYWJwALTHTGZWN7",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "=models/gemini-3-flash-preview",
+          "mode": "id"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You are a friendly, concise morning weather assistant for Saint Paul, Minnesota. \n\nGenerate a brief, engaging morning forecast based ONLY on the following weather data:\n- Current Temp: {{ Math.round($json.timelines.minutely[0].values.temperature) }}°F\n- Today's Expected High: {{ Math.round($json.timelines.daily[0].values.temperatureMax) }}°F\n- Today's Expected Low: {{ Math.round($json.timelines.daily[0].values.temperatureMin) }}°F\n- Max Rain Chance Today: {{ $json.timelines.daily[0].values.precipitationProbabilityMax }}%\n- Average Wind Speed: {{ Math.round($json.timelines.daily[0].values.windSpeedAvg) }} mph\n- Weather Code ID: {{ $json.timelines.daily[0].values.weatherCodeMax }}\n\nFormatting Guidelines:\n1. Start with a warm \"Good morning, Saint Paul!\" greeting.\n2. State the current temperature, then highlight today's forecast high and low temperatures in 2 sentences.\n3. Translate the Weather Code ID (e.g., 1000 = Clear/Sunny, 1100 = Mostly Clear, 1001 = Cloudy, 4000 = Rain) into natural language.\n4. Provide one practical outfit/planning tip based on the weather.\n5. Include a \"Word of the Day\" section at the end: an interesting word, with pronouciation, and short defintion. \n6. Keep total length under 90 words."
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        448,
+        -160
+      ],
+      "id": "HIDDEN",
+      "name": "Message a model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "HIDDEN",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 10
+            }
+          ]
+        },
+        "misfirePolicy": "coalesce_owner"
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        -160
+      ],
+      "id": "HIDDEN",
+      "name": "Schedule Trigger1",
+      "retryOnFail": true,
+      "waitBetweenTries": 3000,
+      "alwaysOutputData": false,
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "timezone": "America/Chicago",
+    "callerPolicy": "workflowsFromSameOwner",
+    "saveExecutionProgress": true
+  },
+  "versionId": "96f7e227-bf1f-4b80-bd87-ab86413e7c9f",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0a4db2929bd9c4f5466a0466e1f29200c35a651e683f0cf62d070a24233ca05e"
+  },
+  "nodeGroups": [],
+  "id": "FHkosf0nALLGrjv0",
+  "tags": []
+}
