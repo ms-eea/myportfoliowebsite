@@ -460,7 +460,7 @@
       <h2 class="section-title">Projects & Portfolio Showcase</h2>
       <div class="grid">
         
-        <!-- Project 0: Enterprise AI Sycophancy & Guardrails Audit Harness -->
+        <!-- Project 1: Enterprise AI Sycophancy & Guardrails Audit Harness -->
         <div class="card" style="border-color: rgba(6, 182, 212, 0.4); box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);">
           <div>
             <div class="tags">
@@ -484,23 +484,35 @@
           </div>
         </div>
 
-        <!-- Project 1: AI Patient Chat Agent -->
-        <div class="card">
+        <!-- Project 2: AI Patient Agent Chat -->
+        <div class="card" style="border-color: rgba(6, 182, 212, 0.4);">
           <div class="card-img-container">
             <img src="AI Patient Agent Chat.jpg" alt="AI Patient Agent Chat Interface" onerror="this.parentElement.style.display='none'">
           </div>
           <div>
             <div class="tags">
-              <span class="tag">AI & Healthcare</span>
-              <span class="tag">n8n Workflow</span>
+              <span class="tag">Healthcare AI</span>
+              <span class="tag">n8n Agent</span>
               <span class="tag">Gemini API</span>
+              <span class="tag">Clinical Guardrails</span>
             </div>
-            <h3>AI Patient Chat Agent</h3>
-            <p>An interactive, n8n-powered conversational agent integrated with Gemini models to streamline patient interactions, prescription refills, and scheduling workflows.</p>
+            <h3>AI Patient Agent Chat</h3>
+            <p>An agentic conversational workflow built in n8n leveraging Google Gemini to automate patient appointment rescheduling and clinical triage escalation for medication refills.</p>
+            
+            <ul class="card-highlights">
+              <li><strong>Clinical Guardrail Enforcement:</strong> Custom JavaScript tools enforce deterministic routing for restricted medications (e.g., Adderall) to human triage[cite: 2].</li>
+              <li><strong>Dynamic Slot Selection:</strong> Tool-assisted state management handling multi-turn appointment rescheduling (Location & Timeframe selection)[cite: 2].</li>
+              <li><strong>LLM Tool-Calling Architecture:</strong> Gemini Chat Model dynamically invoking custom JavaScript execution tools based on utterance intent[cite: 2].</li>
+            </ul>
+          </div>
+
+          <div class="card-actions">
+            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/workflows/ai-patient-agent-chat/ai_patient_agent_chat.json" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Workflow JSON</a>
+            <a href="https://github.com/ms-eea/myportfoliowebsite/tree/main/workflows/ai-patient-agent-chat" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Architecture Specs</a>
           </div>
         </div>
 
-        <!-- Project 2: Agentic Automation Engine -->
+        <!-- Project 3: Enterprise AI Automation Engine -->
         <div class="card">
           <div class="card-img-container">
             <img src="automation-architecture.png" alt="Automation Pipeline Architecture" onerror="this.parentElement.style.display='none'">
@@ -516,7 +528,7 @@
           </div>
         </div>
 
-        <!-- Project 3: FinOps & Cloud Observability -->
+        <!-- Project 4: FinOps & Cloud Observability -->
         <div class="card">
           <div class="card-img-container">
             <img src="cloud-telemetry.png" alt="Cloud Telemetry Dashboard" onerror="this.parentElement.style.display='none'">
