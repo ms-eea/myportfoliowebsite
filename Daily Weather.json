@@ -62,7 +62,7 @@
       "webhookId": "c408048b-fb3a-40dd-af84-7841a9b23f20",
       "credentials": {
         "telegramApi": {
-          "id": "DsYWJwALTHTGZWN7",
+          "id": "HIDDEN",
           "name": "Telegram account"
         }
       }
@@ -173,7 +173,7 @@
   "versionId": "96f7e227-bf1f-4b80-bd87-ab86413e7c9f",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "0a4db2929bd9c4f5466a0466e1f29200c35a651e683f0cf62d070a24233ca05e"
+    "instanceId": "HIDDEN"
   },
   "nodeGroups": [],
   "id": "FHkosf0nALLGrjv0",
