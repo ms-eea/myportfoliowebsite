@@ -500,9 +500,9 @@
             <p>An agentic conversational workflow built in n8n leveraging Google Gemini to automate patient appointment rescheduling and clinical triage escalation for medication refills.</p>
             
             <ul class="card-highlights">
-              <li><strong>Clinical Guardrail Enforcement:</strong> Custom JavaScript tools enforce deterministic routing for restricted medications (e.g., Adderall) to human triage[cite: 2].</li>
-              <li><strong>Dynamic Slot Selection:</strong> Tool-assisted state management handling multi-turn appointment rescheduling (Location & Timeframe selection)[cite: 2].</li>
-              <li><strong>LLM Tool-Calling Architecture:</strong> Gemini Chat Model dynamically invoking custom JavaScript execution tools based on utterance intent[cite: 2].</li>
+              <li><strong>Clinical Guardrail Enforcement:</strong> Custom JavaScript tools enforce deterministic routing for restricted medications (e.g., Adderall) to human triage.</li>
+              <li><strong>Dynamic Slot Selection:</strong> Tool-assisted state management handling multi-turn appointment rescheduling (Location & Timeframe selection).</li>
+              <li><strong>LLM Tool-Calling Architecture:</strong> Gemini Chat Model dynamically invoking custom JavaScript execution tools based on utterance intent.</li>
             </ul>
           </div>
 
@@ -512,19 +512,28 @@
           </div>
         </div>
 
-        <!-- Project 3: Enterprise AI Automation Engine -->
-        <div class="card">
-          <div class="card-img-container">
-            <img src="automation-architecture.png" alt="Automation Pipeline Architecture" onerror="this.parentElement.style.display='none'">
-          </div>
+        <!-- Project 3: Daily Weather AI Automation Engine -->
+        <div class="card" style="border-color: rgba(6, 182, 212, 0.4);">
           <div>
             <div class="tags">
-              <span class="tag">n8n</span>
-              <span class="tag">Docker</span>
-              <span class="tag">APIs & Automation</span>
+              <span class="tag">n8n Workflow</span>
+              <span class="tag">Tomorrow.io API</span>
+              <span class="tag">Gemini 1.5 Flash</span>
+              <span class="tag">Telegram Bot</span>
             </div>
-            <h3>Enterprise AI Automation Engine</h3>
-            <p>Self-hosted automation pipeline leveraging Docker Desktop, SerpApi, Telegram endpoints, Google Sheets, and custom AI agents for live operational tracking.</p>
+            <h3>Daily Weather AI Automation Engine</h3>
+            <p>An automated morning briefing pipeline fetching real-time weather telemetry and leveraging Google Gemini to deliver concise, formatted forecasts with custom daily outfit tips directly to Telegram.</p>
+            
+            <ul class="card-highlights">
+              <li><strong>Automated Telemetry Fetching:</strong> Scheduled ingestion of minutely and daily forecast timelines via Tomorrow.io API.</li>
+              <li><strong>LLM Context Synthesis:</strong> Direct prompt engineering parsing raw weather code IDs, temperature ranges, and precipitation probability into natural language.</li>
+              <li><strong>Multi-Channel Bot Delivery:</strong> Seamless webhook integration routing generated summaries straight to dedicated Telegram chat channels.</li>
+            </ul>
+          </div>
+
+          <div class="card-actions">
+            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/Daily%20Weather.json" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Workflow JSON</a>
+            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/Daily%20Weather%20n8n%20workflow.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Interactive Canvas</a>
           </div>
         </div>
 
