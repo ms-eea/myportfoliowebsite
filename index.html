@@ -155,7 +155,24 @@
     }
     .credential-details span { display: block; margin-bottom: 2px; }
 
-    /* Custom Highlights & Card Links */
+    /* At-a-Glance Executive Summary Styling */
+    .at-a-glance {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 16px;
+    }
+
+    .at-a-glance-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--neon-cyan);
+      margin-bottom: 8px;
+    }
+
     .card-highlights {
       list-style-type: none;
       padding-left: 0;
@@ -466,21 +483,25 @@
             <div class="tags">
               <span class="tag">Enterprise AI</span>
               <span class="tag">LLM Governance</span>
-              <span class="tag">Google Colab</span>
+              <span class="tag">Python Testing</span>
             </div>
             <h3>Enterprise AI Sycophancy & Guardrails Audit Harness</h3>
-            <p>An automated testing framework evaluating model drift, sycophancy, and policy survival rates when users push back against clinical or enterprise safety boundaries.</p>
+            
+            <div class="at-a-glance">
+              <div class="at-a-glance-title">Executive Summary</div>
+              <p style="margin-bottom: 0; font-size: 0.88rem;">An automated Python testing framework designed to evaluate LLM behavior under adversarial conditions—quantifying model drift, sycophancy (agreeing with flawed user premises), and safety policy survival rates before production deployment.</p>
+            </div>
             
             <ul class="card-highlights">
-              <li><strong>Adversarial Simulation:</strong> Stress-tests models against user pushback, policy evasion, and symptom minimization.</li>
-              <li><strong>Guardrail Benchmarking:</strong> Compares raw LLM outputs against system-prompted, bounded guardrails.</li>
-              <li><strong>Automated Audit Scorecard:</strong> Structured Pandas metrics tracking policy adherence and referral survival rates.</li>
+              <li><strong>Adversarial Pushback Testing:</strong> Simulates user evasion and symptom downplaying to evaluate model resistance.</li>
+              <li><strong>Guardrail Benchmarking:</strong> Compares raw model outputs against system-prompted, bounded safety guardrails.</li>
+              <li><strong>Automated Audit Scorecards:</strong> Structured Pandas metrics tracking policy adherence and referral survival rates.</li>
             </ul>
           </div>
 
           <div class="card-actions">
-            <a href="https://colab.research.google.com/github/ms-eea/myportfoliowebsite/blob/main/Enterprise_AI_Sycophancy_%26_Guardrails_Audit_Harness.ipynb" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Run in Colab</a>
-            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/Enterprise_AI_Sycophancy_%26_Guardrails_Audit_Harness.ipynb" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub Notebook</a>
+            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/Enterprise_AI_Sycophancy_%26_Guardrails_Audit_Harness.ipynb" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Notebook & Logic</a>
+            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/README.md" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Architecture Specs</a>
           </div>
         </div>
 
@@ -491,21 +512,24 @@
               <span class="tag">AI Governance</span>
               <span class="tag">Product Strategy</span>
               <span class="tag">Unit Economics</span>
-              <span class="tag">Google Colab</span>
             </div>
             <h3>Dynamic Enterprise Product Evaluation Harness</h3>
-            <p>A standardized evaluation framework and Python testing harness designed to score enterprise AI initiatives across financial ROI, operational latency, guardrail survival rates, and system safety.</p>
+            
+            <div class="at-a-glance">
+              <div class="at-a-glance-title">Executive Summary</div>
+              <p style="margin-bottom: 0; font-size: 0.88rem;">A standardized evaluation framework and Python engine designed to score AI initiatives across four enterprise dimensions: financial ROI, execution latency, safety compliance, and task completion velocity.</p>
+            </div>
             
             <ul class="card-highlights">
               <li><strong>Multi-Dimensional Scoring Model:</strong> Computes weighted composite health scores across unit economics, compliance, and velocity.</li>
               <li><strong>Automated Threshold Monitoring:</strong> Algorithmic flagging for prompt drift, cost spikes, and safety degradation prior to production deployment.</li>
-              <li><strong>Executive Visualizations:</strong> Generates multi-axis radar charts and automated summary scorecards for platform leadership review.</li>
+              <li><strong>Executive Scorecards:</strong> Generates multi-axis radar charts and automated summary scorecards for platform leadership review.</li>
             </ul>
           </div>
 
           <div class="card-actions">
-            <a href="https://colab.research.google.com/github/ms-eea/myportfoliowebsite/blob/main/Dynamic_Enterprise_Product_Evaluation_Harness.ipynb" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Run in Colab</a>
-            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/Dynamic_Enterprise_Product_Evaluation_Harness.ipynb" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub Notebook</a>
+            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/Dynamic_Enterprise_Product_Evaluation_Harness.ipynb" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Notebook & Logic</a>
+            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/README.md" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Governance Docs</a>
           </div>
         </div>
 
@@ -522,7 +546,11 @@
               <span class="tag">Clinical Guardrails</span>
             </div>
             <h3>AI Patient Agent Chat</h3>
-            <p>An agentic conversational workflow built in n8n leveraging Google Gemini to automate patient appointment rescheduling and clinical triage escalation for medication refills.</p>
+            
+            <div class="at-a-glance">
+              <div class="at-a-glance-title">Executive Summary</div>
+              <p style="margin-bottom: 0; font-size: 0.88rem;">An agentic conversational workflow built in n8n leveraging Google Gemini to automate patient appointment rescheduling and enforce clinical triage escalation for medication refills.</p>
+            </div>
             
             <ul class="card-highlights">
               <li><strong>Clinical Guardrail Enforcement:</strong> Custom JavaScript tools enforce deterministic routing for restricted medications (e.g., Adderall) to human triage[cite: 2].</li>
@@ -547,12 +575,16 @@
               <span class="tag">Telegram Bot</span>
             </div>
             <h3>Daily Weather AI Automation Engine</h3>
-            <p>An automated morning briefing pipeline fetching real-time weather telemetry and leveraging Google Gemini to deliver concise, formatted forecasts with custom daily outfit tips directly to Telegram.</p>
+            
+            <div class="at-a-glance">
+              <div class="at-a-glance-title">Executive Summary</div>
+              <p style="margin-bottom: 0; font-size: 0.88rem;">An automated morning briefing pipeline fetching real-time weather telemetry and leveraging Google Gemini to deliver concise, formatted forecasts with custom daily outfit tips directly to Telegram.</p>
+            </div>
             
             <ul class="card-highlights">
-              <li><strong>Automated Telemetry Fetching:</strong> Scheduled ingestion of minutely and daily forecast timelines via Tomorrow.io API.</li>
+              <li><strong>Automated Telemetry Ingestion:</strong> Scheduled fetching of minutely and daily forecast timelines via Tomorrow.io REST API.</li>
               <li><strong>LLM Context Synthesis:</strong> Direct prompt engineering parsing raw weather code IDs, temperature ranges, and precipitation probability into natural language.</li>
-              <li><strong>Multi-Channel Bot Delivery:</strong> Seamless webhook integration routing generated summaries straight to dedicated Telegram chat channels.</li>
+              <li><strong>Multi-Channel Bot Delivery:</strong> Webhook integration routing generated summaries straight to dedicated Telegram chat channels.</li>
             </ul>
           </div>
 
@@ -572,10 +604,14 @@
               <span class="tag">FinOps</span>
               <span class="tag">OpenTelemetry</span>
               <span class="tag">Cloud Architecture</span>
-              <span class="tag">Google Colab</span>
+              <span class="tag">Unit Economics</span>
             </div>
             <h3>Cloud Telemetry & FinOps Observability Engine</h3>
-            <p>An enterprise cloud governance and telemetry pipeline designed to track multi-cloud dependency flows, detect resource anomalies, and enforce automated lifecycle rules delivering $2M+ in structural cost optimizations.</p>
+            
+            <div class="at-a-glance">
+              <div class="at-a-glance-title">Executive Summary</div>
+              <p style="margin-bottom: 0; font-size: 0.88rem;">An enterprise cloud governance strategy and telemetry framework designed to track multi-cloud dependency flows, detect idle resource anomalies, and enforce automated lifecycle rules—delivering $2M+ in cost optimizations.</p>
+            </div>
             
             <ul class="card-highlights">
               <li><strong>Unit Economic Telemetry:</strong> Correlates real-time infrastructure spend directly against active platform user volume to quantify cost-per-transaction.</li>
@@ -585,8 +621,8 @@
           </div>
 
           <div class="card-actions">
-            <a href="https://colab.research.google.com/github/ms-eea/myportfoliowebsite/blob/main/Cloud_Observability_FinOps_Pipeline.ipynb" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Run in Colab</a>
-            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/Cloud_Observability_FinOps_Pipeline.ipynb" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub Notebook</a>
+            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/Cloud_Observability_FinOps_Pipeline.ipynb" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Strategy Notebook</a>
+            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/README.md" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Governance Docs</a>
           </div>
         </div>
 
@@ -737,15 +773,15 @@
       },
       {
         keywords: ['projects', 'portfolio', 'showcase', 'built', 'work', 'code'],
-        response: "Elizabeth features five hands-on technical portfolio projects showcasing AI governance, healthcare automation, and platform FinOps:\n\n1. Enterprise AI Sycophancy & Guardrails Audit Harness (Google Colab)\n2. Dynamic Enterprise Product Evaluation Harness (Google Colab)\n3. AI Patient Agent Chat (n8n + Gemini API)\n4. Daily Weather AI Automation Engine (n8n + Tomorrow.io + Telegram)\n5. Cloud Telemetry & FinOps Observability Engine (FinOps & Governance)\n\nAsk me about any specific project to learn more!"
+        response: "Elizabeth features five hands-on technical portfolio projects showcasing AI governance, healthcare automation, and platform FinOps:\n\n1. Enterprise AI Sycophancy & Guardrails Audit Harness (Python Testing Notebook)\n2. Dynamic Enterprise Product Evaluation Harness (Python Governance Engine)\n3. AI Patient Agent Chat (n8n + Gemini API)\n4. Daily Weather AI Automation Engine (n8n + Tomorrow.io + Telegram)\n5. Cloud Telemetry & FinOps Observability Engine (FinOps & Governance)\n\nAsk me about any specific project to learn more!"
       },
       {
         keywords: ['sycophancy', 'guardrail', 'audit harness'],
-        response: "The Enterprise AI Sycophancy & Guardrails Audit Harness is a Python testing notebook built in Google Colab. It stress-tests LLMs against user pushback, symptom downplaying, and policy evasion to quantify model drift and verify system-prompted guardrails before production deployment."
+        response: "The Enterprise AI Sycophancy & Guardrails Audit Harness is an automated Python testing framework. It stress-tests LLMs against user pushback, symptom downplaying, and policy evasion to quantify model drift and verify system-prompted guardrails before production deployment."
       },
       {
         keywords: ['evaluation harness', 'scorecard', 'dynamic enterprise', 'metrics'],
-        response: "The Dynamic Enterprise Product Evaluation Harness is a standardized Python scoring framework in Google Colab. It computes composite health scores across unit economics (cost-per-run), operational velocity, latency, and safety survival rates to help platform leaders make data-driven deployment decisions."
+        response: "The Dynamic Enterprise Product Evaluation Harness is a standardized Python scoring framework. It computes composite health scores across unit economics (cost-per-run), operational velocity, latency, and safety survival rates to help platform leaders make data-driven deployment decisions."
       },
       {
         keywords: ['patient agent', 'patient chat', 'adderall', 'triage', 'appointment'],
