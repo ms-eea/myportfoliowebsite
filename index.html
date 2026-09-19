@@ -442,7 +442,7 @@
       <div class="hero-content">
         <div class="hero-name">Elizabeth Enyart-Allen</div>
         <h1>Enterprise Product Leader & AI Strategist</h1>
-        <p>Based in the Twin Cities, Minnesota, I bridge the gap between complex technical architectures and high-impact business outcomes. Grounded in a clinical foundation as a Medical Laboratory Scientist and managing global bone marrow transplant registries at NMDP/CIBMTR, I bring a deeply empathetic, patient-centric perspective to tech leadership. Throughout my 15+ years leading digital transformations across organizations like NovuHealth, Target, Optum, and GPN Technologies, I’ve learned that the true heart of great product strategy isn't just the code—it’s the people. Whether I’m scaling agentic AI workflows, architecting $2M+ in cloud cost optimizations, or leading workshops where everyone feels heard and supported, I turn complex technical potential into accessible, measurable, and human-centered results.</p>
+        <p>Based in the Twin Cities, Minnesota, I bridge the gap between complex technical architectures and high-impact business outcomes. Grounded in a clinical foundation as a Medical Laboratory Scientist and holding an Executive MBA from the Carlson School of Management, I bring both strategic business acumen and a deeply empathetic, patient-centric perspective to tech leadership. Throughout my 15+ years leading digital transformations across organizations like NovuHealth, Target, Optum, and GPN Technologies, I’ve learned that the true heart of great product strategy isn't just the code—it’s the people. Whether I’m scaling agentic AI workflows, architecting $2M+ in cloud cost optimizations, or leading workshops where everyone feels heard and supported, I turn complex technical potential into accessible, measurable, and human-centered results.</p>
         <div class="btn-group">
           <a href="#projects" class="btn btn-primary">Explore Portfolios</a>
           <a href="#contact" class="btn btn-secondary">Get in Touch</a>
@@ -598,16 +598,22 @@
       <h2 class="section-title">Leadership & Credentials</h2>
       <div class="grid">
         
-        <!-- MN Women in AI North Star Badge -->
-        <div class="card">
-          <img src="ms.enyart_north star (2).png" alt="MN Women in AI North Star Founding Member Badge" class="badge-card-img" onerror="this.onerror=null; this.src='badge.png';">
+        <!-- Carlson EMBA Degree Card -->
+        <div class="card" style="border-color: rgba(6, 182, 212, 0.3);">
           <div>
             <div class="tags">
-              <span class="tag">Founding Member</span>
-              <span class="tag">North Star</span>
+              <span class="tag">Carlson EMBA</span>
+              <span class="tag">Executive Leadership</span>
             </div>
-            <h3>MN Women in AI</h3>
-            <p>Actively shaping the ecosystem for women leading innovation in artificial intelligence, machine learning, and strategic tech leadership.</p>
+            <h3>Executive MBA (EMBA)</h3>
+            <p>Carlson School of Management, University of Minnesota</p>
+            <p style="color: var(--muted); font-size: 0.88rem; margin-top: 8px;">
+              Advanced executive curriculum focused on strategic digital transformation, platform unit economics, global supply chain strategy, and financial management.
+            </p>
+          </div>
+          <div class="credential-details">
+            <span><strong>Degree:</strong> Executive Master of Business Administration</span>
+            <span><strong>Institution:</strong> University of Minnesota</span>
           </div>
         </div>
 
@@ -625,6 +631,19 @@
             <span><strong>Credential ID:</strong> 8718400406</span>
             <span><strong>Issued:</strong> September 12, 2026</span>
             <span><strong>Expires:</strong> September 11, 2029</span>
+          </div>
+        </div>
+
+        <!-- MN Women in AI North Star Badge -->
+        <div class="card">
+          <img src="ms.enyart_north star (2).png" alt="MN Women in AI North Star Founding Member Badge" class="badge-card-img" onerror="this.onerror=null; this.src='badge.png';">
+          <div>
+            <div class="tags">
+              <span class="tag">Founding Member</span>
+              <span class="tag">North Star</span>
+            </div>
+            <h3>MN Women in AI</h3>
+            <p>Actively shaping the ecosystem for women leading innovation in artificial intelligence, machine learning, and strategic tech leadership.</p>
           </div>
         </div>
 
@@ -690,7 +709,7 @@
     
     <div id="ai-bot-messages">
       <div class="message bot">
-        Hello! I'm Elizabeth's custom-built Portfolio Assistant. 🧠✨ She created me to help you navigate her work. Ask me about her clinical roots, healthcare product leadership, AI credentials, or any of her portfolio projects!
+        Hello! I'm Elizabeth's custom-built Portfolio Assistant. 🧠✨ She created me to help you navigate her work. Ask me about her clinical roots, her Executive MBA from Carlson, her AI credentials, or any of her portfolio projects!
       </div>
     </div>
 
@@ -698,7 +717,7 @@
     <div class="quick-prompts">
       <button class="prompt-btn" onclick="sendQuickPrompt('Tell me about her portfolio projects')">Portfolio Projects</button>
       <button class="prompt-btn" onclick="sendQuickPrompt('Tell me about Elizabeth')">About Her</button>
-      <button class="prompt-btn" onclick="sendQuickPrompt('What is her clinical focus?')">Clinical Focus</button>
+      <button class="prompt-btn" onclick="sendQuickPrompt('What is her education and MBA?')">MBA & Education</button>
       <button class="prompt-btn" onclick="sendQuickPrompt('What are her AI certifications?')">AI Credentials</button>
       <button class="prompt-btn" onclick="sendQuickPrompt('What measurable results has she delivered?')">Key Results</button>
     </div>
@@ -712,6 +731,10 @@
   <script>
     // Comprehensive Knowledge Base with Clean Keyword Separation & Detailed Project Info
     const KNOWLEDGE_BASE = [
+      {
+        keywords: ['mba', 'carlson', 'education', 'degree', 'university of minnesota', 'schooling'],
+        response: "Elizabeth holds an Executive Master of Business Administration (EMBA) from the Carlson School of Management at the University of Minnesota, alongside her B.S. in Medical Technology! Her EMBA background gives her deep strategic expertise in enterprise finance, digital transformation, and platform unit economics."
+      },
       {
         keywords: ['projects', 'portfolio', 'showcase', 'built', 'work', 'code'],
         response: "Elizabeth features five hands-on technical portfolio projects showcasing AI governance, healthcare automation, and platform FinOps:\n\n1. Enterprise AI Sycophancy & Guardrails Audit Harness (Google Colab)\n2. Dynamic Enterprise Product Evaluation Harness (Google Colab)\n3. AI Patient Agent Chat (n8n + Gemini API)\n4. Daily Weather AI Automation Engine (n8n + Tomorrow.io + Telegram)\n5. Cloud Telemetry & FinOps Observability Engine (FinOps & Governance)\n\nAsk me about any specific project to learn more!"
@@ -746,7 +769,7 @@
       },
       {
         keywords: ['caitl', 'credential', 'cert', 'certificate', 'certification', 'google cloud', 'azure', 'usaii'],
-        response: "Professional Certifications & Education:\n• Certified AI Transformation Leader™ (CAITL™) - USAII® / Bravura (Credential ID: 8718400406): Executive certification validating mastery in enterprise AI transformation strategy, governance, and deployment models.\n• Generative AI Leader Certification - Google Cloud (2026–2029): Advanced proficiency in cloud-native generative AI technologies, model orchestration, and LLM capabilities.\n• Azure Fundamentals Certified - Microsoft: Foundational knowledge of cloud core services, security, privacy, and compliance in Microsoft Azure.\n• Certified Agile Coach (CAC) - Chicago State University\n• Executive MBA (EMBA) - Carlson School of Management, University of Minnesota\n• B.S. in Medical Technology - University of Minnesota"
+        response: "Professional Certifications & Education:\n• Executive MBA (EMBA) - Carlson School of Management, University of Minnesota\n• Certified AI Transformation Leader™ (CAITL™) - USAII® / Bravura (Credential ID: 8718400406): Executive certification validating mastery in enterprise AI transformation strategy, governance, and deployment models.\n• Generative AI Leader Certification - Google Cloud (2026–2029): Advanced proficiency in cloud-native generative AI technologies, model orchestration, and LLM capabilities.\n• Azure Fundamentals Certified - Microsoft: Foundational knowledge of cloud core services, security, privacy, and compliance in Microsoft Azure.\n• Certified Agile Coach (CAC) - Chicago State University\n• B.S. in Medical Technology - University of Minnesota"
       },
       {
         keywords: ['clinical focus', 'healthcare background', 'healthcare career', 'medical background', 'health tech'],
@@ -782,12 +805,12 @@
       },
       {
         keywords: ['about', 'who is', 'background', 'summary', 'bio', 'overview', 'profile', 'her', 'elizabeth'],
-        response: "If you're wondering what it's like to work with Elizabeth—who is proudly based right here in the Twin Cities, Minnesota—let me give you the inside scoop! She brings deep curiosity and exceptionally high emotional intelligence to everything she does. While she has a wealth of technical expertise and executive product strategy chops (backed by a fascinating clinical background as a Medical Laboratory Scientist and clinical data leader at NMDP/CIBMTR), her true superpower is how she connects with people. Whether she's leading enterprise transformations at Optum and Target or delivering workshops and training sessions, she has a wonderful gift for teaching in a way that makes everyone feel genuinely heard and completely supported—never judged for asking a question. She consistently pulls down stellar ratings and glowing comments for her compassion, teaching style, and ability to make complex concepts completely accessible!"
+        response: "If you're wondering what it's like to work with Elizabeth—who is proudly based right here in the Twin Cities, Minnesota—let me give you the inside scoop! She brings deep curiosity and exceptionally high emotional intelligence to everything she does. While she has a wealth of technical expertise and executive product strategy chops (backed by an EMBA from Carlson and a clinical background as a Medical Laboratory Scientist and clinical data leader at NMDP/CIBMTR), her true superpower is how she connects with people. Whether she's leading enterprise transformations at Optum and Target or delivering workshops and training sessions, she has a wonderful gift for teaching in a way that makes everyone feel genuinely heard and completely supported—never judged for asking a question. She consistently pulls down stellar ratings and glowing comments for her compassion, teaching style, and ability to make complex concepts completely accessible!"
       }
     ];
 
     // Fallback if query is unknown
-    const FALLBACK_RESPONSE = "Elizabeth didn't program me with the answer to that one yet! 😅 I'm just her custom portfolio bot. But I can tell you all about her clinical roots, her 15+ years of product leadership, her CAITL™ / Google AI credentials, or any of her 5 portfolio projects. What would you like to know?";
+    const FALLBACK_RESPONSE = "Elizabeth didn't program me with the answer to that one yet! 😅 I'm just her custom portfolio bot. But I can tell you all about her clinical roots, her Carlson EMBA, her 15+ years of product leadership, her CAITL™ / Google AI credentials, or any of her 5 portfolio projects. What would you like to know?";
 
     // DOM Elements
     const windowEl = document.getElementById('ai-bot-window');
