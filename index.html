@@ -37,7 +37,7 @@
     .nav-links { display: flex; gap: 24px; list-style: none; font-weight: 400; font-size: 0.95rem; }
     .nav-links a:hover { color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan); }
 
-    /* Hero Area with Massive Prominent Name & Cyber Glow */
+    /* Hero Area with Cyber Glow */
     .hero-container {
       display: flex;
       align-items: center;
@@ -119,17 +119,30 @@
     .card { background: var(--card-bg); border: 1px solid var(--border); padding: 28px; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease; position: relative; }
     .card:hover { border-color: var(--neon-cyan); box-shadow: 0 10px 35px rgba(6, 182, 212, 0.2); transform: translateY(-3px); }
     
+    /* High-Impact Infographic Image Containers */
     .card-img-container {
       width: 100%;
-      height: 200px;
+      height: 240px;
       border-radius: 8px;
       overflow: hidden;
       margin-bottom: 16px;
       border: 1px solid var(--border);
-      background-color: #090D16;
+      background-color: #050811;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
-    .card-img-container img { width: 100%; height: 100%; object-fit: cover; }
+    .card-img-container img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: contain; 
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .card-img-container img {
+      transform: scale(1.02);
+    }
 
     .badge-card-img {
       width: 100%;
@@ -468,7 +481,7 @@
       
       <!-- Profile Avatar -->
       <div class="profile-avatar-container">
-        <img src="Portfolio Headshot.avif" alt="Elizabeth Enyart-Allen" onerror="this.onerror=null; this.src='profile.avif';">
+        <img src="Portfolio%20Headshot.avif" alt="Elizabeth Enyart-Allen" onerror="this.onerror=null; this.src='profile.avif';">
       </div>
     </section>
 
@@ -479,6 +492,9 @@
         
         <!-- Project 1: Enterprise AI Sycophancy & Guardrails Audit Harness -->
         <div class="card" style="border-color: rgba(6, 182, 212, 0.4); box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);">
+          <div class="card-img-container">
+            <img src="Enterprise%20AI%20LLM%20Goverance.png" alt="Enterprise AI Sycophancy & Guardrails Audit Architecture" onerror="this.parentElement.style.display='none'">
+          </div>
           <div>
             <div class="tags">
               <span class="tag">Enterprise AI</span>
@@ -507,6 +523,9 @@
 
         <!-- Project 2: Dynamic Enterprise Product Evaluation Harness -->
         <div class="card" style="border-color: rgba(6, 182, 212, 0.4); box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);">
+          <div class="card-img-container">
+            <img src="Dynamic%20Enterprise%20Product%20Evaluation%20Harness.png" alt="Dynamic Enterprise Product Evaluation Harness Architecture" onerror="this.parentElement.style.display='none'">
+          </div>
           <div>
             <div class="tags">
               <span class="tag">AI Governance</span>
@@ -536,7 +555,7 @@
         <!-- Project 3: AI Patient Agent Chat -->
         <div class="card" style="border-color: rgba(6, 182, 212, 0.4);">
           <div class="card-img-container">
-            <img src="AI%20Patient%20Agent%20Chat.jpg" alt="AI Patient Agent Chat Interface" onerror="this.parentElement.style.display='none'">
+            <img src="AI%20Patient%20Agent%20Chat.png" alt="AI Patient Agent Chat Architecture & Workflow" onerror="this.parentElement.style.display='none'">
           </div>
           <div>
             <div class="tags">
@@ -553,9 +572,9 @@
             </div>
             
             <ul class="card-highlights">
-              <li><strong>Clinical Guardrail Enforcement:</strong> Custom JavaScript tools enforce deterministic routing for restricted medications (e.g., Adderall) to human triage[cite: 2].</li>
-              <li><strong>Dynamic Slot Selection:</strong> Tool-assisted state management handling multi-turn appointment rescheduling (Location & Timeframe selection)[cite: 2].</li>
-              <li><strong>LLM Tool-Calling Architecture:</strong> Gemini Chat Model dynamically invoking custom JavaScript execution tools based on utterance intent[cite: 2].</li>
+              <li><strong>Clinical Guardrail Enforcement:</strong> Custom JavaScript tools enforce deterministic routing for restricted medications (e.g., Adderall) to human triage.</li>
+              <li><strong>Dynamic Slot Selection:</strong> Tool-assisted state management handling multi-turn appointment rescheduling (Location & Timeframe selection).</li>
+              <li><strong>LLM Tool-Calling Architecture:</strong> Gemini Chat Model dynamically invoking custom JavaScript execution tools based on utterance intent.</li>
             </ul>
           </div>
 
@@ -567,6 +586,9 @@
 
         <!-- Project 4: Daily Weather AI Automation Engine -->
         <div class="card" style="border-color: rgba(6, 182, 212, 0.4);">
+          <div class="card-img-container">
+            <img src="Daily%20Weather%20AI%20Automation%20Engine.png" alt="Daily Weather AI Automation Architecture" onerror="this.parentElement.style.display='none'">
+          </div>
           <div>
             <div class="tags">
               <span class="tag">n8n Workflow</span>
@@ -597,7 +619,7 @@
         <!-- Project 5: FinOps & Cloud Observability -->
         <div class="card" style="border-color: rgba(6, 182, 212, 0.4);">
           <div class="card-img-container">
-            <img src="cloud-telemetry.png" alt="Cloud Telemetry & FinOps Dashboard" onerror="this.parentElement.style.display='none'">
+            <img src="Cloud%20Telemetry%20%26%20FinOps%20Observability%20Engine.png" alt="Cloud Telemetry & FinOps Dashboard" onerror="this.parentElement.style.display='none'">
           </div>
           <div>
             <div class="tags">
@@ -672,7 +694,7 @@
 
         <!-- MN Women in AI North Star Badge -->
         <div class="card">
-          <img src="ms.enyart_north star (2).png" alt="MN Women in AI North Star Founding Member Badge" class="badge-card-img" onerror="this.onerror=null; this.src='badge.png';">
+          <img src="ms.enyart_north%20star%20(2).png" alt="MN Women in AI North Star Founding Member Badge" class="badge-card-img" onerror="this.onerror=null; this.src='badge.png';">
           <div>
             <div class="tags">
               <span class="tag">Founding Member</span>
@@ -726,7 +748,7 @@
 
   <!-- Floating Avatar Chat Button with Headshot -->
   <button id="ai-bot-trigger" aria-label="Open Elizabeth's AI Assistant" onclick="openChat()">
-    <img src="Portfolio Headshot.avif" alt="Elizabeth's AI Avatar" class="trigger-avatar" onerror="this.src='profile.avif';">
+    <img src="Portfolio%20Headshot.avif" alt="Elizabeth's AI Avatar" class="trigger-avatar" onerror="this.src='profile.avif';">
     <div class="trigger-online-badge"></div>
   </button>
 
@@ -734,7 +756,7 @@
   <div id="ai-bot-window" class="hidden">
     <div class="bot-header">
       <div class="bot-title-area">
-        <img src="Portfolio Headshot.avif" alt="Elizabeth Enyart-Allen Avatar" class="bot-header-avatar" onerror="this.src='profile.avif';">
+        <img src="Portfolio%20Headshot.avif" alt="Elizabeth Enyart-Allen Avatar" class="bot-header-avatar" onerror="this.src='profile.avif';">
         <div class="bot-header-info">
           <h4>Ask Elizabeth's AI</h4>
           <span>● Neural Link Active</span>
