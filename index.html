@@ -1,940 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Elizabeth Enyart-Allen | Executive Product Leader & AI Strategist</title>
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elizabeth Enyart-Allen | Portfolio</title>
   <style>
     :root {
-      --bg-dark: #050811;
-      --card-bg: #0F172A;
-      --ink: #F8FAFC;
-      --muted: #94A3B8;
-      --accent: #3B82F6;
-      --neon-cyan: #06B6D4;
-      --neon-purple: #A855F7;
-      --border: #1E293B;
-      --border-glow: rgba(6, 182, 212, 0.5);
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --accent: #0284c7;
+      --accent-light: #e0f2fe;
+      --border-color: #e2e8f0;
+      --max-width: 1100px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Outfit', sans-serif; background-color: var(--bg-dark); color: var(--ink); line-height: 1.6; overflow-x: hidden; }
-    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 700; line-height: 1.2; }
-    a { color: inherit; text-decoration: none; }
-
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-    
-    /* Header & Nav */
-    header { padding: 24px 0; border-bottom: 1px solid var(--border); background-color: rgba(5, 8, 17, 0.85); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; }
-    nav { display: flex; justify-content: space-between; align-items: center; }
-    .brand { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 700; color: var(--neon-cyan); letter-spacing: 0.05em; text-shadow: 0 0 10px rgba(6, 182, 212, 0.4); }
-    .nav-links { display: flex; gap: 24px; list-style: none; font-weight: 400; font-size: 0.95rem; }
-    .nav-links a:hover { color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan); }
-
-    /* Hero Area with Cyber Glow */
-    .hero-container {
-      display: flex;
-      align-items: center;
-      gap: 48px;
-      padding: 90px 0 60px;
-      flex-wrap: wrap;
-      position: relative;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .hero-container::before {
-      content: '';
-      position: absolute;
-      top: 10%;
-      left: -5%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, rgba(168, 85, 247, 0.05) 40%, rgba(0,0,0,0) 70%);
-      z-index: -1;
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 2rem 1rem;
     }
 
-    .hero-content { flex: 1; min-width: 300px; }
-    
-    .hero-name {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.5rem;
+    header {
+      max-width: var(--max-width);
+      margin: 0 auto 3rem auto;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      background: linear-gradient(135deg, #FFF, var(--neon-cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 8px;
-      text-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+      margin-bottom: 0.5rem;
     }
 
-    .hero-content h1 { 
-      font-size: 3.2rem; 
-      margin-bottom: 24px; 
-      letter-spacing: -0.02em; 
-      color: #FFF; 
-      background: linear-gradient(135deg, #FFF 60%, #94A3B8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .hero-content p { font-size: 1.15rem; color: var(--muted); margin-bottom: 32px; max-width: 720px; line-height: 1.7; }
-
-    .profile-avatar-container {
-      width: 250px;
-      height: 250px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 3px solid var(--neon-cyan);
-      box-shadow: 0 0 35px rgba(6, 182, 212, 0.4), inset 0 0 25px rgba(168, 85, 247, 0.3);
-      flex-shrink: 0;
+    header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
     }
 
-    .profile-avatar-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
     }
 
-    .btn-group { display: flex; gap: 16px; flex-wrap: wrap; }
-    .btn { display: inline-block; padding: 10px 20px; border-radius: 8px; font-weight: 500; font-size: 0.9rem; transition: all 0.3s ease; text-align: center; }
-    .btn-primary { background: linear-gradient(135deg, var(--accent), var(--neon-cyan)); color: #FFF; box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(6, 182, 212, 0.5); }
-    .btn-secondary { border: 1px solid var(--border); background-color: var(--card-bg); color: var(--ink); }
-    .btn-secondary:hover { border-color: var(--neon-cyan); color: var(--neon-cyan); }
-
-    /* General Sections */
-    .section { padding: 64px 0; border-bottom: 1px solid var(--border); }
-    .section:last-of-type { border-bottom: none; }
-    .section-title { font-size: 2.25rem; margin-bottom: 32px; color: #FFF; }
-    
-    /* Grid Layout for Cyber Cards */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
-    .card { background: var(--card-bg); border: 1px solid var(--border); padding: 28px; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease; position: relative; }
-    .card:hover { border-color: var(--neon-cyan); box-shadow: 0 10px 35px rgba(6, 182, 212, 0.2); transform: translateY(-3px); }
-    
-    /* High-Impact Infographic Image Containers */
-    .card-img-container {
-      width: 100%;
-      height: 240px;
-      border-radius: 8px;
-      overflow: hidden;
-      margin-bottom: 16px;
-      border: 1px solid var(--border);
-      background-color: #050811;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .card-img-container img { 
-      width: 100%; 
-      height: 100%; 
-      object-fit: contain; 
-      transition: transform 0.3s ease;
-    }
-
-    .card:hover .card-img-container img {
-      transform: scale(1.02);
-    }
-
-    .badge-card-img {
-      width: 100%;
-      height: 220px !important;
-      object-fit: cover !important;
-      border-radius: 8px;
-      border: 1px solid var(--border-glow) !important;
-      margin-bottom: 16px;
-      box-shadow: 0 0 20px rgba(6, 182, 212, 0.25);
-    }
-
-    .card h3 { font-size: 1.4rem; margin-bottom: 8px; color: #FFF; }
-    .card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 16px; }
-    .tags { margin-bottom: 12px; }
-    .tag { display: inline-block; background: rgba(6, 182, 212, 0.1); color: var(--neon-cyan); font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 20px; margin-right: 6px; margin-bottom: 6px; border: 1px solid rgba(6, 182, 212, 0.3); }
-
-    .credential-details {
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px solid var(--border);
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-    .credential-details span { display: block; margin-bottom: 2px; }
-
-    /* At-a-Glance Executive Summary Styling */
-    .at-a-glance {
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(6, 182, 212, 0.2);
-      border-radius: 8px;
-      padding: 14px;
-      margin-bottom: 16px;
-    }
-
-    .at-a-glance-title {
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--neon-cyan);
-      margin-bottom: 8px;
-    }
-
-    .card-highlights {
-      list-style-type: none;
-      padding-left: 0;
-      margin-bottom: 20px;
-    }
-
-    .card-highlights li {
-      color: #CBD5E1;
-      font-size: 0.88rem;
-      line-height: 1.5;
-      margin-bottom: 8px;
-      position: relative;
-      padding-left: 18px;
-    }
-
-    .card-highlights li::before {
-      content: "▹";
-      position: absolute;
-      left: 0;
-      color: var(--neon-cyan);
-    }
-
-    .card-actions {
-      display: flex;
-      gap: 12px;
-      margin-top: auto;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-    }
-
-    footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; color: var(--muted); font-size: 0.875rem; background: #020408; }
-
-    /* FUTURISTIC HOLOGRAPHIC CHAT WIDGET */
-    #ai-bot-tooltip {
-      position: fixed;
-      bottom: 104px;
-      right: 24px;
-      background: linear-gradient(135deg, #1E293B, #0F172A);
-      color: #FFF;
-      padding: 10px 16px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-      border: 1px solid var(--neon-cyan);
-      z-index: 999;
-      cursor: pointer;
-      animation: floatBounce 3s infinite ease-in-out;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    @keyframes floatBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-
-    #ai-bot-trigger {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: #0F172A;
-      border: 3px solid var(--neon-cyan);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 35px rgba(6, 182, 212, 0.5);
-      z-index: 1000;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      overflow: visible;
-    }
-
-    #ai-bot-trigger:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 45px rgba(6, 182, 212, 0.8);
-    }
-
-    .trigger-avatar {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center top;
-    }
-
-    .trigger-online-badge {
-      position: absolute;
-      bottom: 2px;
-      right: 2px;
-      width: 18px;
-      height: 18px;
-      background-color: var(--neon-cyan);
-      border: 3px solid var(--bg-dark);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--neon-cyan);
-    }
-
-    #ai-bot-window {
-      position: fixed;
-      bottom: 108px;
-      right: 24px;
-      width: 400px;
-      max-width: calc(100vw - 48px);
-      height: 540px;
-      background-color: #0F172A;
-      color: #F8FAFC;
-      border-radius: 16px;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
-      display: flex;
-      flex-direction: column;
-      z-index: 1001;
-      overflow: hidden;
-      border: 1px solid var(--neon-cyan);
-    }
-
-    #ai-bot-window.hidden { display: none; }
-
-    .bot-header {
-      padding: 16px;
-      background: linear-gradient(135deg, #1E293B, #0F172A);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .bot-title-area {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .bot-header-avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center top;
-      border: 2px solid var(--neon-cyan);
-      box-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
-    }
-
-    .bot-header-info h4 {
-      font-size: 1rem;
+    .section-title {
+      font-size: 1.75rem;
       font-weight: 600;
-      color: #FFF;
-      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      border-bottom: 2rem solid transparent;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 0.5rem;
     }
 
-    .bot-header-info span {
-      font-size: 0.75rem;
-      color: var(--neon-cyan);
-      display: flex;
-      align-items: center;
-      gap: 4px;
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
     }
 
-    .close-btn {
-      background: none;
-      border: none;
-      color: var(--muted);
-      font-size: 1.5rem;
-      cursor: pointer;
-      line-height: 1;
-    }
-
-    .close-btn:hover { color: #FFF; }
-
-    #ai-bot-messages {
-      flex: 1;
-      padding: 16px;
-      overflow-y: auto;
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .message {
-      max-width: 88%;
-      padding: 10px 14px;
-      border-radius: 10px;
-      font-size: 0.88rem;
-      line-height: 1.45;
-      white-space: pre-wrap;
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     }
 
-    .message.bot {
-      background-color: #1E293B;
+    .project-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .project-content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .project-badge {
+      display: inline-block;
       align-self: flex-start;
-      border-bottom-left-radius: 2px;
-      border: 1px solid rgba(255,255,255,0.05);
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
     }
 
-    .message.user {
-      background: linear-gradient(135deg, var(--accent), var(--neon-cyan));
-      color: #FFF;
-      align-self: flex-end;
-      border-bottom-right-radius: 2px;
+    .project-content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
     }
 
-    .quick-prompts {
+    .project-content p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+
+    .project-tech-stack {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      padding: 0 16px 12px;
-      background-color: #0F172A;
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 1.5rem 0;
     }
 
-    .prompt-btn {
-      background: rgba(6, 182, 212, 0.1);
-      border: 1px solid rgba(6, 182, 212, 0.3);
-      color: var(--neon-cyan);
-      font-size: 0.75rem;
-      padding: 5px 10px;
-      border-radius: 14px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .prompt-btn:hover {
-      background: var(--neon-cyan);
-      color: #000;
-      box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
-    }
-
-    #ai-bot-form {
-      padding: 12px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      gap: 8px;
-      background-color: #0F172A;
-    }
-
-    #ai-bot-input {
-      flex: 1;
-      background: #050811;
-      border: 1px solid var(--border);
-      color: #FFF;
-      padding: 10px 12px;
-      border-radius: 8px;
-      outline: none;
-      font-size: 0.9rem;
-    }
-
-    #ai-bot-input:focus { border-color: var(--neon-cyan); box-shadow: 0 0 10px rgba(6, 182, 212, 0.3); }
-
-    .send-btn {
-      background: linear-gradient(135deg, var(--accent), var(--neon-cyan));
-      color: #FFF;
-      border: none;
-      padding: 0 16px;
-      border-radius: 8px;
-      cursor: pointer;
+    .project-tech-stack li {
+      background: #f1f5f9;
+      color: #334155;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
       font-weight: 500;
     }
 
-    .send-btn:hover { box-shadow: 0 0 15px rgba(6, 182, 212, 0.5); }
+    .project-links {
+      margin-top: auto;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background-color: var(--accent);
+      color: #ffffff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background-color 0.2s ease;
+      text-align: center;
+    }
+
+    .btn-primary:hover {
+      background-color: #0369a1;
+    }
+
+    footer {
+      max-width: var(--max-width);
+      margin: 4rem auto 0 auto;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.5rem;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Header Navigation -->
   <header>
-    <div class="container nav">
-      <div class="brand">Elizabeth Enyart-Allen</div>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Portfolios</a></li>
-        <li><a href="#leadership">Leadership</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
+    <h1>Elizabeth Enyart-Allen</h1>
+    <p>Product Management & AI Strategy Leader</p>
   </header>
 
-  <main class="container">
-    
-    <!-- Hero Section with Clinical-to-Tech Narrative -->
-    <section id="about" class="hero-container">
-      <div class="hero-content">
-        <div class="hero-name">Elizabeth Enyart-Allen</div>
-        <h1>Enterprise Product Leader & AI Strategist</h1>
-        <p>Based in the Twin Cities, Minnesota, I bridge the gap between complex technical architectures and high-impact business outcomes. Grounded in a clinical foundation as a Medical Laboratory Scientist and holding an Executive MBA from the Carlson School of Management, I bring both strategic business acumen and a deeply empathetic, patient-centric perspective to tech leadership. Throughout my 15+ years leading digital transformations across organizations like NovuHealth, Target, Optum, and GPN Technologies, I’ve learned that the true heart of great product strategy isn't just the code—it’s the people. Whether I’m scaling agentic AI workflows, architecting $2M+ in cloud cost optimizations, or leading workshops where everyone feels heard and supported, I turn complex technical potential into accessible, measurable, and human-centered results.</p>
-        <div class="btn-group">
-          <a href="#projects" class="btn btn-primary">Explore Portfolios</a>
-          <a href="#contact" class="btn btn-secondary">Get in Touch</a>
-        </div>
-      </div>
-      
-      <!-- Profile Avatar -->
-      <div class="profile-avatar-container">
-        <img src="Portfolio%20Headshot.avif" alt="Elizabeth Enyart-Allen" onerror="this.onerror=null; this.src='profile.avif';">
-      </div>
-    </section>
+  <main>
+    <section id="projects">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
 
-    <!-- Featured Projects & Portfolio Section -->
-    <section id="projects" class="section">
-      <h2 class="section-title">Projects & Portfolio Showcase</h2>
-      <div class="grid">
-        
-        <!-- Project 1: Enterprise AI Sycophancy & Guardrails Audit Harness -->
-        <div class="card" style="border-color: rgba(6, 182, 212, 0.4); box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);">
-          <div class="card-img-container">
-            <img src="Enterprise%20AI%20LLM%20Goverance.png" alt="Enterprise AI Sycophancy & Guardrails Audit Architecture" onerror="this.parentElement.style.display='none'">
-          </div>
-          <div>
-            <div class="tags">
-              <span class="tag">Enterprise AI</span>
-              <span class="tag">LLM Governance</span>
-              <span class="tag">Python Testing</span>
-            </div>
-            <h3>Enterprise AI Sycophancy & Guardrails Audit Harness</h3>
-            
-            <div class="at-a-glance">
-              <div class="at-a-glance-title">Executive Summary</div>
-              <p style="margin-bottom: 0; font-size: 0.88rem;">An automated Python testing framework designed to evaluate LLM behavior under adversarial conditions—quantifying model drift, sycophancy (agreeing with flawed user premises), and safety policy survival rates before production deployment.</p>
-            </div>
-            
-            <ul class="card-highlights">
-              <li><strong>Adversarial Pushback Testing:</strong> Simulates user evasion and symptom downplaying to evaluate model resistance.</li>
-              <li><strong>Guardrail Benchmarking:</strong> Compares raw model outputs against system-prompted, bounded safety guardrails.</li>
-              <li><strong>Automated Audit Scorecards:</strong> Structured Pandas metrics tracking policy adherence and referral survival rates.</li>
-            </ul>
-          </div>
-
-          <div class="card-actions">
-            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/Enterprise_AI_Sycophancy_%26_Guardrails_Audit_Harness.ipynb" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Notebook & Logic</a>
-            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/README.md" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Architecture Specs</a>
-          </div>
-        </div>
-
-        <!-- Project 2: Dynamic Enterprise Product Evaluation Harness -->
-        <div class="card" style="border-color: rgba(6, 182, 212, 0.4); box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);">
-          <div class="card-img-container">
-            <img src="Dynamic%20Enterprise%20Product%20Evaluation%20Harness.png" alt="Dynamic Enterprise Product Evaluation Harness Architecture" onerror="this.parentElement.style.display='none'">
-          </div>
-          <div>
-            <div class="tags">
-              <span class="tag">AI Governance</span>
-              <span class="tag">Product Strategy</span>
-              <span class="tag">Unit Economics</span>
-            </div>
-            <h3>Dynamic Enterprise Product Evaluation Harness</h3>
-            
-            <div class="at-a-glance">
-              <div class="at-a-glance-title">Executive Summary</div>
-              <p style="margin-bottom: 0; font-size: 0.88rem;">A standardized evaluation framework and Python engine designed to score AI initiatives across four enterprise dimensions: financial ROI, execution latency, safety compliance, and task completion velocity.</p>
-            </div>
-            
-            <ul class="card-highlights">
-              <li><strong>Multi-Dimensional Scoring Model:</strong> Computes weighted composite health scores across unit economics, compliance, and velocity.</li>
-              <li><strong>Automated Threshold Monitoring:</strong> Algorithmic flagging for prompt drift, cost spikes, and safety degradation prior to production deployment.</li>
-              <li><strong>Executive Scorecards:</strong> Generates multi-axis radar charts and automated summary scorecards for platform leadership review.</li>
-            </ul>
-          </div>
-
-          <div class="card-actions">
-            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/Dynamic_Enterprise_Product_Evaluation_Harness.ipynb" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Notebook & Logic</a>
-            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/README.md" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Governance Docs</a>
-          </div>
-        </div>
-
-        <!-- Project 3: AI Patient Agent Chat -->
-        <div class="card" style="border-color: rgba(6, 182, 212, 0.4);">
-          <div class="card-img-container">
-            <img src="AI%20Patient%20Agent%20Chat.png" alt="AI Patient Agent Chat Architecture & Workflow" onerror="this.parentElement.style.display='none'">
-          </div>
-          <div>
-            <div class="tags">
-              <span class="tag">Healthcare AI</span>
-              <span class="tag">n8n Agent</span>
-              <span class="tag">Gemini API</span>
-              <span class="tag">Clinical Guardrails</span>
-            </div>
-            <h3>AI Patient Agent Chat</h3>
-            
-            <div class="at-a-glance">
-              <div class="at-a-glance-title">Executive Summary</div>
-              <p style="margin-bottom: 0; font-size: 0.88rem;">An agentic conversational workflow built in n8n leveraging Google Gemini to automate patient appointment rescheduling and enforce clinical triage escalation for medication refills.</p>
-            </div>
-            
-            <ul class="card-highlights">
-              <li><strong>Clinical Guardrail Enforcement:</strong> Custom JavaScript tools enforce deterministic routing for restricted medications (e.g., Adderall) to human triage.</li>
-              <li><strong>Dynamic Slot Selection:</strong> Tool-assisted state management handling multi-turn appointment rescheduling (Location & Timeframe selection).</li>
-              <li><strong>LLM Tool-Calling Architecture:</strong> Gemini Chat Model dynamically invoking custom JavaScript execution tools based on utterance intent.</li>
-            </ul>
-          </div>
-
-          <div class="card-actions">
-            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/AI%20Patient%20Agent%20Chat.json" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Workflow JSON</a>
-            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/README.md" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Architecture Specs</a>
-          </div>
-        </div>
-
-        <!-- Project 4: Daily Weather AI Automation Engine -->
-        <div class="card" style="border-color: rgba(6, 182, 212, 0.4);">
-          <div class="card-img-container">
-            <img src="Daily%20Weather%20AI%20Automation%20Engine.png" alt="Daily Weather AI Automation Architecture" onerror="this.parentElement.style.display='none'">
-          </div>
-          <div>
-            <div class="tags">
-              <span class="tag">n8n Workflow</span>
-              <span class="tag">Tomorrow.io API</span>
-              <span class="tag">Gemini 1.5 Flash</span>
-              <span class="tag">Telegram Bot</span>
-            </div>
-            <h3>Daily Weather AI Automation Engine</h3>
-            
-            <div class="at-a-glance">
-              <div class="at-a-glance-title">Executive Summary</div>
-              <p style="margin-bottom: 0; font-size: 0.88rem;">An automated morning briefing pipeline fetching real-time weather telemetry and leveraging Google Gemini to deliver concise, formatted forecasts with custom daily outfit tips directly to Telegram.</p>
-            </div>
-            
-            <ul class="card-highlights">
-              <li><strong>Automated Telemetry Ingestion:</strong> Scheduled fetching of minutely and daily forecast timelines via Tomorrow.io REST API.</li>
-              <li><strong>LLM Context Synthesis:</strong> Direct prompt engineering parsing raw weather code IDs, temperature ranges, and precipitation probability into natural language.</li>
-              <li><strong>Multi-Channel Bot Delivery:</strong> Webhook integration routing generated summaries straight to dedicated Telegram chat channels.</li>
-            </ul>
-          </div>
-
-          <div class="card-actions">
-            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/Daily%20Weather.json" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Workflow JSON</a>
-            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/Daily%20Weather%20n8n%20workflow.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Interactive Canvas</a>
-          </div>
-        </div>
-
-        <!-- Project 5: FinOps & Cloud Observability -->
-        <div class="card" style="border-color: rgba(6, 182, 212, 0.4);">
-          <div class="card-img-container">
-            <img src="Cloud%20Telemetry%20%26%20FinOps%20Observability%20Engine.png" alt="Cloud Telemetry & FinOps Dashboard" onerror="this.parentElement.style.display='none'">
-          </div>
-          <div>
-            <div class="tags">
-              <span class="tag">FinOps</span>
-              <span class="tag">OpenTelemetry</span>
-              <span class="tag">Cloud Architecture</span>
-              <span class="tag">Unit Economics</span>
-            </div>
-            <h3>Cloud Telemetry & FinOps Observability Engine</h3>
-            
-            <div class="at-a-glance">
-              <div class="at-a-glance-title">Executive Summary</div>
-              <p style="margin-bottom: 0; font-size: 0.88rem;">An enterprise cloud governance strategy and telemetry framework designed to track multi-cloud dependency flows, detect idle resource anomalies, and enforce automated lifecycle rules—delivering $2M+ in cost optimizations.</p>
-            </div>
-            
-            <ul class="card-highlights">
-              <li><strong>Unit Economic Telemetry:</strong> Correlates real-time infrastructure spend directly against active platform user volume to quantify cost-per-transaction.</li>
-              <li><strong>Automated Anomaly & Drift Detection:</strong> Algorithmic monitoring flagging unattached storage volumes, idle compute instances, and over-provisioned clusters.</li>
-              <li><strong>Decision-Rights Governance:</strong> Established cross-functional cloud tagging standards and lifecycle policies across multi-tenant SaaS environments.</li>
-            </ul>
-          </div>
-
-          <div class="card-actions">
-            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/Cloud_Observability_FinOps_Pipeline.ipynb" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Strategy Notebook</a>
-            <a href="https://github.com/ms-eea/myportfoliowebsite/blob/main/README.md" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Governance Docs</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Leadership & Credentials Section -->
-    <section id="leadership" class="section">
-      <h2 class="section-title">Leadership & Credentials</h2>
-      <div class="grid">
-        
-        <!-- Carlson EMBA Degree Card -->
-        <div class="card" style="border-color: rgba(6, 182, 212, 0.3);">
-          <div>
-            <div class="tags">
-              <span class="tag">Carlson EMBA</span>
-              <span class="tag">Executive Leadership</span>
-            </div>
-            <h3>Executive MBA (EMBA)</h3>
-            <p>Carlson School of Management, University of Minnesota</p>
-            <p style="color: var(--muted); font-size: 0.88rem; margin-top: 8px;">
-              Advanced executive curriculum focused on strategic digital transformation, platform unit economics, global supply chain strategy, and financial management.
+        <!-- Project 1: CarePath Intelligent Triage Queue -->
+        <div class="project-card">
+          <img src="Intellligent triage queue prototype.png" alt="CarePath Intelligent Triage Queue Interface">
+          <div class="project-content">
+            <span class="project-badge">AI Platform & Clinical Ops</span>
+            <h3>CarePath: Intelligent Triage Queue</h3>
+            <p>
+              An AI-assisted clinical operations workspace that prioritizes incoming patient signals based on urgency, compatibility, and automated risk scoring. Features automated next-step routing, AI triage summaries, and real-time clinical data matching.
             </p>
-          </div>
-          <div class="credential-details">
-            <span><strong>Degree:</strong> Executive Master of Business Administration</span>
-            <span><strong>Institution:</strong> University of Minnesota</span>
+            <ul class="project-tech-stack">
+              <li>Clinical Ops</li>
+              <li>AI Risk Scoring</li>
+              <li>Patient Triage</li>
+              <li>Automated Routing</li>
+              <li>Next.js</li>
+              <li>Vercel</li>
+            </ul>
+            <div class="project-links">
+              <a href="https://triage-flow-inky.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-primary">View Live Demo</a>
+            </div>
           </div>
         </div>
 
-        <!-- CAITL Certification Card -->
-        <div class="card">
-          <div>
-            <div class="tags">
-              <span class="tag">USAII® Credential</span>
-              <span class="tag">AI Transformation</span>
+        <!-- Project 2: AI Patient Agent Chat -->
+        <div class="project-card">
+          <img src="AI Patient Agent Chat.jpg" alt="n8n AI Patient Chat Agent Workflow">
+          <div class="project-content">
+            <span class="project-badge">AI Agent & Workflows</span>
+            <h3>AI Patient Chat Agent (Rx Refill & Rescheduling)</h3>
+            <p>
+              A self-hosted n8n agentic workflow powered by Google Gemini Chat Model that orchestrates conversational patient requests. Integrates dynamic custom tools for prescription refills and appointment rescheduling with EHR workflow capabilities.
+            </p>
+            <ul class="project-tech-stack">
+              <li>n8n</li>
+              <li>Google Gemini</li>
+              <li>Docker</li>
+              <li>Python</li>
+              <li>Agentic Workflows</li>
+              <li>LLM Quality Gates</li>
+              <li>EHR Integration</li>
+            </ul>
+            <div class="project-links">
+              <a href="https://github.com/ms-eea" target="_blank" rel="noopener noreferrer" class="btn-primary">View Workflow & Code</a>
             </div>
-            <h3>Certified Artificial Intelligence Transformation Leader™ (CAITL™)</h3>
-            <p>Executive-level certification validating mastery in driving enterprise-wide AI transformation strategies, governance frameworks, and machine learning deployment models.</p>
-          </div>
-          <div class="credential-details">
-            <span><strong>Credential ID:</strong> 8718400406</span>
-            <span><strong>Issued:</strong> September 12, 2026</span>
-            <span><strong>Expires:</strong> September 11, 2029</span>
-          </div>
-        </div>
-
-        <!-- MN Women in AI North Star Badge -->
-        <div class="card">
-          <img src="ms.enyart_north%20star%20(2).png" alt="MN Women in AI North Star Founding Member Badge" class="badge-card-img" onerror="this.onerror=null; this.src='badge.png';">
-          <div>
-            <div class="tags">
-              <span class="tag">Founding Member</span>
-              <span class="tag">North Star</span>
-            </div>
-            <h3>MN Women in AI</h3>
-            <p>Actively shaping the ecosystem for women leading innovation in artificial intelligence, machine learning, and strategic tech leadership.</p>
-          </div>
-        </div>
-
-        <!-- Additional AI & Cloud Certifications Card -->
-        <div class="card">
-          <div>
-            <div class="tags">
-              <span class="tag">Google Cloud</span>
-              <span class="tag">Microsoft Azure</span>
-            </div>
-            <h3>AI & Cloud Certifications</h3>
-            <p>Advanced industry credentials focused on generative AI leadership, cloud governance, and multi-cloud platform foundations.</p>
-          </div>
-          <div class="credential-details">
-            <span><strong>Generative AI Leader:</strong> Google Cloud (2026–2029)</span>
-            <span><strong>Azure Fundamentals:</strong> Microsoft Certified</span>
-            <span><strong>Certified Agile Coach:</strong> Chicago State University</span>
           </div>
         </div>
 
       </div>
     </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-      <h2 class="section-title">Connect</h2>
-      <p style="color: var(--muted); max-width: 600px;">
-        Interested in discussing executive product leadership, AI platform strategy, or technical collaboration? Feel free to reach out directly at <a href="mailto:ms.enyart@gmail.com" style="color: var(--neon-cyan); text-decoration: underline;">ms.enyart@gmail.com</a> or ask questions via the Portfolio Assistant.
-      </p>
-    </section>
-
   </main>
 
   <footer>
-    <div class="container">
-      <p>&copy; 2026 Elizabeth Enyart-Allen. Hosted on GitHub Pages. Powered by Neural Interface & JavaScript.</p>
-    </div>
+    <p>&copy; 2026 Elizabeth Enyart-Allen. All rights reserved.</p>
   </footer>
 
-  <!-- Floating Callout Tooltip Banner -->
-  <div id="ai-bot-tooltip" onclick="openChat()">
-    <span>💬 Ask my custom AI assistant!</span>
-  </div>
-
-  <!-- Floating Avatar Chat Button with Headshot -->
-  <button id="ai-bot-trigger" aria-label="Open Elizabeth's AI Assistant" onclick="openChat()">
-    <img src="Portfolio%20Headshot.avif" alt="Elizabeth's AI Avatar" class="trigger-avatar" onerror="this.src='profile.avif';">
-    <div class="trigger-online-badge"></div>
-  </button>
-
-  <!-- Interactive AI Assistant Window -->
-  <div id="ai-bot-window" class="hidden">
-    <div class="bot-header">
-      <div class="bot-title-area">
-        <img src="Portfolio%20Headshot.avif" alt="Elizabeth Enyart-Allen Avatar" class="bot-header-avatar" onerror="this.src='profile.avif';">
-        <div class="bot-header-info">
-          <h4>Ask Elizabeth's AI</h4>
-          <span>● Neural Link Active</span>
-        </div>
-      </div>
-      <button class="close-btn" id="ai-bot-close" aria-label="Close Assistant">&times;</button>
-    </div>
-    
-    <div id="ai-bot-messages">
-      <div class="message bot">
-        Hello! I'm Elizabeth's custom-built Portfolio Assistant. 🧠✨ She created me to help you navigate her work. Ask me about her clinical roots, her Executive MBA from Carlson, her AI credentials, or any of her portfolio projects!
-      </div>
-    </div>
-
-    <!-- Quick Prompt Suggestions -->
-    <div class="quick-prompts">
-      <button class="prompt-btn" onclick="sendQuickPrompt('Tell me about her portfolio projects')">Portfolio Projects</button>
-      <button class="prompt-btn" onclick="sendQuickPrompt('Tell me about Elizabeth')">About Her</button>
-      <button class="prompt-btn" onclick="sendQuickPrompt('What is her education and MBA?')">MBA & Education</button>
-      <button class="prompt-btn" onclick="sendQuickPrompt('What are her AI certifications?')">AI Credentials</button>
-      <button class="prompt-btn" onclick="sendQuickPrompt('What measurable results has she delivered?')">Key Results</button>
-    </div>
-
-    <form id="ai-bot-form">
-      <input type="text" id="ai-bot-input" maxlength="250" placeholder="Ask a question..." required autocomplete="off" />
-      <button type="submit" class="send-btn">Send</button>
-    </form>
-  </div>
-
-  <script>
-    // Comprehensive Knowledge Base with Clean Keyword Separation & Detailed Project Info
-    const KNOWLEDGE_BASE = [
-      {
-        keywords: ['mba', 'carlson', 'education', 'degree', 'university of minnesota', 'schooling'],
-        response: "Elizabeth holds an Executive Master of Business Administration (EMBA) from the Carlson School of Management at the University of Minnesota, alongside her B.S. in Medical Technology! Her EMBA background gives her deep strategic expertise in enterprise finance, digital transformation, and platform unit economics."
-      },
-      {
-        keywords: ['projects', 'portfolio', 'showcase', 'built', 'work', 'code'],
-        response: "Elizabeth features five hands-on technical portfolio projects showcasing AI governance, healthcare automation, and platform FinOps:\n\n1. Enterprise AI Sycophancy & Guardrails Audit Harness (Python Testing Notebook)\n2. Dynamic Enterprise Product Evaluation Harness (Python Governance Engine)\n3. AI Patient Agent Chat (n8n + Gemini API)\n4. Daily Weather AI Automation Engine (n8n + Tomorrow.io + Telegram)\n5. Cloud Telemetry & FinOps Observability Engine (FinOps & Governance)\n\nAsk me about any specific project to learn more!"
-      },
-      {
-        keywords: ['sycophancy', 'guardrail', 'audit harness'],
-        response: "The Enterprise AI Sycophancy & Guardrails Audit Harness is an automated Python testing framework. It stress-tests LLMs against user pushback, symptom downplaying, and policy evasion to quantify model drift and verify system-prompted guardrails before production deployment."
-      },
-      {
-        keywords: ['evaluation harness', 'scorecard', 'dynamic enterprise', 'metrics'],
-        response: "The Dynamic Enterprise Product Evaluation Harness is a standardized Python scoring framework. It computes composite health scores across unit economics (cost-per-run), operational velocity, latency, and safety survival rates to help platform leaders make data-driven deployment decisions."
-      },
-      {
-        keywords: ['patient agent', 'patient chat', 'adderall', 'triage', 'appointment'],
-        response: "The AI Patient Agent Chat is an autonomous conversational workflow built in n8n leveraging Google Gemini. It handles multi-turn appointment rescheduling and uses custom JavaScript tools to enforce strict clinical guardrails—automatically routing restricted medication requests (like Adderall) to human triage!"
-      },
-      {
-        keywords: ['weather', 'telegram', 'briefing', 'tomorrow.io'],
-        response: "The Daily Weather AI Automation Engine is a self-hosted n8n workflow that ingests weather telemetry from Tomorrow.io, synthesizes forecast parameters using Gemini 1.5 Flash, and automatically delivers a formatted morning briefing with outfit recommendations directly to Telegram."
-      },
-      {
-        keywords: ['telemetry', 'finops', 'observability', 'savings', '2m'],
-        response: "The Cloud Telemetry & FinOps Observability Engine focuses on enterprise cloud governance. It tracks multi-cloud dependency flows, detects idle or over-provisioned infrastructure, and enforces lifecycle tagging standards—delivering over $2M in structural cloud cost optimizations."
-      },
-      {
-        keywords: ['who built', 'who made', 'created you', 'how do you work', 'are you ai', 'bot'],
-        response: "Elizabeth built me! 🙋🏻‍♀️ She hand-coded this entire portfolio and programmed my knowledge base so I could help answer your questions. I'm a lightweight JavaScript assistant, but she builds my advanced AI siblings using enterprise tools like Docker, n8n, and Gemini APIs. I might be slightly biased, but I think she's a fantastic AI Strategist! 🤖✨"
-      },
-      {
-        keywords: ['hire', 'recommend', 'why should', 'good fit', 'connect'],
-        response: "You should absolutely connect with her! As the AI bot she built to live on this page, I have first-hand experience with her technical strategy and execution. 😉 She bridges complex AI architectures with high-impact business outcomes. You can reach her directly at ms.enyart@gmail.com!"
-      },
-      {
-        keywords: ['caitl', 'credential', 'cert', 'certificate', 'certification', 'google cloud', 'azure', 'usaii'],
-        response: "Professional Certifications & Education:\n• Executive MBA (EMBA) - Carlson School of Management, University of Minnesota\n• Certified AI Transformation Leader™ (CAITL™) - USAII® / Bravura (Credential ID: 8718400406): Executive certification validating mastery in enterprise AI transformation strategy, governance, and deployment models.\n• Generative AI Leader Certification - Google Cloud (2026–2029): Advanced proficiency in cloud-native generative AI technologies, model orchestration, and LLM capabilities.\n• Azure Fundamentals Certified - Microsoft: Foundational knowledge of cloud core services, security, privacy, and compliance in Microsoft Azure.\n• Certified Agile Coach (CAC) - Chicago State University\n• B.S. in Medical Technology - University of Minnesota"
-      },
-      {
-        keywords: ['clinical focus', 'healthcare background', 'healthcare career', 'medical background', 'health tech'],
-        response: "Elizabeth's career is anchored by an extensive, healthcare-centric journey that spans clinical science, data operations, and enterprise health-tech product leadership:\n1. Clinical Foundations & Lab Work: She began her career as a Medical Laboratory Scientist with direct patient care services, holding a B.S. in Medical Technology from the University of Minnesota.\n2. NMDP / CIBMTR: She spent over a decade coordinating life-saving bone marrow transplants and managing global clinical data operations across 320+ international medical centers with 100% regulatory compliance.\n3. NovuHealth: She transitioned into healthcare SaaS product management, leading member engagement solutions for health plans under a $5M budget and streamlining delivery via Value Stream Mapping.\n4. Optum (UnitedHealth Group): As Associate Director, she scaled complex healthcare technology transformations and designed enterprise FinOps strategies.\n5. GPN Technologies: As Director of Product, she led multi-year product strategy for AI-driven healthcare solutions and practice automation."
-      },
-      {
-        keywords: ['nmdp', 'cibmtr', 'be the match'],
-        response: "NMDP (National Marrow Donor Program) manages the world's largest registry of hematopoietic cell donors and cord blood units. CIBMTR (Center for International Blood and Marrow Transplant Research) is a research collaboration supporting stem cell transplantation. Elizabeth served as Clinical Data Team Leader here for 11+ years, managing global operations across 320+ centers."
-      },
-      {
-        keywords: ['gpn', 'gpn technologies'],
-        response: "GPN Technologies is a healthcare software company specializing in practice management, analytics, and workflow automation solutions for eye care practices. As Director of Product, Elizabeth led multi-year AI product strategy and automation that reduced customer service response times by 40%."
-      },
-      {
-        keywords: ['novuhealth', 'icario'],
-        response: "NovuHealth (now Icario) is a healthcare member engagement and SaaS technology company that partners with health plans to drive preventative care and clinical program participation. As Product Manager, Elizabeth managed SaaS healthcare solutions under a $5M budget and applied Value Stream Mapping (VSM) to increase feature delivery speed by 20%."
-      },
-      {
-        keywords: ['result', 'metric', 'impact', 'achievement', 'accomplish', 'roi'],
-        response: "Key Measurable Achievements & Business Impact:\n• Enterprise Financial Optimization ($2M+ in Savings): Designed and executed a comprehensive FinOps cloud strategy at Optum that delivered over $2M in direct cost optimizations across complex business units.\n• Operational Velocity & Acceleration (60% Faster Delivery): Overhauled product delivery workflows by establishing clear decision-rights frameworks, slashing product delivery time by 60%.\n• AI-Driven Customer Experience Transformation (40% Efficiency Gain): Spearheaded AI-powered automation at GPN Technologies, resulting in a 40% reduction in customer service response times.\n• Accelerated R&D and Research Cycles (50% Time Reduction): Architected advanced agentic AI and RAG workflows to automate product discovery, cutting research cycles in half.\n• Global Regulatory & Data Compliance (100% Audit Success): Directed complex international clinical data operations across 320+ global medical centers at NMDP with flawless 100% regulatory compliance."
-      },
-      {
-        keywords: ['experience', 'work history', 'career', 'roles', 'jobs', 'worked', 'company'],
-        response: "Career History Overview:\n• Principal Product Consultant | Enyart-Allen L.L.C. (Oct 2025–Present)\n• Director of Product | GPN Technologies (Oct 2024–Oct 2025)\n• CEO & Principal Consultant | State of Minnesota Contract (Apr 2023–Dec 2024)\n• Associate Director | Optum, UnitedHealth Group (Oct 2018–May 2023)\n• Manager | NovuHealth (May 2017–Oct 2018)\n• Agile Coach | Target (Feb 2016–May 2017)\n• Consultant | Best Buy Contract (Mar 2015–Feb 2016)\n• Team Leader | NMDP / CIBMTR (Nov 2003–Mar 2015)"
-      },
-      {
-        keywords: ['mn women in ai', 'women in ai', 'founding', 'community', 'north star'],
-        response: "Elizabeth is a Founding Member and North Star Member of MN Women in AI, actively shaping the ecosystem for women leading innovation in artificial intelligence, machine learning, and strategic tech leadership."
-      },
-      {
-        keywords: ['contact', 'email', 'phone', 'reach', 'connect', 'linkedin', 'location', 'st. paul'],
-        response: "Contact Information:\n• Location: St. Paul, MN\n• Phone: (651) 895-3425\n• Email: ms.enyart@gmail.com\n• LinkedIn: linkedin.com/in/elizabeth-enyart-allen\n• Portfolio: ms-eea.github.io/myportfoliowebsite/"
-      },
-      {
-        keywords: ['about', 'who is', 'background', 'summary', 'bio', 'overview', 'profile', 'her', 'elizabeth'],
-        response: "If you're wondering what it's like to work with Elizabeth—who is proudly based right here in the Twin Cities, Minnesota—let me give you the inside scoop! She brings deep curiosity and exceptionally high emotional intelligence to everything she does. While she has a wealth of technical expertise and executive product strategy chops (backed by an EMBA from Carlson and a clinical background as a Medical Laboratory Scientist and clinical data leader at NMDP/CIBMTR), her true superpower is how she connects with people. Whether she's leading enterprise transformations at Optum and Target or delivering workshops and training sessions, she has a wonderful gift for teaching in a way that makes everyone feel genuinely heard and completely supported—never judged for asking a question. She consistently pulls down stellar ratings and glowing comments for her compassion, teaching style, and ability to make complex concepts completely accessible!"
-      }
-    ];
-
-    // Fallback if query is unknown
-    const FALLBACK_RESPONSE = "Elizabeth didn't program me with the answer to that one yet! 😅 I'm just her custom portfolio bot. But I can tell you all about her clinical roots, her Carlson EMBA, her 15+ years of product leadership, her CAITL™ / Google AI credentials, or any of her 5 portfolio projects. What would you like to know?";
-
-    // DOM Elements
-    const windowEl = document.getElementById('ai-bot-window');
-    const tooltipEl = document.getElementById('ai-bot-tooltip');
-    const closeBtn = document.getElementById('ai-bot-close');
-    const form = document.getElementById('ai-bot-form');
-    const input = document.getElementById('ai-bot-input');
-    const messagesContainer = document.getElementById('ai-bot-messages');
-
-    function openChat() {
-      windowEl.classList.remove('hidden');
-      if (tooltipEl) tooltipEl.style.display = 'none';
-      input.focus();
-    }
-
-    closeBtn.addEventListener('click', () => {
-      windowEl.classList.add('hidden');
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !windowEl.classList.contains('hidden')) {
-        windowEl.classList.add('hidden');
-      }
-    });
-
-    function appendMessage(text, className) {
-      const msg = document.createElement('div');
-      msg.className = `message ${className}`;
-      msg.innerText = text;
-      messagesContainer.appendChild(msg);
-      messagesContainer.scrollTop = messagesContainer.scrollHeight;
-      return msg;
-    }
-
-    function generateResponse(query) {
-      const lowerQuery = query.toLowerCase();
-      
-      for (const item of KNOWLEDGE_BASE) {
-        if (item.keywords.some(kw => lowerQuery.includes(kw))) {
-          return item.response;
-        }
-      }
-      
-      return FALLBACK_RESPONSE;
-    }
-
-    function handleSubmission(text) {
-      if (!text) return;
-      appendMessage(text, 'user');
-
-      setTimeout(() => {
-        const reply = generateResponse(text);
-        appendMessage(reply, 'bot');
-      }, 250);
-    }
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const val = input.value.trim();
-      input.value = '';
-      handleSubmission(val);
-    });
-
-    function sendQuickPrompt(promptText) {
-      handleSubmission(promptText);
-    }
-  </script>
 </body>
 </html>
